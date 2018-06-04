@@ -6,6 +6,7 @@
 | 4.6. | 0,5 | osa0-kertausta (web-sovellusten toiminnan perusteet) |
 | 4.6. | 1,5 | osa1-kertausta ja kokeilua (React, Javascript) |
 | 4.6. | 0,5 | funktionaalisen ohjelmoinnin opetusvideoiden katselua |
-| 4.6. | 1 | blogin lis‰ystoiminnallisuus |
+| 4.6. | 1 | osa2-kertausta ja kokeilua; blogin lis‰ystoiminnallisuus |
+| 4.6. | 1 | osa2 loppuun; tiedon haku palvelimelta, tiedon lis‰‰minen palvelimelle |
 
-## =3,5h
+## =4,5h

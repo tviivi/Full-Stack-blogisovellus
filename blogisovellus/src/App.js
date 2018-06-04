@@ -1,13 +1,24 @@
 import React from 'react'
 import Blog from './components/Blog'
+import blogService from './services/blogs'
+import Notification from './components/Notification'
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            blogs: props.blogs,
-            newBlog: 'Uusi blogi'
+            blogs: [],
+            newBlog: 'Uusi blogi',
+            error: null
         }
+    }
+
+    componentDidMount() {
+        blogService
+            .getAll()
+            .then(response => {
+                this.setState({ blogs: response })
+            })
     }
 
     addBlog = (event) => {
@@ -15,16 +26,25 @@ class App extends React.Component {
         const blogObject = {
             subject: this.state.newBlog,
             content: 'testi',
-            date: new Date().new,
-            id: this.state.blogs.length + 1,
+            date: new Date(),
             likes: 0
         }
-        const blogs = this.state.blogs.concat(blogObject)
-
-        this.setState({
-            blogs: blogs,
-            newBlog: ''
-        })
+        blogService
+            .create(blogObject)
+            .then(newBlog => {
+                this.setState({
+                    blogs: this.state.blogs.concat(newBlog),
+                    newBlog: ''
+                })
+            })
+            .catch(error => {
+                this.setState({
+                    error: 'tähän tulee ehkä joskus error-viesti'
+                })
+                setTimeout(() => {
+                    this.setState({ error: null })
+                }, 5000)
+            })
     }
 
     handleBlogChange = (event) => {
@@ -35,6 +55,7 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Blogisi</h1>
+                <Notification message={this.state.error} />
                 <ul>
                     {this.state.blogs.map(blog => <Blog key={blog.id} blog={blog} />)}
                 </ul>
