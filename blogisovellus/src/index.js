@@ -1,64 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import axios from 'axios'
 
-const Hello = () => {
-    return (
-        <div>
-            <p>Hello world</p>
-        </div>
-    )
-}
+axios.get('http://localhost:3001/blogs').then(response => {
+  const blogs = response.data
+  console.log(blogs)
+})
 
-class Testi extends React.Component {
-    render() {
-        const { name, age } = this.props
-        return (
-            <div>
-                <h3>Moikkeliskoikkelis {name}, {age}</h3>
-            </div>
-        )
+const blogs = [
+    {
+        id: 1,
+        subject: 'Kissablogi',
+        content: 'Skfpsdkf lnadkfökak dfam dflsf.',
+        date: '2017-12-10T17:30:31.098Z',
+        likes: 0
+    },
+    {
+        id: 2,
+        subject: 'Näin huollat autoasi',
+        content: 'Psdof. SJsdjflashoåsdnfnm!',
+        date: '2017-12-10T18:39:34.091Z',
+        likes: 0
+    },
+    {
+        id: 3,
+        subject: 'Kauneusvinkit',
+        content: 'Dpspdjfösäv åjrnådff yqw8 jspdfkjsdfn.',
+        date: '2017-12-10T19:20:14.298Z',
+        likes: 0
     }
-}
-
-const Display = (props) => {
-    return (
-        <div>{props.counter}</div>
-    )
-}
-
-const Button = ({ handleClick, text }) => (
-    <button onClick={handleClick}>
-        {text}
-    </button>
-)
-
-class App extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            counter: 1
-        }
-    }
-
-    asetaArvoon = (arvo) => () => this.setState({ counter: arvo })
-
-    render() {
-        return (
-            <div>
-                <Display counter={this.state.counter} />
-                <div>
-                <Button handleClick={this.asetaArvoon(this.state.counter + 1)} text="Plus" />
-                <Button handleClick={this.asetaArvoon(this.state.counter * 2)} text="Times two" />
-                <Button handleClick={this.asetaArvoon(0)} text="Zero" />
-                </div>
-                <Testi name="Viivi" age="23w" />
-                <Hello />
-            </div>
-        )
-    }
-}
+]
 
 ReactDOM.render(
-    <App />,
+    <App blogs={blogs} />,
     document.getElementById('root')
 )
