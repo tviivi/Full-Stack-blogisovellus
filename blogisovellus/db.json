@@ -55,6 +55,34 @@
       "date": "2018-06-04T13:26:43.549Z",
       "likes": 0,
       "id": 8
+    },
+    {
+      "subject": "Uusi blogi",
+      "content": "testi",
+      "date": "2018-06-04T14:04:28.091Z",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "subject": "Uusi blogi",
+      "content": "Uusi sisältö",
+      "date": "2018-06-04T14:08:06.458Z",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "subject": "Uusi blogi",
+      "content": "Uusi sisältö",
+      "date": "2018-06-04T14:15:03.982Z",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "subject": "Uusi blogi",
+      "content": "Uusi sisältö",
+      "date": "2018-06-04T14:22:04.391Z",
+      "likes": 0,
+      "id": 12
     }
   ]
 }

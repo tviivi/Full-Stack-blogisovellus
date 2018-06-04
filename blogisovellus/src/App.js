@@ -8,7 +8,8 @@ class App extends React.Component {
         super(props)
         this.state = {
             blogs: [],
-            newBlog: 'Uusi blogi',
+            newSubject: 'Uusi blogi',
+            newContent: 'Uusi sisältö',
             error: null
         }
     }
@@ -24,31 +25,53 @@ class App extends React.Component {
     addBlog = (event) => {
         event.preventDefault()
         const blogObject = {
-            subject: this.state.newBlog,
-            content: 'testi',
+            subject: this.state.newSubject,
+            content: this.state.newContent,
             date: new Date(),
             likes: 0
         }
         blogService
             .create(blogObject)
-            .then(newBlog => {
+            .then(newSubject => {
                 this.setState({
-                    blogs: this.state.blogs.concat(newBlog),
-                    newBlog: ''
+                    blogs: this.state.blogs.concat(newSubject),
+                    newSubject: '',
+                    newContent: ''
                 })
             })
-            .catch(error => {
+            //this.notify(`Uusi blogi otsikolla ${newSubject}$ lisätty`)
+    }
+
+    handleSubjectChange = (event) => {
+        this.setState({ newSubject: event.target.value })
+    }
+
+    handleContentChange = (event) => {
+        this.setState({ newContent: event.target.value })
+    }
+
+    removeBlog = (id) => () => {
+        const blog = this.state.blogs.find(blog => blog.id === id)
+        const ok = window.confirm(`Poistetaanko ${blog.subject}`)
+        if (!ok) {
+            return
+        }
+
+        blogService
+            .remove(id)
+            .then(response => {
                 this.setState({
-                    error: 'tähän tulee ehkä joskus error-viesti'
+                    blogs: this.state.blogs.filter(blog => blog.id !== id)
                 })
-                setTimeout(() => {
-                    this.setState({ error: null })
-                }, 5000)
+                this.notify(`${blog.subject} poistettu`)
             })
     }
 
-    handleBlogChange = (event) => {
-        this.setState({ newBlog: event.target.value })
+    notify = (notification) => {
+        this.setState({ notification })
+        setTimeout(() => {
+            this.setState({ notification: null })
+        }, 5000)
     }
 
     render() {
@@ -60,9 +83,16 @@ class App extends React.Component {
                     {this.state.blogs.map(blog => <Blog key={blog.id} blog={blog} />)}
                 </ul>
                 <form onSubmit={this.addBlog}>
-                    <input
-                        value={this.state.newBlog}
-                        onChange={this.handleBlogChange} />
+                    <div>
+                        <input
+                            value={this.state.newSubject}
+                            onChange={this.handleSubjectChange} />
+                    </div>
+                    <div>
+                        <input
+                            value={this.state.newContent}
+                            onChange={this.handleContentChange} />
+                    </div>
                     <button type="submit">Lisää uusi</button>
                 </form>
             </div>
