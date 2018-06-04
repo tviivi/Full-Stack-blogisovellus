@@ -9,5 +9,6 @@
 | 4.6. | 1 | osa2-kertausta ja kokeilua; blogin lisäystoiminnallisuus |
 | 4.6. | 1 | osa2 loppuun; tiedon haku palvelimelta, tiedon lisääminen palvelimelle |
 | 4.6. | 0,5 | lisäystoiminnallisuus myös contentiin, poistotoiminnallisuuden yrittämistä |
+| 4.6. | 0,5 | poistotoiminnallisuus ja notifikaatiot |
 
-## =5h
+## =5,5h

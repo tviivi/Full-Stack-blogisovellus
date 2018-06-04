@@ -8,8 +8,8 @@ class App extends React.Component {
         super(props)
         this.state = {
             blogs: [],
-            newSubject: 'Uusi blogi',
-            newContent: 'Uusi sisältö',
+            newSubject: '',
+            newContent: '',
             error: null
         }
     }
@@ -39,7 +39,7 @@ class App extends React.Component {
                     newContent: ''
                 })
             })
-            //this.notify(`Uusi blogi otsikolla ${newSubject}$ lisätty`)
+        this.notify(`Uusi blogi "${this.state.newSubject}" lisätty`)
     }
 
     handleSubjectChange = (event) => {
@@ -52,7 +52,7 @@ class App extends React.Component {
 
     removeBlog = (id) => () => {
         const blog = this.state.blogs.find(blog => blog.id === id)
-        const ok = window.confirm(`Poistetaanko ${blog.subject}`)
+        const ok = window.confirm(`Poistetaanko blogi "${blog.subject}"`)
         if (!ok) {
             return
         }
@@ -63,7 +63,7 @@ class App extends React.Component {
                 this.setState({
                     blogs: this.state.blogs.filter(blog => blog.id !== id)
                 })
-                this.notify(`${blog.subject} poistettu`)
+                this.notify(`Blogi "${blog.subject}" poistettu`)
             })
     }
 
@@ -78,17 +78,19 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Blogisi</h1>
-                <Notification message={this.state.error} />
+                <Notification message={this.state.notification} />
                 <ul>
-                    {this.state.blogs.map(blog => <Blog key={blog.id} blog={blog} />)}
+                    <Blog blogs={this.state.blogs} removeBlog={this.removeBlog} />
                 </ul>
                 <form onSubmit={this.addBlog}>
                     <div>
+                        Blogin aihe:
                         <input
                             value={this.state.newSubject}
-                            onChange={this.handleSubjectChange} />
+                            onChange={this.handleSubjectChange}/>
                     </div>
                     <div>
+                        Blogin sisältö:
                         <input
                             value={this.state.newContent}
                             onChange={this.handleContentChange} />
