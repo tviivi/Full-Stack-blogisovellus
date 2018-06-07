@@ -12,5 +12,6 @@
 | 4.6. | 0,5 | poistotoiminnallisuus ja notifikaatiot |
 | 7.6. | 0,5 | kansiorakenne kuntoon frontille ja backille |
 | 7.6. | 1 | alkeellinen backend; GET, POST, DELETE |
+| 7.6. | 0,5 | heroku-versio backendin osalta |
 
-## =7h
+## =7,5h
