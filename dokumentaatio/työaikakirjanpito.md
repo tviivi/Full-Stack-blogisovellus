@@ -10,5 +10,6 @@
 | 4.6. | 1 | osa2 loppuun; tiedon haku palvelimelta, tiedon lisääminen palvelimelle |
 | 4.6. | 0,5 | lisäystoiminnallisuus myös contentiin, poistotoiminnallisuuden yrittämistä |
 | 4.6. | 0,5 | poistotoiminnallisuus ja notifikaatiot |
+| 7.6. | 0,5 | kansiorakenne kuntoon frontille ja backille |
 
-## =5,5h
+## =6h
