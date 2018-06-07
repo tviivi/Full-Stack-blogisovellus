@@ -1,0 +1,7 @@
+POST http://localhost:3001/blogs
+Content-Type: application/json
+
+{
+    "subject": "REST Client tosiaan toimii!",
+    "content": "Asiasta ei ole epäilystäkään."
+}
