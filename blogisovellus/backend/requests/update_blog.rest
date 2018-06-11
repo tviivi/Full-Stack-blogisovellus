@@ -1,0 +1,8 @@
+PUT http://localhost:3001/api/blogs/5b1e66fa38c0c10a58297f7a
+Content-Type: application/json
+
+{
+    "subject": "REST Client tosiaan toimii!",
+    "content": "Asiasta ei ole epäilystäkään.",
+    "likes": 1
+}
