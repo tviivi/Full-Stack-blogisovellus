@@ -17,6 +17,6 @@
 | 11.6. | 0,5 | /api/... -muoto käyttöön ja herokuun |
 | 11.6. | 2 | mongodb käyttöön, sovellus- ja tuotantokannat erikseen, kaikki toimii |
 | 11.6. | 0,5 | refaktorointia, materiaalin osa3 loppuun |
-| 11.6. | 0,5 | testausopiskelua ja -kokeilua |
+| 11.6. | 1 | testausopiskelua ja -kokeilua |
 
-## =11,5h
+## =12h

@@ -35,5 +35,8 @@ module.exports = {
         "test": true,
         "expect": true,
         "describe": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017
     }
 };
