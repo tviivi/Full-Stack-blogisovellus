@@ -4,5 +4,5 @@ Content-Type: application/json
 {
     "subject": "REST Client tosiaan toimii!",
     "content": "Asiasta ei ole epäilystäkään.",
-    "likes": 1
+    "likes": 2
 }

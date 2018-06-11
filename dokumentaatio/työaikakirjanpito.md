@@ -16,5 +16,6 @@
 | 11.6. | 0,5 | frontti herokuun |
 | 11.6. | 0,5 | /api/... -muoto käyttöön ja herokuun |
 | 11.6. | 2 | mongodb käyttöön, sovellus- ja tuotantokannat erikseen, kaikki toimii |
+| 11.6. | 0,5 | refaktorointia |
 
-## =10,5h
+## =11h
