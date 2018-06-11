@@ -13,5 +13,7 @@
 | 7.6. | 0,5 | kansiorakenne kuntoon frontille ja backille |
 | 7.6. | 1 | alkeellinen backend; GET, POST, DELETE |
 | 7.6. | 0,5 | heroku-versio backendin osalta |
+| 11.6. | 0,5 | frontti herokuun |
+| 11.6. | 0,5 | /api/... -muoto käyttöön ja herokuun |
 
-## =7,5h
+## =8,5h
