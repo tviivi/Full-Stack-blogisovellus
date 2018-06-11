@@ -32,15 +32,15 @@ let blogs = [
     }
 ]
 
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
     res.send('<h1>Hello World!</h1>')
 })
 
-app.get('/blogs', (req, res) => {
+app.get('/api/blogs', (req, res) => {
     res.json(blogs)
 })
 
-app.get('/blogs/:id', (request, response) => {
+app.get('/api/blogs/:id', (request, response) => {
     const id = Number(request.params.id)
     const blog = blogs.find(blog => blog.id === id)
 
@@ -56,7 +56,7 @@ const generateId = () => {
     return maxId + 1
 }
 
-app.post('/blogs', (request, response) => {
+app.post('/api/blogs', (request, response) => {
     const body = request.body
 
     if (body.subject === undefined) {
@@ -79,7 +79,7 @@ app.post('/blogs', (request, response) => {
     response.json(blog)
 })
 
-app.delete('/blogs/:id', (request, response) => {
+app.delete('/api/blogs/:id', (request, response) => {
     const id = Number(request.params.id)
     blogs = blogs.filter(blog => blog.id !== id)
 
