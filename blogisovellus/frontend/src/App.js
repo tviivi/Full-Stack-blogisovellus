@@ -4,6 +4,8 @@ import blogService from './services/blogs'
 import loginService from './services/login'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginForm'
+import Togglable from './components/Togglable'
+import BlogForm from './components/BlogForm'
 
 class App extends React.Component {
     constructor(props) {
@@ -35,6 +37,7 @@ class App extends React.Component {
 
     addBlog = (event) => {
         event.preventDefault()
+        this.BlogForm.toggleVisibility()
         const blogObject = {
             subject: this.state.newSubject,
             content: this.state.newContent,
@@ -125,26 +128,17 @@ class App extends React.Component {
 
     render() {
         const loginForm = () => {
-            const hideWhenVisible = { display: this.state.loginVisible ? 'none' : '' }
-            const showWhenVisible = { display: this.state.loginVisible ? '' : 'none' }
-
             return (
                 <div>
-                    <div style={hideWhenVisible}>
-                        <button onClick={e => this.setState({ loginVisible: true })}>Kirjaudu sisään</button>
-                    </div>
-                    <div style={showWhenVisible}>
-                        <ul>
-                            <LoginForm
-                                visible={this.state.visible}
-                                username={this.state.username}
-                                password={this.state.password}
-                                handleChange={this.handleLoginFieldChange}
-                                handleSubmit={this.login}
-                            />
-                        </ul>
-                        <button onClick={e => this.setState({ loginVisible: false })}>Takaisin</button>
-                    </div>
+                    <Togglable buttonLabel="Kirjaudu sisään">
+                        <LoginForm
+                            visible={this.state.visible}
+                            username={this.state.username}
+                            password={this.state.password}
+                            handleChange={this.handleLoginFieldChange}
+                            handleSubmit={this.login}
+                        />
+                    </Togglable>
                 </div>
             )
         }
@@ -154,21 +148,17 @@ class App extends React.Component {
                 <ul>
                     <Blog blogs={this.state.blogs} removeBlog={this.removeBlog} />
                 </ul>
-                <form onSubmit={this.addBlog}>
-                    <div>
-                        Blogin aihe:
-                        <input
-                            value={this.state.newSubject}
-                            onChange={this.handleSubjectChange} />
-                    </div>
-                    <div>
-                        Blogin sisältö:
-                        <input
-                            value={this.state.newContent}
-                            onChange={this.handleContentChange} />
-                    </div>
-                    <button type="submit">Lisää uusi</button>
-                </form>
+
+                <Togglable buttonLabel="Uusi blogi" ref={component => this.BlogForm = component}>
+                    <BlogForm
+                        onSubmit={this.addBlog}
+                        subjectValue={this.state.newSubject}
+                        contentValue={this.state.newContent}
+                        handleSubjectChange={this.handleSubjectChange}
+                        handleContentChange={this.handleContentChange}
+                    />
+                </Togglable>
+
                 <form onSubmit={this.logout}>
                     <button type="submit">Kirjaudu ulos</button>
                 </form>

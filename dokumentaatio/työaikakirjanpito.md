@@ -23,6 +23,7 @@
 | 12.6. | 0,5 | passwordHash toimii, käyttäjien ja blogien välinen yhteys |
 | 12.6. | 0,5 | kirjautumistoiminnallisuus backendiin |
 | 12.6. | 1 | kirjautumistoiminnallisuutta fronttiin |
+| 12.6. | 1 | togglable, refaktorointia |
 | 12.6. | 0,5 | lomakkeiden näkyvyys, refaktorointia |
 
-## = 16,5h
+## = 17,5h
