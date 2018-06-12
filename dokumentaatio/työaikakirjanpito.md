@@ -18,5 +18,6 @@
 | 11.6. | 2 | mongodb käyttöön, sovellus- ja tuotantokannat erikseen, kaikki toimii |
 | 11.6. | 0,5 | refaktorointia, materiaalin osa3 loppuun |
 | 11.6. | 1 | testausopiskelua ja -kokeilua |
+| 12.6. | 0,5 | testausta materiaalin osa4 -mukaan |
 
-## =12h
+## = 12,5h

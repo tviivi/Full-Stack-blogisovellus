@@ -11,12 +11,15 @@ const formatBlog = (blog) => {
     }
 }
 
-blogsRouter.get('/', (req, res) => {
-    Blog
-        .find({})
-        .then(blogs => {
-            res.json(blogs.map(formatBlog))
-        })
+blogsRouter.get('/', async (req, res) => {
+    // Blog
+    //     .find({})
+    //     .then(blogs => {
+    //         res.json(blogs.map(formatBlog))
+    //     })
+
+    const blogs = await Blog.find({})
+    res.json(blogs.map(formatBlog))
 })
 
 blogsRouter.get('/:id', (request, response) => {
@@ -34,7 +37,7 @@ blogsRouter.get('/:id', (request, response) => {
         })
 })
 
-blogsRouter.post('/', (request, response) => {
+blogsRouter.post('/', async (request, response) => {
     const body = request.body
 
     if (body.subject === undefined) {
@@ -51,14 +54,8 @@ blogsRouter.post('/', (request, response) => {
         likes: 0
     })
 
-    blog
-        .save()
-        .then(savedBlog => {
-            response.json(formatBlog(savedBlog))
-        })
-        .then(formattedBlog => {
-            response.json(formattedBlog)
-          })
+    const savedBlog = await blog.save()
+    response.json(formatBlog(savedBlog))
 })
 
 blogsRouter.delete('/:id', (request, response) => {
