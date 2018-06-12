@@ -3,6 +3,7 @@ import Blog from './components/Blog'
 import blogService from './services/blogs'
 import loginService from './services/login'
 import Notification from './components/Notification'
+import LoginForm from './components/LoginForm'
 
 class App extends React.Component {
     constructor(props) {
@@ -123,33 +124,30 @@ class App extends React.Component {
     }
 
     render() {
-        const loginForm = () => (
-            <div>
-                <h2>Kirjaudu</h2>
+        const loginForm = () => {
+            const hideWhenVisible = { display: this.state.loginVisible ? 'none' : '' }
+            const showWhenVisible = { display: this.state.loginVisible ? '' : 'none' }
 
-                <form onSubmit={this.login}>
-                    <div>
-                        käyttäjätunnus
-                  <input
-                            type="text"
-                            name="username"
-                            value={this.state.username}
-                            onChange={this.handleLoginFieldChange}
-                        />
+            return (
+                <div>
+                    <div style={hideWhenVisible}>
+                        <button onClick={e => this.setState({ loginVisible: true })}>Kirjaudu sisään</button>
                     </div>
-                    <div>
-                        salasana
-                  <input
-                            type="password"
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.handleLoginFieldChange}
-                        />
+                    <div style={showWhenVisible}>
+                        <ul>
+                            <LoginForm
+                                visible={this.state.visible}
+                                username={this.state.username}
+                                password={this.state.password}
+                                handleChange={this.handleLoginFieldChange}
+                                handleSubmit={this.login}
+                            />
+                        </ul>
+                        <button onClick={e => this.setState({ loginVisible: false })}>Takaisin</button>
                     </div>
-                    <button type="submit">kirjaudu</button>
-                </form>
-            </div>
-        )
+                </div>
+            )
+        }
 
         const blogForm = () => (
             <div>
@@ -172,14 +170,14 @@ class App extends React.Component {
                     <button type="submit">Lisää uusi</button>
                 </form>
                 <form onSubmit={this.logout}>
-                    <button type="submit">Logout</button>
+                    <button type="submit">Kirjaudu ulos</button>
                 </form>
             </div>
         )
 
         return (
             <div>
-                <h1>Tervetuloa Blogiziin</h1>
+                <h1>Tervetuloa BLOGIZIin</h1>
                 <Notification message={this.state.notification} />
                 {this.state.user === null ?
                     loginForm() :
