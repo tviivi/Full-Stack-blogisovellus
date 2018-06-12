@@ -1,11 +1,12 @@
 const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
 const User = require('../models/user')
+const jwt = require('jsonwebtoken')
 
 blogsRouter.get('/', async (req, res) => {
     const blogs = await Blog
-    .find({})
-    .populate('user', { username: 1, name: 1 })
+        .find({})
+        .populate('user', { username: 1, name: 1 })
     res.json(blogs.map(Blog.format))
 })
 
@@ -25,9 +26,24 @@ blogsRouter.get('/:id', async (request, response) => {
     }
 })
 
+const getTokenFrom = (request) => {
+    const authorization = request.get('authorization')
+    if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+        return authorization.substring(7)
+    }
+    return null
+}
+
 blogsRouter.post('/', async (request, response) => {
+    const body = request.body
+
     try {
-        const body = request.body
+        const token = getTokenFrom(request)
+        const decodedToken = jwt.verify(token, process.env.SECRET)
+
+        if (!token || !decodedToken.id) {
+            return response.status(401).json({ error: 'token missing or invalid' })
+        }
 
         if (body.subject === undefined) {
             return response.status(400).json({ error: 'subject missing' })
@@ -36,7 +52,7 @@ blogsRouter.post('/', async (request, response) => {
             return response.status(400).json({ error: 'content missing' })
         }
 
-        const user = await User.findById(body.userId)
+        const user = await User.findById(decodedToken.id)
 
         const blog = new Blog({
             subject: body.subject,
@@ -53,8 +69,12 @@ blogsRouter.post('/', async (request, response) => {
 
         response.json(Blog.format(blog))
     } catch (exception) {
-        console.log(exception)
-        response.status(500).json({ error: 'something went wrong...' })
+        if (exception.name === 'JsonWebTokenError') {
+            response.status(401).json({ error: exception.message })
+        } else {
+            console.log(exception)
+            response.status(500).json({ error: 'something went wrong...' })
+        }
     }
 })
 
