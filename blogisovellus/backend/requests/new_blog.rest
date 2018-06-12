@@ -2,6 +2,7 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "subject": "REST Client tosiaan toimii!",
-    "content": "Asiasta ei ole epäilystäkään."
+    "subject": "juuuu!",
+    "content": "Asiasta ei ole epäilystäkään.",
+    "userId": "5b1fa4a76ba5c85ef42a1868"
 }

@@ -20,5 +20,6 @@
 | 11.6. | 1 | testausopiskelua ja -kokeilua |
 | 12.6. | 1 | testausta materiaalin osa4 -mukaan |
 | 12.6. | 1 | user-aloittelua, passwordHash ei toimi |
+| 12.6. | 0,5 | passwordHash toimii, käyttäjien ja blogien välinen yhteys |
 
-## = 14h
+## = 14,5h
