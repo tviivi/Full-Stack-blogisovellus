@@ -1,6 +1,7 @@
 import React from 'react'
 import Blog from './components/Blog'
 import blogService from './services/blogs'
+import loginService from './services/login'
 import Notification from './components/Notification'
 
 class App extends React.Component {
@@ -10,16 +11,25 @@ class App extends React.Component {
             blogs: [],
             newSubject: '',
             newContent: '',
-            error: null
+            error: null,
+            username: '',
+            password: '',
+            user: null
         }
     }
 
     componentDidMount() {
         blogService
             .getAll()
-            .then(response => {
-                this.setState({ blogs: response })
+            .then(blogs => {
+                this.setState({ blogs })
             })
+        const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+        if (loggedUserJSON) {
+            const user = JSON.parse(loggedUserJSON)
+            this.setState({ user })
+            blogService.setToken(user.token)
+        }
     }
 
     addBlog = (event) => {
@@ -42,12 +52,50 @@ class App extends React.Component {
         this.notify(`Uusi blogi "${this.state.newSubject}" lisätty`)
     }
 
+    login = async (event) => {
+        event.preventDefault()
+        try {
+            const user = await loginService.login({
+                username: this.state.username,
+                password: this.state.password
+            })
+
+            window.localStorage.setItem('loggedBlogappUser', JSON.stringify(user))
+            blogService.setToken(user.token)
+            this.setState({ username: '', password: '', user })
+        } catch (exception) {
+            this.setState({
+                error: 'käyttäjätunnus tai salasana virheellinen',
+            })
+            this.notify(`Käyttäjätunnus tai salasana virheellinen`)
+            setTimeout(() => {
+                this.setState({ error: null })
+            }, 5000)
+        }
+    }
+
+    logout = async (event) => {
+        window.localStorage.removeItem('loggedBlogappUser')
+    }
+
     handleSubjectChange = (event) => {
         this.setState({ newSubject: event.target.value })
     }
 
     handleContentChange = (event) => {
         this.setState({ newContent: event.target.value })
+    }
+
+    handlePasswordChange = (event) => {
+        this.setState({ password: event.target.value })
+    }
+
+    handleUsernameChange = (event) => {
+        this.setState({ username: event.target.value })
+    }
+
+    handleLoginFieldChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     removeBlog = (id) => () => {
@@ -75,10 +123,36 @@ class App extends React.Component {
     }
 
     render() {
-        return (
+        const loginForm = () => (
             <div>
-                <h1>Blogisi</h1>
-                <Notification message={this.state.notification} />
+                <h2>Kirjaudu</h2>
+
+                <form onSubmit={this.login}>
+                    <div>
+                        käyttäjätunnus
+                  <input
+                            type="text"
+                            name="username"
+                            value={this.state.username}
+                            onChange={this.handleLoginFieldChange}
+                        />
+                    </div>
+                    <div>
+                        salasana
+                  <input
+                            type="password"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleLoginFieldChange}
+                        />
+                    </div>
+                    <button type="submit">kirjaudu</button>
+                </form>
+            </div>
+        )
+
+        const blogForm = () => (
+            <div>
                 <ul>
                     <Blog blogs={this.state.blogs} removeBlog={this.removeBlog} />
                 </ul>
@@ -87,7 +161,7 @@ class App extends React.Component {
                         Blogin aihe:
                         <input
                             value={this.state.newSubject}
-                            onChange={this.handleSubjectChange}/>
+                            onChange={this.handleSubjectChange} />
                     </div>
                     <div>
                         Blogin sisältö:
@@ -97,6 +171,23 @@ class App extends React.Component {
                     </div>
                     <button type="submit">Lisää uusi</button>
                 </form>
+                <form onSubmit={this.logout}>
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+        )
+
+        return (
+            <div>
+                <h1>Tervetuloa Blogiziin</h1>
+                <Notification message={this.state.notification} />
+                {this.state.user === null ?
+                    loginForm() :
+                    <div>
+                        <p>Tervetuloa {this.state.user.name}!</p>
+                        {blogForm()}
+                    </div>
+                }
             </div>
         )
     }

@@ -22,5 +22,6 @@
 | 12.6. | 1 | user-aloittelua, passwordHash ei toimi |
 | 12.6. | 0,5 | passwordHash toimii, käyttäjien ja blogien välinen yhteys |
 | 12.6. | 0,5 | kirjautumistoiminnallisuus backendiin |
+| 12.6. | 1 | kirjautumistoiminnallisuutta fronttiin |
 
-## = 14,5h
+## = 16h
