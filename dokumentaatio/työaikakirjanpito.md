@@ -19,5 +19,6 @@
 | 11.6. | 0,5 | refaktorointia, materiaalin osa3 loppuun |
 | 11.6. | 1 | testausopiskelua ja -kokeilua |
 | 12.6. | 1 | testausta materiaalin osa4 -mukaan |
+| 12.6. | 1 | user-aloittelua, passwordHash ei toimi |
 
-## = 13h
+## = 14h
