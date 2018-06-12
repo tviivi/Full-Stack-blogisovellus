@@ -2,91 +2,132 @@ const supertest = require('supertest')
 const { app, server } = require('../index')
 const api = supertest(app)
 const Blog = require('../models/blog')
+const { initialBlogs, format, nonExistingId, blogsInDb } = require('./test_helper')
 
-const initialBlogs = [
-    {
-        subject: 'Tämä on blogin aihe',
-        content: 'HTML on helppoa',
-        likes: 0
-    },
-    {
-        subject: 'Tämä on toisen blogin aihe',
-        content: 'HTTP-protokollan tärkeimmät metodit ovat GET ja POST',
-        likes: 0
-    }
-]
+describe('when there is initially some blogs saved', async () => {
+    beforeAll(async () => {
+        await Blog.remove({})
 
-beforeAll(async () => {
-    await Blog.remove({})
+        const blogObjects = initialBlogs.map(b => new Blog(b))
+        await Promise.all(blogObjects.map(b => b.save()))
+    })
 
-    for (let blog of initialBlogs) {
-        let blogObject = new Blog(blog)
-        await blogObject.save()
-    }
+    test('all blogs are returned as json by GET /api/blogs', async () => {
+        const blogsInDatabase = await blogsInDb()
+
+        const response = await api
+            .get('/api/blogs')
+            .expect(200)
+            .expect('Content-Type', /application\/json/)
+
+        expect(response.body.length).toBe(blogsInDatabase.length)
+
+        const returnedContents = response.body.map(b => b.content)
+        blogsInDatabase.forEach(blog => {
+            expect(returnedContents).toContain(blog.content)
+        })
+    })
+
+    test('individual blogs are returned as json by GET /api/blogs/:id', async () => {
+        const blogsInDatabase = await blogsInDb()
+        const aBlog = blogsInDatabase[0]
+
+        const response = await api
+            .get(`/api/blogs/${aBlog.id}`)
+            .expect(200)
+            .expect('Content-Type', /application\/json/)
+
+        expect(response.body.content).toBe(aBlog.content)
+    })
+
+    test('404 returned by GET /api/blogs/:id with nonexisting valid id', async () => {
+        const validNonexistingId = await nonExistingId()
+
+        const response = await api
+            .get(`/api/blogs/${validNonexistingId}`)
+            .expect(404)
+    })
+
+    test('400 is returned by GET /api/blogs/:id with invalid id', async () => {
+        const invalidId = "5a3d5da59070081a82a3445"
+
+        const response = await api
+            .get(`/api/blogs/${invalidId}`)
+            .expect(400)
+    })
 })
 
-test('blogs are returned as json', async () => {
-    await api
-        .get('/api/blogs')
-        .expect(200)
-        .expect('Content-Type', /application\/json/)
+describe('addition of a new blog', async () => {
+    test('a valid blog can be added ', async () => {
+        const blogsAtStart = await blogsInDb()
+
+        const newBlog = {
+            subject: 'Testiaihe',
+            content: 'async/await yksinkertaistaa asynkronisten funktioiden kutsua',
+            likes: 0
+        }
+
+        await api
+            .post('/api/blogs')
+            .send(newBlog)
+            .expect(200)
+            .expect('Content-Type', /application\/json/)
+
+        const blogsAfterOperation = await blogsInDb()
+
+        expect(blogsAfterOperation.length).toBe(blogsAtStart.length + 1)
+
+        const contents = blogsAfterOperation.map(r => r.content)
+        expect(contents).toContain('async/await yksinkertaistaa asynkronisten funktioiden kutsua')
+    })
+
+    test('POST /api/blogs fails with proper statuscode if content is missing', async () => {
+        const newBlog = {
+            subject: 'hei me testataan',
+            likes: 0
+        }
+
+        const blogsAtStart = await blogsInDb()
+
+        await api
+            .post('/api/blogs')
+            .send(newBlog)
+            .expect(400)
+
+        const blogsAfterOperation = await blogsInDb()
+
+        const contents = blogsAfterOperation.map(r => r.content)
+
+        expect(blogsAfterOperation.length).toBe(blogsAtStart.length)
+    })
 })
 
-test('all blogs are returned', async () => {
-    const response = await api
-        .get('/api/blogs')
+describe('deletion of a blog', async () => {
+    let addedBlog
 
-    expect(response.body.length).toBe(initialBlogs.length)
-})
+    beforeAll(async () => {
+        addedBlog = new Blog({
+            subject: 'DELETE-testausta',
+            content: 'poisto pyynnöllä HTTP DELETE',
+            likes: 0
+        })
+        await addedBlog.save()
+    })
 
-test('a specific blog is within the returned blogs', async () => {
-    const response = await api
-        .get('/api/blogs')
+    test('DELETE /api/blogs/:id succeeds with proper statuscode', async () => {
+        const blogsAtStart = await blogsInDb()
 
-    const contents = response.body.map(r => r.content)
-    expect(contents).toContain('HTTP-protokollan tärkeimmät metodit ovat GET ja POST')
-})
+        await api
+            .delete(`/api/blogs/${addedBlog._id}`)
+            .expect(204)
 
-test('a valid blog can be added ', async () => {
-    const newBlog = {
-        subject: 'Testiaihe',
-        content: 'async/await yksinkertaistaa asynkronisten funktioiden kutsua',
-        likes: 0
-    }
+        const blogsAfterOperation = await blogsInDb()
 
-    await api
-        .post('/api/blogs')
-        .send(newBlog)
-        .expect(200)
-        .expect('Content-Type', /application\/json/)
+        const contents = blogsAfterOperation.map(r => r.content)
 
-    const response = await api
-        .get('/api/blogs')
-
-    const contents = response.body.map(r => r.content)
-
-    expect(response.body.length).toBe(initialBlogs.length + 1)
-    expect(contents).toContain('async/await yksinkertaistaa asynkronisten funktioiden kutsua')
-})
-
-test('blog without content is not added ', async () => {
-    const newBlog = {
-        subject: 'hei me testataan',
-        likes: 0
-    }
-
-    const intialBlogs = await api
-        .get('/api/blogs')
-
-    await api
-        .post('/api/blogs')
-        .send(newBlog)
-        .expect(400)
-
-    const response = await api
-        .get('/api/blogs')
-
-    expect(response.body.length).toBe(intialBlogs.body.length)
+        expect(contents).not.toContain(addedBlog.content)
+        expect(blogsAfterOperation.length).toBe(blogsAtStart.length - 1)
+    })
 })
 
 afterAll(() => {

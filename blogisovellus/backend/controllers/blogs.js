@@ -22,51 +22,57 @@ blogsRouter.get('/', async (req, res) => {
     res.json(blogs.map(formatBlog))
 })
 
-blogsRouter.get('/:id', (request, response) => {
-    Blog
-        .findById(request.params.id)
-        .then(blog => {
-            if (blog) {
-                response.json(formatBlog(blog))
-            } else {
-                response.status(404).end()
-            }
-        })
-        .catch(error => {
-            response.status(400).send({ error: 'malformatted id' })
-        })
+blogsRouter.get('/:id', async (request, response) => {
+    try {
+        const blog = await Blog.findById(request.params.id)
+
+        if (blog) {
+            response.json(formatBlog(blog))
+        } else {
+            response.status(404).end()
+        }
+
+    } catch (exception) {
+        console.log(exception)
+        response.status(400).send({ error: 'malformatted id' })
+    }
 })
 
 blogsRouter.post('/', async (request, response) => {
-    const body = request.body
+    try {
+        const body = request.body
 
-    if (body.subject === undefined) {
-        return response.status(400).json({ error: 'subject missing' })
+        if (body.subject === undefined) {
+            return response.status(400).json({ error: 'subject missing' })
+        }
+        if (body.content === undefined) {
+            return response.status(400).json({ error: 'content missing' })
+        }
+
+        const blog = new Blog({
+            subject: body.subject,
+            content: body.content,
+            date: new Date(),
+            likes: 0
+        })
+
+        const savedBlog = await blog.save()
+        response.json(formatBlog(savedBlog))
+    } catch (exception) {
+        console.log(exception)
+        response.status(500).json({ error: 'something went wrong...' })
     }
-    if (body.content === undefined) {
-        return response.status(400).json({ error: 'content missing' })
-    }
-
-    const blog = new Blog({
-        subject: body.subject,
-        content: body.content,
-        date: new Date(),
-        likes: 0
-    })
-
-    const savedBlog = await blog.save()
-    response.json(formatBlog(savedBlog))
 })
 
-blogsRouter.delete('/:id', (request, response) => {
-    Blog
-        .findByIdAndRemove(request.params.id)
-        .then(blog => {
-            response.status(204).end()
-        })
-        .catch(error => {
-            response.status(400).send({ error: 'malformatted id' })
-        })
+blogsRouter.delete('/:id', async (request, response) => {
+    try {
+        await Blog.findByIdAndRemove(request.params.id)
+
+        response.status(204).end()
+    } catch (exception) {
+        console.log(exception)
+        response.status(400).send({ error: 'malformatted id' })
+    }
 })
 
 blogsRouter.put('/:id', (request, response) => {
