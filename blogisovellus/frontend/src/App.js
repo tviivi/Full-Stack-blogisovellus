@@ -93,7 +93,7 @@ class App extends React.Component {
 
     removeBlog = (id) => () => {
         const blog = this.state.blogs.find(blog => blog.id === id)
-        const ok = window.confirm(`Poistetaanko blogi "${blog.subject}"`)
+        const ok = window.confirm(`Poistetaanko blogi "${blog.subject}"?`)
         if (!ok) {
             return
         }
@@ -106,6 +106,24 @@ class App extends React.Component {
                 })
                 this.notify(`Blogi "${blog.subject}" poistettu`)
             })
+    }
+
+    likeBlog = (id) => () => {
+        const blog = this.state.blogs.find(blog => blog.id === id)
+        const changedBlog = { ...blog, likes: blog.likes+1 }
+        const ok = window.confirm(`Annetaanko tykkäys blogille "${blog.subject}"?`)
+        if (!ok) {
+            return
+        }
+
+        blogService
+        .update(id, changedBlog)
+        .then(response => {
+            this.setState({
+                blogs: this.state.blogs.map(blog => blog.id !== id ? blog : changedBlog)
+            })
+            this.notify(`Tykkäsit blogista "${blog.subject}"`)
+        })
     }
 
     notify = (notification) => {
@@ -135,11 +153,8 @@ class App extends React.Component {
         const blogForm = () => (
             <div>
                 <ul>
-                    {this.state.blogs.map(blog => 
-                        <Blog
-                        key={blog.id}
-                        blog={blog}
-                        removeBlog={this.removeBlog}/>
+                    {this.state.blogs.map(blog =>
+                        <Blog key={blog.id} blog={blog} removeBlog={this.removeBlog} likeBlog={this.likeBlog} />
                     )}
                 </ul>
 
