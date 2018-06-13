@@ -26,5 +26,6 @@
 | 12.6. | 1 | togglable, refaktorointia |
 | 12.6. | 0,5 | lomakkeiden näkyvyys, refaktorointia |
 | 13.6. | 0,5 | propTypes, Blog-komponentin refaktoroinnin miettimistä |
+| 13.6. | 0,5 | Blog-komponentin refaktorointi, App-komponentin sistimistä |
 
-## = 18h
+## = 18,5h

@@ -68,9 +68,6 @@ class App extends React.Component {
             blogService.setToken(user.token)
             this.setState({ username: '', password: '', user })
         } catch (exception) {
-            this.setState({
-                error: 'käyttäjätunnus tai salasana virheellinen',
-            })
             this.notify(`Käyttäjätunnus tai salasana virheellinen`)
             setTimeout(() => {
                 this.setState({ error: null })
@@ -88,14 +85,6 @@ class App extends React.Component {
 
     handleContentChange = (event) => {
         this.setState({ newContent: event.target.value })
-    }
-
-    handlePasswordChange = (event) => {
-        this.setState({ password: event.target.value })
-    }
-
-    handleUsernameChange = (event) => {
-        this.setState({ username: event.target.value })
     }
 
     handleLoginFieldChange = (event) => {
@@ -146,7 +135,12 @@ class App extends React.Component {
         const blogForm = () => (
             <div>
                 <ul>
-                    <Blog blogs={this.state.blogs} removeBlog={this.removeBlog} />
+                    {this.state.blogs.map(blog => 
+                        <Blog
+                        key={blog.id}
+                        blog={blog}
+                        removeBlog={this.removeBlog}/>
+                    )}
                 </ul>
 
                 <Togglable buttonLabel="Uusi blogi" ref={component => this.BlogForm = component}>
