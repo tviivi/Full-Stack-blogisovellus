@@ -25,5 +25,6 @@
 | 12.6. | 1 | kirjautumistoiminnallisuutta fronttiin |
 | 12.6. | 1 | togglable, refaktorointia |
 | 12.6. | 0,5 | lomakkeiden näkyvyys, refaktorointia |
+| 13.6. | 0,5 | propTypes, Blog-komponentin refaktoroinnin miettimistä |
 
-## = 17,5h
+## = 18h
