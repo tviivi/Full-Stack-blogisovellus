@@ -110,20 +110,20 @@ class App extends React.Component {
 
     likeBlog = (id) => () => {
         const blog = this.state.blogs.find(blog => blog.id === id)
-        const changedBlog = { ...blog, likes: blog.likes+1 }
+        const changedBlog = { ...blog, likes: blog.likes + 1 }
         const ok = window.confirm(`Annetaanko tykkäys blogille "${blog.subject}"?`)
         if (!ok) {
             return
         }
 
         blogService
-        .update(id, changedBlog)
-        .then(response => {
-            this.setState({
-                blogs: this.state.blogs.map(blog => blog.id !== id ? blog : changedBlog)
+            .update(id, changedBlog)
+            .then(response => {
+                this.setState({
+                    blogs: this.state.blogs.map(blog => blog.id !== id ? blog : changedBlog)
+                })
+                this.notify(`Tykkäsit blogista "${blog.subject}"`)
             })
-            this.notify(`Tykkäsit blogista "${blog.subject}"`)
-        })
     }
 
     notify = (notification) => {

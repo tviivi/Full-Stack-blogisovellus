@@ -28,5 +28,6 @@
 | 13.6. | 0,5 | propTypes, Blog-komponentin refaktoroinnin miettimistä |
 | 13.6. | 0,5 | Blog-komponentin refaktorointi, App-komponentin sistimistä |
 | 13.6. | 1,5 | tykkäystoiminto, heroku-kirjautumisongelman selvittelyä tuloksetta |
+| 13.6. | 2 | linkkien testailua tuloksetta, sovelluksen lopullisen ulkoasun/toiminnallisuuksien suunnittelua |
 
-## = 20h
+## = 22h
