@@ -30,5 +30,6 @@
 | 13.6. | 1,5 | tykkäystoiminto, heroku-kirjautumisongelman selvittelyä tuloksetta |
 | 13.6. | 2 | linkkien testailua tuloksetta, sovelluksen lopullisen ulkoasun/toiminnallisuuksien suunnittelua |
 | 14.6. | 0,5 | frontin testien aloittelua ja opiskelua |
+| 14.6. | 2 | routejen aloittelua |
 
-## = 22,5h
+## = 24,5h

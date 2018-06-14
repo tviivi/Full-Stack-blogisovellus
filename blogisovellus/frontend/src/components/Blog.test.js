@@ -11,9 +11,9 @@ describe.only('<Blog />', () => {
         }
 
         const blogComponent = shallow(<Blog blog={blog} />)
-        console.log(blogComponent.debug)
+        console.log(blogComponent.debug())
         const contentDiv = blogComponent.find('.content')
-        console.log(contentDiv.debug)
+        console.log(contentDiv.debug())
 
         expect(contentDiv.text()).toContain(blog.subject)
     })

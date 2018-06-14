@@ -6,6 +6,23 @@ import Notification from './components/Notification'
 import LoginForm from './components/LoginForm'
 import Togglable from './components/Togglable'
 import BlogForm from './components/BlogForm'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
+const Home = ({ blogs }) => (
+    <div> <h1>Tervetuloa BLOGIZIin</h1>
+        <ul>
+            {blogs.map(blog =>
+                <li key={blog.id}>
+                    <Link to={`/blogs/${blog.id}`}>{blog.subject}</Link>
+                </li>
+            )}
+        </ul>
+    </div>
+)
+
+const NewBlog = () => (
+    <div> <h2>New Blog</h2> </div>
+)
 
 class App extends React.Component {
     constructor(props) {
@@ -17,9 +34,15 @@ class App extends React.Component {
             error: null,
             username: '',
             password: '',
-            user: null
+            user: null,
+            page: 'home'
         }
     }
+
+    // toPage = (page) => (event) => {
+    //     event.preventDefault()
+    //     this.setState({ page })
+    // }
 
     componentDidMount() {
         blogService
@@ -37,7 +60,6 @@ class App extends React.Component {
 
     addBlog = (event) => {
         event.preventDefault()
-        this.BlogForm.toggleVisibility()
         const blogObject = {
             subject: this.state.newSubject,
             content: this.state.newContent,
@@ -134,6 +156,21 @@ class App extends React.Component {
     }
 
     render() {
+        // const content = () => {
+        //     if (this.state.page === 'home') {
+        //         return <Home />
+        //     } else if (this.state.page === 'blogs') {
+        //         return <Blogs />
+        //     } else if (this.state.page === 'user') {
+        //         return <User />
+        //     } else if (this.state.page === 'newblog') {
+        //         return <NewBlog />
+        //     }
+        // }
+
+        const blogById = (id) =>
+            this.state.blogs.find(blog => blog.id === id)
+
         const loginForm = () => {
             return (
                 <div>
@@ -176,7 +213,12 @@ class App extends React.Component {
 
         return (
             <div>
-                <h1>Tervetuloa BLOGIZIin</h1>
+                {/* <a href="" onClick={this.toPage('home')}>Etusivu</a> &nbsp;
+                <a href="" onClick={this.toPage('blogs')}>Blogisi</a> &nbsp;
+                <a href="" onClick={this.toPage('newblog')}>Lisää uusi blogi</a> &nbsp;
+                <a href="" onClick={this.toPage('user')}>Omat tiedot</a> &nbsp;
+                {content()}
+                
                 <Notification message={this.state.notification} />
                 {this.state.user === null ?
                     loginForm() :
@@ -184,7 +226,22 @@ class App extends React.Component {
                         <p>Tervetuloa {this.state.user.name}!</p>
                         {blogForm()}
                     </div>
-                }
+                } */}
+
+                <Router>
+                    <div>
+                        <div>
+                            <Link to="/">Etusivu</Link> &nbsp;
+                            <Link to="/newblog">Uusi blogi</Link> &nbsp;
+                        </div>
+                        <Route exact path="/" render={() => <Home blogs={this.state.blogs} />} />
+                        <Route exact path="/blogs/:id" render={({ match }) =>
+                            <Blog blog={blogById(match.params.id)} removeBlog={this.removeBlog} likeBlog={this.likeBlog} />}
+                        />
+                        <Route exact path="/newblog" render={() =>
+                            <BlogForm onSubmit={this.addBlog} handleSubjectChange={this.handleSubjectChange} handleContentChange={this.handleContentChange} subjectValue={this.state.newSubject} contentValue={this.state.newContent} />} />
+                    </div>
+                </Router>
             </div>
         )
     }
