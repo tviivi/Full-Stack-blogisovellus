@@ -29,5 +29,6 @@
 | 13.6. | 0,5 | Blog-komponentin refaktorointi, App-komponentin sistimistä |
 | 13.6. | 1,5 | tykkäystoiminto, heroku-kirjautumisongelman selvittelyä tuloksetta |
 | 13.6. | 2 | linkkien testailua tuloksetta, sovelluksen lopullisen ulkoasun/toiminnallisuuksien suunnittelua |
+| 14.6. | 0,5 | frontin testien aloittelua ja opiskelua |
 
-## = 22h
+## = 22,5h
