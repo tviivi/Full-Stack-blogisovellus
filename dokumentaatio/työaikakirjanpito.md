@@ -31,5 +31,6 @@
 | 13.6. | 2 | linkkien testailua tuloksetta, sovelluksen lopullisen ulkoasun/toiminnallisuuksien suunnittelua |
 | 14.6. | 0,5 | frontin testien aloittelua ja opiskelua |
 | 14.6. | 2 | routejen aloittelua |
+| 18.6. | 2,5 | routeja: sis‰‰n- ja uloskirjautuminen toimii taas, redirectin selvittely‰ |
 
-## = 24,5h
+## = 27h
