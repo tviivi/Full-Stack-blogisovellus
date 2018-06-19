@@ -8,6 +8,7 @@ import Togglable from './components/Togglable'
 import BlogForm from './components/BlogForm'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import LogoutForm from './components/LogoutForm'
+import User from './components/User'
 
 const Home = ({ blogs }) => (
     <div> <h1>Tervetuloa BLOGIZIin</h1>
@@ -18,6 +19,12 @@ const Home = ({ blogs }) => (
                 </li>
             )}
         </ul>
+    </div>
+)
+
+const Footer = () => (
+    <div>
+        moi
     </div>
 )
 
@@ -80,7 +87,6 @@ class App extends React.Component {
             window.localStorage.setItem('loggedBlogappUser', JSON.stringify(user))
             blogService.setToken(user.token)
             this.setState({ username: '', password: '', user })
-            console.log(this.state.user)
         } catch (exception) {
             this.notify(`Käyttäjätunnus tai salasana virheellinen`)
             setTimeout(() => {
@@ -91,6 +97,7 @@ class App extends React.Component {
 
     logout = async (event) => {
         window.localStorage.removeItem('loggedBlogappUser')
+        this.notify(`Kirjauduit ulos`)
     }
 
     handleSubjectChange = (event) => {
@@ -225,28 +232,38 @@ class App extends React.Component {
                         <div>
                             <Link to="/">Etusivu</Link> &nbsp;
                             {this.state.user
-                                ? <em>Kirjautunut nimellä {this.state.user.name}</em>
+                                ? <Link to="/user">Omat tiedot</Link>
                                 : <Link to="/login">Kirjaudu sisään</Link>
                             } &nbsp;
                             {this.state.user
-                                ? <Link to="/newblog">Uusi blogi</Link> : null } &nbsp;
+                                ? <Link to="/newblog">Uusi blogi</Link> : null} &nbsp;
                             {this.state.user
-                                ? <Link to="/logout">Kirjaudu ulos</Link> : null }
-                            
+                                ? <Link to="/logout">Kirjaudu ulos</Link> : null} &nbsp;
+                        </div>
+                        <div>
+                            <Notification message={this.state.notification} />
                         </div>
                         <Route exact path="/" render={() => <Home blogs={this.state.blogs} />} />
                         <Route exact path="/blogs/:id" render={({ match }) =>
                             <Blog blog={blogById(match.params.id)} removeBlog={this.removeBlog} likeBlog={this.likeBlog} />}
                         />
-                        <Route exact path="/login" render={() => <LoginForm visible={this.state.visible}
+                        <Route exact path="/login" render={() => this.state.user ? <Redirect to="/" /> : <LoginForm visible={this.state.visible}
                             username={this.state.username}
                             password={this.state.password}
                             handleChange={this.handleLoginFieldChange}
                             handleSubmit={this.login}
                         />} />
-                        <Route exact path="/logout" render={() => this.state.user ? <LogoutForm handleSubmit={this.logout}/> : <Redirect to="/"/> } />
+                        <Route exact path="/logout" render={() => this.state.user ? <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/" />} />
                         <Route exact path="/newblog" render={() =>
-                            <BlogForm onSubmit={this.addBlog} handleSubjectChange={this.handleSubjectChange} handleContentChange={this.handleContentChange} subjectValue={this.state.newSubject} contentValue={this.state.newContent} />} />
+                            <BlogForm onSubmit={this.addBlog}
+                                handleSubjectChange={this.handleSubjectChange}
+                                handleContentChange={this.handleContentChange}
+                                subjectValue={this.state.newSubject}
+                                contentValue={this.state.newContent} />} />
+                        <Route exact path="/user" render={() =>
+                            <User user={this.state.user} />}
+                        />
+
                     </div>
                 </Router>
             </div>
