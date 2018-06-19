@@ -10,7 +10,7 @@ import LogoutForm from './components/LogoutForm'
 import User from './components/User'
 import {
     Table, FormGroup, FormControl, ControlLabel, Button, Alert,
-    Navbar, NavbarBrand, NavItem, Nav, MenuItem, NavDropdown
+    Navbar, NavbarBrand, NavItem, Nav, MenuItem, NavDropdown, Badge
 } from 'react-bootstrap'
 
 const Home = ({ blogs }) => (
@@ -22,6 +22,9 @@ const Home = ({ blogs }) => (
                     <tr key={blog.id}>
                         <td>
                             <Link to={`/blogs/${blog.id}`}>{blog.subject}</Link>
+                        </td>
+                        <td>
+                            <Badge>{blog.likes}</Badge> tykkäystä
                         </td>
                     </tr>
                 )}

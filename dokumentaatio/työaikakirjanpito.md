@@ -35,5 +35,6 @@
 | 19.6. | 0,5 | lisää routeja, omat tiedot -sivu toimii, notifikaatiot toimii taas |
 | 19.6. | 1 | routeja, Bootstrap käyttöön, ulkoasun viilausta |
 | 19.6. | 1 | redirect poiston ja lisäyksen jälkeen -ratkaisun etsintää |
+| 19.6. | 1 | Bootstrap-tutustumista ja kokeilua |
 
-## = 29h
+## = 30h
