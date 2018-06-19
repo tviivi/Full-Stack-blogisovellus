@@ -4,28 +4,34 @@ import blogService from './services/blogs'
 import loginService from './services/login'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginForm'
-import Togglable from './components/Togglable'
 import BlogForm from './components/BlogForm'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import LogoutForm from './components/LogoutForm'
 import User from './components/User'
+import { Table, FormGroup, FormControl, ControlLabel, Button, Alert,
+    Navbar, NavbarBrand,NavItem, Nav, MenuItem, NavDropdown } from 'react-bootstrap'
 
 const Home = ({ blogs }) => (
-    <div> <h1>Tervetuloa BLOGIZIin</h1>
-        <ul>
-            {blogs.map(blog =>
-                <li key={blog.id}>
-                    <Link to={`/blogs/${blog.id}`}>{blog.subject}</Link>
-                </li>
-            )}
-        </ul>
+    <div>
+        <h1>Tervetuloa BLOGIZIin</h1>
+        <Table striped>
+            <tbody>
+                {blogs.map(blog =>
+                    <tr key={blog.id}>
+                        <td>
+                            <Link to={`/blogs/${blog.id}`}>{blog.subject}</Link>
+                        </td>
+                    </tr>
+                )}
+            </tbody>
+        </Table>
     </div>
 )
 
 const Footer = () => (
-    <div>
-        moi
-    </div>
+    <em>
+        Tämä teksti näkyy kaikilla sivuilla.
+    </em>
 )
 
 class App extends React.Component {
@@ -35,7 +41,6 @@ class App extends React.Component {
             blogs: [],
             newSubject: '',
             newContent: '',
-            error: null,
             username: '',
             password: '',
             user: null
@@ -155,118 +160,68 @@ class App extends React.Component {
     }
 
     render() {
-        // const content = () => {
-        //     if (this.state.page === 'home') {
-        //         return <Home />
-        //     } else if (this.state.page === 'blogs') {
-        //         return <Blogs />
-        //     } else if (this.state.page === 'user') {
-        //         return <User />
-        //     } else if (this.state.page === 'newblog') {
-        //         return <NewBlog />
-        //     }
-        // }
-
         const blogById = (id) =>
             this.state.blogs.find(blog => blog.id === id)
 
-        const loginForm = () => {
-            return (
-                <div>
-                    <Togglable buttonLabel="Kirjaudu sisään">
-                        <LoginForm
-                            visible={this.state.visible}
-                            username={this.state.username}
-                            password={this.state.password}
-                            handleChange={this.handleLoginFieldChange}
-                            handleSubmit={this.login}
-                        />
-                    </Togglable>
-                </div>
-            )
-        }
-
-        const blogForm = () => (
-            <div>
-                <ul>
-                    {this.state.blogs.map(blog =>
-                        <Blog key={blog.id} blog={blog} removeBlog={this.removeBlog} likeBlog={this.likeBlog} />
-                    )}
-                </ul>
-
-                <Togglable buttonLabel="Uusi blogi" ref={component => this.BlogForm = component}>
-                    <BlogForm
-                        onSubmit={this.addBlog}
-                        subjectValue={this.state.newSubject}
-                        contentValue={this.state.newContent}
-                        handleSubjectChange={this.handleSubjectChange}
-                        handleContentChange={this.handleContentChange}
-                    />
-                </Togglable>
-
-                <form onSubmit={this.logout}>
-                    <button type="submit">Kirjaudu ulos</button>
-                </form>
-            </div>
-        )
-
         return (
-            <div>
-                {/* <a href="" onClick={this.toPage('home')}>Etusivu</a> &nbsp;
-                <a href="" onClick={this.toPage('blogs')}>Blogisi</a> &nbsp;
-                <a href="" onClick={this.toPage('newblog')}>Lisää uusi blogi</a> &nbsp;
-                <a href="" onClick={this.toPage('user')}>Omat tiedot</a> &nbsp;
-                {content()}
-                
-                <Notification message={this.state.notification} />
-                {this.state.user === null ?
-                    loginForm() :
+            <Router>
+                <div className="container">
                     <div>
-                        <p>Tervetuloa {this.state.user.name}!</p>
-                        {blogForm()}
+                        <Navbar inverse collapseOnSelect>
+                            <Navbar.Header>
+                                <Navbar.Brand>
+                                    BLOGIZI
+                                </Navbar.Brand>
+                            </Navbar.Header>
+                            <Navbar.Collapse>
+                                <Nav>
+                                    <NavItem href="#">
+                                        <Link to="/">Etusivu</Link> &nbsp;
+                                    </NavItem>
+                                    <NavItem href="#">
+                                        {this.state.user
+                                            ? <Link to="/newblog">Uusi blogi</Link> : null} &nbsp;
+                                        </NavItem>
+                                    <NavItem href="#">
+                                        {this.state.user
+                                            ? <Link to="/user">Omat tiedot</Link>
+                                            : <Link to="/login">Kirjaudu sisään</Link>
+                                        } &nbsp;
+                                    </NavItem>
+                                    <NavItem href="#">
+                                        {this.state.user
+                                            ? <Link to="/logout">Kirjaudu ulos</Link> : null} &nbsp;
+                                        </NavItem>
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Navbar>
                     </div>
-                } */}
-
-                <Router>
                     <div>
-                        <div>
-                            <Link to="/">Etusivu</Link> &nbsp;
-                            {this.state.user
-                                ? <Link to="/user">Omat tiedot</Link>
-                                : <Link to="/login">Kirjaudu sisään</Link>
-                            } &nbsp;
-                            {this.state.user
-                                ? <Link to="/newblog">Uusi blogi</Link> : null} &nbsp;
-                            {this.state.user
-                                ? <Link to="/logout">Kirjaudu ulos</Link> : null} &nbsp;
-                        </div>
-                        <div>
-                            <Notification message={this.state.notification} />
-                        </div>
-                        <Route exact path="/" render={() => <Home blogs={this.state.blogs} />} />
-                        <Route exact path="/blogs/:id" render={({ match }) =>
-                            <Blog blog={blogById(match.params.id)} removeBlog={this.removeBlog} likeBlog={this.likeBlog} />}
-                        />
-                        <Route exact path="/login" render={() => this.state.user ? <Redirect to="/" /> : <LoginForm visible={this.state.visible}
-                            username={this.state.username}
-                            password={this.state.password}
-                            handleChange={this.handleLoginFieldChange}
-                            handleSubmit={this.login}
-                        />} />
-                        <Route exact path="/logout" render={() => this.state.user ? <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/" />} />
-                        <Route exact path="/newblog" render={() =>
-                            <BlogForm onSubmit={this.addBlog}
-                                handleSubjectChange={this.handleSubjectChange}
-                                handleContentChange={this.handleContentChange}
-                                subjectValue={this.state.newSubject}
-                                contentValue={this.state.newContent} />} />
-                        <Route exact path="/user" render={() =>
-                            <User user={this.state.user} />}
-                        />
-
+                        <Notification message={this.state.notification} />
                     </div>
-                </Router>
-            </div>
+                    <Route exact path="/" render={() => <Home blogs={this.state.blogs} />} />
+                    <Route exact path="/blogs/:id" render={({ match }) =>
+                        <Blog blog={blogById(match.params.id)} removeBlog={this.removeBlog} likeBlog={this.likeBlog} />}
+                    />
+                    <Route exact path="/login" render={() => this.state.user ? <Redirect to="/" /> : <LoginForm visible={this.state.visible}
+                        username={this.state.username}
+                        password={this.state.password}
+                        handleChange={this.handleLoginFieldChange}
+                        handleSubmit={this.login}
+                    />} />
+                    <Route exact path="/logout" render={() => this.state.user ? <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/" />} />
+                    <Route exact path="/newblog" render={() =>
+                        <BlogForm onSubmit={this.addBlog}
+                            handleSubjectChange={this.handleSubjectChange}
+                            handleContentChange={this.handleContentChange}
+                            subjectValue={this.state.newSubject}
+                            contentValue={this.state.newContent} />} />
+                    <Route exact path="/user" render={() =>
+                        <User user={this.state.user} />}
+                    />
+                    <Footer />
+                </div>
+            </Router>
         )
     }
 }

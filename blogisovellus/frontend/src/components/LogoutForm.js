@@ -1,11 +1,14 @@
 import React from 'react'
+import { Table, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
 
 const LogoutForm = ({ handleSubmit }) => {
     return (
         <div>
             <h3>Haluatko varmasti kirjautua ulos sovelluksesta?</h3>
             <form onSubmit={handleSubmit}>
-                <button type="submit">Kirjaudu ulos</button>
+            <FormGroup>
+                <Button bsStyle="info" type="submit">Kirjaudu ulos</Button>
+                </FormGroup>
             </form>
         </div>
     )

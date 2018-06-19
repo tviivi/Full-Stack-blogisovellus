@@ -4,11 +4,11 @@ body {
   font-family: sans-serif;
 }
 h1 {
-  color: blueviolet;
+  color: gray;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 .wrapper {
-  color: blueviolet;
+  color: gray;
   padding-top: 5px;
   font-size: 15px;
 }

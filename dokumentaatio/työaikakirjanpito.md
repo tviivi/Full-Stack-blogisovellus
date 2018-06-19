@@ -32,6 +32,7 @@
 | 14.6. | 0,5 | frontin testien aloittelua ja opiskelua |
 | 14.6. | 2 | routejen aloittelua |
 | 18.6. | 2 | routeja: sisään- ja uloskirjautuminen toimii taas, redirectin selvittelyä |
-| 19.6. | 0,5 | lisää routeja, omat tiedot -sivu toimii |
+| 19.6. | 0,5 | lisää routeja, omat tiedot -sivu toimii, notifikaatiot toimii taas |
+| 19.6. | 1 | routeja, Bootstrap käyttöön, ulkoasun viilausta |
 
-## = 27h
+## = 28h
