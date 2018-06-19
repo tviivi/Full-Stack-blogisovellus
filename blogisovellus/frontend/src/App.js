@@ -8,8 +8,10 @@ import BlogForm from './components/BlogForm'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import LogoutForm from './components/LogoutForm'
 import User from './components/User'
-import { Table, FormGroup, FormControl, ControlLabel, Button, Alert,
-    Navbar, NavbarBrand,NavItem, Nav, MenuItem, NavDropdown } from 'react-bootstrap'
+import {
+    Table, FormGroup, FormControl, ControlLabel, Button, Alert,
+    Navbar, NavbarBrand, NavItem, Nav, MenuItem, NavDropdown
+} from 'react-bootstrap'
 
 const Home = ({ blogs }) => (
     <div>
