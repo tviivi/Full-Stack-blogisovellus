@@ -38,5 +38,6 @@
 | 19.6. | 1 | Bootstrap-tutustumista ja kokeilua |
 | 26.6. | 0,5 | login toimii herokussa |
 | 26.6. | 0,5 | console-errorien selvittely‰, koodin siistimist‰ |
+| 26.6. | 1 | tiedon etsint‰‰ line break:ist‰ blogin lis‰yksess‰ - ratkaisematon |
 
-## = 31h
+## = 32h

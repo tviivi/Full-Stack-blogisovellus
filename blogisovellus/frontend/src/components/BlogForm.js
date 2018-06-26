@@ -10,13 +10,13 @@ const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectV
                 <FormGroup controlId="formControlsTextarea">
                     <div>
                         <ControlLabel>Blogin aihe:</ControlLabel>
-                        <FormControl type="text"
+                        <FormControl type="text" placeholder="Blogin aihe"
                             value={subjectValue}
                             onChange={handleSubjectChange} />
                     </div>
                     <div>
                         <ControlLabel>Blogin sisältö:</ControlLabel>
-                        <FormControl style={{ height: '400px' }} componentClass="textarea"
+                        <FormControl style={{ height: '400px' }} componentClass="textarea" placeholder="Blogin sisältö"
                             value={contentValue}
                             onChange={handleContentChange} />
                     </div>

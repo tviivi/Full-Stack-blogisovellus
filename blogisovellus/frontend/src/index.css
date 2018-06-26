@@ -12,3 +12,9 @@ h1 {
   padding-top: 5px;
   font-size: 15px;
 }
+
+.navbar-nav span[role=button] {
+  padding: 15px;
+  display: inline-block;
+  line-height: 20px;
+}

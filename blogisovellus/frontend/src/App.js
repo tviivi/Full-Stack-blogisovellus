@@ -177,20 +177,20 @@ class App extends React.Component {
                             </Navbar.Header>
                             <Navbar.Collapse>
                                 <Nav>
-                                    <NavItem href="#">
+                                    <NavItem componentClass="span">
                                         <Link to="/">Etusivu</Link>
                                     </NavItem>
-                                    <NavItem href="#">
+                                    <NavItem componentClass="span">
                                         {this.state.user
                                             ? <Link to="/newblog">Uusi blogi</Link> : null}
                                         </NavItem>
-                                    <NavItem href="#">
+                                    <NavItem componentClass="span">
                                         {this.state.user
                                             ? <Link to="/user">Omat tiedot</Link>
                                             : <Link to="/login">Kirjaudu sisään</Link>
                                         }
                                     </NavItem>
-                                    <NavItem href="#">
+                                    <NavItem componentClass="span">
                                         {this.state.user
                                             ? <Link to="/logout">Kirjaudu ulos</Link> : null}
                                         </NavItem>
