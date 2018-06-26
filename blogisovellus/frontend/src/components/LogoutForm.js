@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
+import { FormGroup, Button } from 'react-bootstrap'
 
 const LogoutForm = ({ handleSubmit }) => {
     return (

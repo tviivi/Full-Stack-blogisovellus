@@ -8,10 +8,7 @@ import BlogForm from './components/BlogForm'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import LogoutForm from './components/LogoutForm'
 import User from './components/User'
-import {
-    Table, FormGroup, FormControl, ControlLabel, Button, Alert,
-    Navbar, NavbarBrand, NavItem, Nav, MenuItem, NavDropdown, Badge
-} from 'react-bootstrap'
+import { Table, Navbar, NavItem, Nav, Badge } from 'react-bootstrap'
 
 const Home = ({ blogs }) => (
     <div>
@@ -181,21 +178,21 @@ class App extends React.Component {
                             <Navbar.Collapse>
                                 <Nav>
                                     <NavItem href="#">
-                                        <Link to="/">Etusivu</Link> &nbsp;
+                                        <Link to="/">Etusivu</Link>
                                     </NavItem>
                                     <NavItem href="#">
                                         {this.state.user
-                                            ? <Link to="/newblog">Uusi blogi</Link> : null} &nbsp;
+                                            ? <Link to="/newblog">Uusi blogi</Link> : null}
                                         </NavItem>
                                     <NavItem href="#">
                                         {this.state.user
                                             ? <Link to="/user">Omat tiedot</Link>
                                             : <Link to="/login">Kirjaudu sisään</Link>
-                                        } &nbsp;
+                                        }
                                     </NavItem>
                                     <NavItem href="#">
                                         {this.state.user
-                                            ? <Link to="/logout">Kirjaudu ulos</Link> : null} &nbsp;
+                                            ? <Link to="/logout">Kirjaudu ulos</Link> : null}
                                         </NavItem>
                                 </Nav>
                             </Navbar.Collapse>

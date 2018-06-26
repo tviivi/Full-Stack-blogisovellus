@@ -37,5 +37,6 @@
 | 19.6. | 1 | redirect poiston ja lis‰yksen j‰lkeen -ratkaisun etsint‰‰ |
 | 19.6. | 1 | Bootstrap-tutustumista ja kokeilua |
 | 26.6. | 0,5 | login toimii herokussa |
+| 26.6. | 0,5 | console-errorien selvittely‰, koodin siistimist‰ |
 
-## = 30,5h
+## = 31h

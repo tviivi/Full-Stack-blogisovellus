@@ -1,6 +1,5 @@
 import React from 'react'
-import { Table, FormGroup, FormControl, ControlLabel, Button, Panel, Badge } from 'react-bootstrap'
-import { Redirect } from 'react-router-dom';
+import { Button, Panel, Badge } from 'react-bootstrap'
 
 const Blog = ({ blog, removeBlog, likeBlog }) => {
     return (
