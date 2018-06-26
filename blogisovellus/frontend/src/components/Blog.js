@@ -1,17 +1,21 @@
 import React from 'react'
 import { Button, Panel, Badge } from 'react-bootstrap'
 
-const Blog = ({ blog, removeBlog, likeBlog }) => {
+const Blog = ({ blog, removeBlog, likeBlog, user }) => {
+    const hide = { display : user ? '' : 'none'}
     return (
         <div>
             <Panel bsStyle="info">
                 <Panel.Heading>
-                    <Panel.Title><h2>{blog.subject}</h2>
+                    <Panel.Title><h2>{blog.subject}</h2>{blog.date}
                         <div><em>Tykkäykset: <Badge>{blog.likes}</Badge> | Kirjoittaja: {blog.user.name}</em></div></Panel.Title>
                 </Panel.Heading>
                 <Panel.Body><div>{blog.content}</div>
-                    <Button bsStyle="info" onClick={likeBlog(blog.id)}>Tykkää blogista</Button>
-                    <Button bsStyle="primary" onClick={removeBlog(blog.id)}>Poista blogi</Button></Panel.Body>
+                    <div style={hide}>
+                        <Button bsStyle="info" onClick={likeBlog(blog.id)}>Tykkää blogista</Button>
+                        <Button bsStyle="primary" onClick={removeBlog(blog.id)}>Poista blogi</Button>
+                    </div>
+                </Panel.Body>
             </Panel>
 
 

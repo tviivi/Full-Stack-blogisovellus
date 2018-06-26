@@ -6,10 +6,10 @@ const User = ({ user }) => {
         <div>
             <Panel bsStyle="info">
                 <Panel.Heading>
-                    <Panel.Title><h2>{user.name}</h2></Panel.Title>
+                    <Panel.Title><h2>Käyttäjän "{user.name}" tiedot</h2></Panel.Title>
                 </Panel.Heading>
                 <Panel.Body><div>Käyttäjätunnus: {user.username}</div>
-                    <div>Blogit:</div>
+                    {/* <div>Blogit: {user.blogs.map(blog => <tr key={blog.id}> <td>{blog.subject}</td></tr>)}</div> */}
                 </Panel.Body>
             </Panel>
         </div>

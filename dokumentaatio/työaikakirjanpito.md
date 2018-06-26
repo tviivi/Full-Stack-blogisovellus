@@ -39,5 +39,6 @@
 | 26.6. | 0,5 | login toimii herokussa |
 | 26.6. | 0,5 | console-errorien selvittely‰, koodin siistimist‰ |
 | 26.6. | 1 | tiedon etsint‰‰ line break:ist‰ blogin lis‰yksess‰ - ratkaisematon |
+| 26.6. | 1 | blogin poisto ja tykk‰ys piilotettu kirjautumattomalta, redirectin ja line breakin selvittely‰ |
 
-## = 32h
+## = 33h

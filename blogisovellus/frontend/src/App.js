@@ -203,7 +203,7 @@ class App extends React.Component {
                     </div>
                     <Route exact path="/" render={() => <Home blogs={this.state.blogs} />} />
                     <Route exact path="/blogs/:id" render={({ match }) =>
-                        <Blog blog={blogById(match.params.id)} removeBlog={this.removeBlog} likeBlog={this.likeBlog} />}
+                        <Blog blog={blogById(match.params.id)} removeBlog={this.removeBlog} likeBlog={this.likeBlog} user={this.state.user} />}
                     />
                     <Route exact path="/login" render={() => this.state.user ? <Redirect to="/" /> : <LoginForm visible={this.state.visible}
                         username={this.state.username}
@@ -211,13 +211,13 @@ class App extends React.Component {
                         handleChange={this.handleLoginFieldChange}
                         handleSubmit={this.login}
                     />} />
-                    <Route exact path="/logout" render={() => this.state.user ? <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/" />} />
-                    <Route exact path="/newblog" render={() =>
+                    <Route exact path="/logout" render={() => this.state.user ? <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/"/>} />
+                    <Route exact path="/newblog" render={() => this.state.user ?
                         <BlogForm onSubmit={this.addBlog}
                             handleSubjectChange={this.handleSubjectChange}
                             handleContentChange={this.handleContentChange}
                             subjectValue={this.state.newSubject}
-                            contentValue={this.state.newContent} />} />
+                            contentValue={this.state.newContent} /> : <Redirect to="/"/>} />
                     <Route exact path="/user" render={() =>
                         <User user={this.state.user} />}
                     />
