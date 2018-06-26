@@ -36,5 +36,6 @@
 | 19.6. | 1 | routeja, Bootstrap käyttöön, ulkoasun viilausta |
 | 19.6. | 1 | redirect poiston ja lisäyksen jälkeen -ratkaisun etsintää |
 | 19.6. | 1 | Bootstrap-tutustumista ja kokeilua |
+| 26.6. | 0,5 | login toimii herokussa |
 
-## = 30h
+## = 30,5h
