@@ -121,37 +121,50 @@ class App extends React.Component {
 
     removeBlog = (id) => () => {
         const blog = this.state.blogs.find(blog => blog.id === id)
-        const ok = window.confirm(`Poistetaanko blogi "${blog.subject}"?`)
-        if (!ok) {
-            return
-        }
 
-        blogService
-            .remove(id)
-            .then(response => {
-                this.setState({
-                    blogs: this.state.blogs.filter(blog => blog.id !== id)
+        if (this.state.user.username === blog.user.username) {
+            const ok = window.confirm(`Poistetaanko blogi "${blog.subject}"?`)
+            if (!ok) {
+                return
+            }
+
+            blogService
+                .remove(id)
+                .then(response => {
+                    this.setState({
+                        blogs: this.state.blogs.filter(blog => blog.id !== id)
+                    })
+                    this.notify(`Blogi "${blog.subject}" poistettu`)
                 })
-                this.notify(`Blogi "${blog.subject}" poistettu`)
-            })
+        } else {
+            this.notify(`Et voi poistaa muiden käyttäjien kirjoittamia blogeja`)
+        }
     }
 
     likeBlog = (id) => () => {
         const blog = this.state.blogs.find(blog => blog.id === id)
         const changedBlog = { ...blog, likes: blog.likes + 1 }
-        const ok = window.confirm(`Annetaanko tykkäys blogille "${blog.subject}"?`)
-        if (!ok) {
-            return
-        }
 
-        blogService
-            .update(id, changedBlog)
-            .then(response => {
-                this.setState({
-                    blogs: this.state.blogs.map(blog => blog.id !== id ? blog : changedBlog)
+        if (this.state.user.username !== blog.user.username) {
+            const ok = window.confirm(`Annetaanko tykkäys blogille "${blog.subject}"?`)
+            if (!ok) {
+                return
+            }
+            blogService
+                .update(id, changedBlog)
+                .then(response => {
+                    this.setState({
+                        blogs: this.state.blogs.map(blog => blog.id !== id ? blog : changedBlog)
+                    })
+                    this.notify(`Tykkäsit blogista "${blog.subject}"`)
                 })
-                this.notify(`Tykkäsit blogista "${blog.subject}"`)
-            })
+        } else {
+            this.notify(`Voit tykätä vain muiden kirjoittamista blogeista`)
+        }
+    }
+
+    updateBlog = (id) => () => {
+        const blog = this.state.blogs.find(blog => blog.id === id)
     }
 
     notify = (notification) => {
@@ -183,17 +196,17 @@ class App extends React.Component {
                                     <NavItem componentClass="span">
                                         {this.state.user
                                             ? <Link to="/newblog">Uusi blogi</Link> : null}
-                                        </NavItem>
+                                    </NavItem>
                                     <NavItem componentClass="span">
                                         {this.state.user
-                                            ? <Link to="/user">Omat tiedot</Link>
+                                            ? <Link to="/user">Omat tiedot ({this.state.user.username})</Link>
                                             : <Link to="/login">Kirjaudu sisään</Link>
                                         }
                                     </NavItem>
                                     <NavItem componentClass="span">
                                         {this.state.user
                                             ? <Link to="/logout">Kirjaudu ulos</Link> : null}
-                                        </NavItem>
+                                    </NavItem>
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
@@ -203,7 +216,11 @@ class App extends React.Component {
                     </div>
                     <Route exact path="/" render={() => <Home blogs={this.state.blogs} />} />
                     <Route exact path="/blogs/:id" render={({ match }) =>
-                        <Blog blog={blogById(match.params.id)} removeBlog={this.removeBlog} likeBlog={this.likeBlog} user={this.state.user} />}
+                        <Blog blog={blogById(match.params.id)}
+                            removeBlog={this.removeBlog}
+                            likeBlog={this.likeBlog}
+                            updateBlog={this.updateBlog}
+                            user={this.state.user} />}
                     />
                     <Route exact path="/login" render={() => this.state.user ? <Redirect to="/" /> : <LoginForm visible={this.state.visible}
                         username={this.state.username}
@@ -211,13 +228,13 @@ class App extends React.Component {
                         handleChange={this.handleLoginFieldChange}
                         handleSubmit={this.login}
                     />} />
-                    <Route exact path="/logout" render={() => this.state.user ? <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/"/>} />
+                    <Route exact path="/logout" render={() => this.state.user ? <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/" />} />
                     <Route exact path="/newblog" render={() => this.state.user ?
                         <BlogForm onSubmit={this.addBlog}
                             handleSubjectChange={this.handleSubjectChange}
                             handleContentChange={this.handleContentChange}
                             subjectValue={this.state.newSubject}
-                            contentValue={this.state.newContent} /> : <Redirect to="/"/>} />
+                            contentValue={this.state.newContent} /> : <Redirect to="/" />} />
                     <Route exact path="/user" render={() =>
                         <User user={this.state.user} />}
                     />
