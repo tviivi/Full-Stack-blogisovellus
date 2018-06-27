@@ -1,11 +1,10 @@
 import React from 'react'
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
 
-const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectValue, contentValue }) => {
+const UpdateBlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectValue, contentValue, updateBlog, blog }) => {
     return (
         <div>
-            <h2>Lisää uusi blogi</h2>
-
+            <h2>Muokkaa blogia {blog.subject}</h2>
 
             <form onSubmit={onSubmit}>
                 <FormGroup controlId="formControlsTextarea">
@@ -21,11 +20,11 @@ const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectV
                             value={contentValue}
                             onChange={handleContentChange} />
                     </div>
-                    <Button bsStyle="info" type="submit">Lisää uusi</Button>
+                    <Button bsStyle="info" type="submit">Tallenna muutokset</Button>
                 </FormGroup>
             </form>
         </div>
     )
 }
 
-export default BlogForm
+export default UpdateBlogForm

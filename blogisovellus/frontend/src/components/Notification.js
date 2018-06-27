@@ -2,10 +2,8 @@ import React from 'react'
 import { Alert } from 'react-bootstrap'
 
 const Notification = ({ message }) => {
-    if (message === null) {
-        return (
-            <Alert bsStyle="primary"> </Alert>
-        )
+    if (!message) {
+        return null
     }
     return (
         <Alert bsStyle="info">

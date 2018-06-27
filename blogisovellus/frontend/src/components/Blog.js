@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Panel, Badge } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const Blog = ({ blog, removeBlog, likeBlog, user, updateBlog }) => {
+const Blog = ({ blog, removeBlog, likeBlog, user }) => {
     const hide = { display : user ? '' : 'none'}
     return (
         <div>
@@ -15,7 +15,7 @@ const Blog = ({ blog, removeBlog, likeBlog, user, updateBlog }) => {
                     <div style={hide}>
                         <Button bsStyle="info" onClick={likeBlog(blog.id)}>Tykkää blogista</Button>
                         <Link to="/"><Button bsStyle="primary" onClick={removeBlog(blog.id)}>Poista blogi</Button></Link>
-                        <Link to="/"><Button bsStyle="info" onClick={updateBlog(blog.id)}>Muokkaa blogia</Button></Link>
+                        <Link to={`/updateblog/${blog.id}`}><Button bsStyle="info">Muokkaa blogia</Button></Link>
                     </div>
                 </Panel.Body>
             </Panel>

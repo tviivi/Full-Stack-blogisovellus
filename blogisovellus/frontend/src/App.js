@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom
 import LogoutForm from './components/LogoutForm'
 import User from './components/User'
 import { Table, Navbar, NavItem, Nav, Badge } from 'react-bootstrap'
+import UpdateBlogForm from './components/UpdateBlogForm'
 
 const Home = ({ blogs }) => (
     <div>
@@ -165,6 +166,21 @@ class App extends React.Component {
 
     updateBlog = (id) => () => {
         const blog = this.state.blogs.find(blog => blog.id === id)
+        const blogObject = {
+            subject: this.state.newSubject,
+            content: this.state.newContent,
+            date: new Date(),
+            likes: 0
+        }
+
+        blogService
+            .update(id, blogObject)
+            .then(response => {
+                this.setState({
+                    blogs: this.state.blogs.map(blog => blog.id !== id ? blog : blogObject)
+                })
+                this.notify(`Blogia "${blog.subject}" muokattu onnistuneesti`)
+            })
     }
 
     notify = (notification) => {
@@ -238,6 +254,14 @@ class App extends React.Component {
                     <Route exact path="/user" render={() =>
                         <User user={this.state.user} />}
                     />
+                    <Route exact path="/updateblog/:id" render={({ match }) =>
+                        <UpdateBlogForm onSubmit={this.updateBlog}
+                            handleSubjectChange={this.handleSubjectChange}
+                            handleContentChange={this.handleContentChange}
+                            subjectValue={this.state.newSubject}
+                            contentValue={this.state.newContent}
+                            blog={blogById(match.params.id)} />} />
+
                     <Footer />
                 </div>
             </Router>
