@@ -46,7 +46,8 @@ class App extends React.Component {
             newContent: '',
             username: '',
             password: '',
-            user: null
+            user: null,
+            search: ''
         }
     }
 
@@ -91,19 +92,22 @@ class App extends React.Component {
             content: this.state.newContent,
             likes: 0
         }
-        const ok = window.confirm(`Jos muokkaat blogia, sen tykkäykset nollaantuvat. Tallennetaanko blogin "${blog.subject}" muutokset silti?`)
-        if (!ok) {
-            return
-        }
-
-        blogService
-            .update(id, changedBlog)
-            .then(response => {
-                this.setState({
-                    blogs: this.state.blogs.map(blog => blog.id !== id ? blog : changedBlog)
+        if (this.state.user.username === blog.user.username) {
+            const ok = window.confirm(`Jos muokkaat blogia, sen tykkäykset nollaantuvat. Tallennetaanko blogin "${blog.subject}" muutokset silti?`)
+            if (!ok) {
+                return
+            }
+            blogService
+                .update(id, changedBlog)
+                .then(response => {
+                    this.setState({
+                        blogs: this.state.blogs.map(blog => blog.id !== id ? blog : changedBlog)
+                    })
+                    this.notify(`Blogia "${blog.subject}" muokattu onnistuneesti`)
                 })
-                this.notify(`Blogia "${blog.subject}" muokattu onnistuneesti`)
-            })
+        } else {
+            this.notify(`Et voi muokata muiden kirjoittamia blogeja`)
+        }
     }
 
     login = async (event) => {
@@ -140,6 +144,10 @@ class App extends React.Component {
 
     handleLoginFieldChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
+    }
+
+    handleSearchChange = (event) => {
+        this.setState({ search: event.target.value })
     }
 
     removeBlog = (id) => () => {
@@ -197,6 +205,14 @@ class App extends React.Component {
         const blogById = (id) =>
             this.state.blogs.find(blog => blog.id === id)
 
+        const bySearchTerm = (blog) => {
+            if (this.state.search.length === 0) {
+                return true
+            }
+            return blog.subject.toLowerCase().includes(this.state.search.toLowerCase()) || blog.content.toLowerCase().includes(this.state.search.toLowerCase())
+        }
+        const blogsToShow = this.state.blogs.filter(bySearchTerm)
+
         return (
             <Router>
                 <div className="container">
@@ -232,8 +248,13 @@ class App extends React.Component {
                     </div>
                     <div>
                         <Notification message={this.state.notification} />
+                        Etsi blogeja:
+                        <input
+                            onChange={this.handleSearchChange}
+                            value={this.state.search}
+                        />
                     </div>
-                    <Route exact path="/" render={() => <Home blogs={this.state.blogs} />} />
+                    <Route exact path="/" render={() => <Home blogs={blogsToShow} />} />
                     <Route exact path="/blogs/:id" render={({ match }) =>
                         <Blog blog={blogById(match.params.id)}
                             removeBlog={this.removeBlog}

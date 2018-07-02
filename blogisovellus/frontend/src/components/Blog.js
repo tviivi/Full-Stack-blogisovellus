@@ -3,7 +3,7 @@ import { Button, Panel, Badge } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const Blog = ({ blog, removeBlog, likeBlog, user }) => {
-    const hide = { display : user ? '' : 'none'}
+    const hide = { display: user ? '' : 'none' }
     return (
         <div>
             <Panel bsStyle="info">

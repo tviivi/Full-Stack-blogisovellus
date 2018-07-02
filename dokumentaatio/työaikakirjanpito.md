@@ -45,5 +45,6 @@
 | 2.7. | 1 | muokkaus-toiminnon taistelua |
 | 2.7. | 0,5 | muokkaus toimii |
 | 2.7. | 0,5 | muokkaus-formin siistimistä |
+| 2.7. | 1 | muokkaus onnistuu vain käyttäjän omille blogeille, alkeellinen filtteröinti |
 
-## = 37h
+## = 38h
