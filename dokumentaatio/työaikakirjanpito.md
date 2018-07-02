@@ -44,5 +44,6 @@
 | 27.6. | 1 | notifikaatiot nätiksi, blogin muokkaus-toiminnon aloittelua |
 | 2.7. | 1 | muokkaus-toiminnon taistelua |
 | 2.7. | 0,5 | muokkaus toimii |
+| 2.7. | 0,5 | muokkaus-formin siistimistä |
 
-## = 36,5h
+## = 37h

@@ -86,9 +86,14 @@ class App extends React.Component {
 
     updateBlog = (id) => {
         const blog = this.state.blogs.find(blog => blog.id === id)
-        const changedBlog = { ...blog, 
+        const changedBlog = {
+            ...blog,
             content: this.state.newContent,
             likes: 0
+        }
+        const ok = window.confirm(`Jos muokkaat blogia, sen tykkäykset nollaantuvat. Tallennetaanko blogin "${blog.subject}" muutokset silti?`)
+        if (!ok) {
+            return
         }
 
         blogService
