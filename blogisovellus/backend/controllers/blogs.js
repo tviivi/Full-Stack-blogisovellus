@@ -109,4 +109,24 @@ blogsRouter.put('/:id', (request, response) => {
         })
 })
 
+blogsRouter.put('/update/:id', (request, response) => {
+    const body = request.body
+
+    const blog = {
+        subject: body.subject,
+        content: body.content,
+        likes: body.likes
+    }
+
+    Blog
+        .findByIdAndUpdate(request.params.id, blog, { new: true })
+        .then(updatedBlog => {
+            response.json(Blog.format(updatedBlog))
+        })
+        .catch(error => {
+            console.log(error)
+            response.status(400).send({ error: 'malformatted id' })
+        })
+})
+
 module.exports = blogsRouter

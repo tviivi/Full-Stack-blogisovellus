@@ -4,3 +4,4 @@
 
 [Työaikakirjanpito](https://github.com/tviivi/Full-Stack-blogisovellus/blob/master/dokumentaatio/ty%C3%B6aikakirjanpito.md)
 [Käyttöohjeet](https://github.com/tviivi/Full-Stack-blogisovellus/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6ohjeet.md)
+[Linkki BLOGIZI-sovellukseen](https://blogizi.herokuapp.com)

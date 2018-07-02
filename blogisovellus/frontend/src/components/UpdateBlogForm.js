@@ -4,7 +4,7 @@ import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
 const UpdateBlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectValue, contentValue, updateBlog, blog }) => {
     return (
         <div>
-            <h2>Muokkaa blogia {blog.subject}</h2>
+            <h2>Muokkaa blogia</h2>
 
             <form onSubmit={onSubmit}>
                 <FormGroup controlId="formControlsTextarea">

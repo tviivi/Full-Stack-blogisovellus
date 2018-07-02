@@ -6,7 +6,6 @@ const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectV
         <div>
             <h2>Lisää uusi blogi</h2>
 
-
             <form onSubmit={onSubmit}>
                 <FormGroup controlId="formControlsTextarea">
                     <div>
