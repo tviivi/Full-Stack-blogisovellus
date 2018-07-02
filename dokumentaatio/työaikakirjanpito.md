@@ -42,6 +42,7 @@
 | 26.6. | 1 | blogin poisto ja tykkäys piilotettu kirjautumattomalta, redirectin ja line breakin selvittelyä |
 | 27.6. | 1 | blogin poistolle ja tykkäyksille if-lauseita, poiston redirect |
 | 27.6. | 1 | notifikaatiot nätiksi, blogin muokkaus-toiminnon aloittelua |
-| 2.7. | 1 muokkaus-toiminnon taistelua |
+| 2.7. | 1 | muokkaus-toiminnon taistelua |
+| 2.7. | 0,5 | muokkaus toimii |
 
-## = 36h
+## = 36,5h

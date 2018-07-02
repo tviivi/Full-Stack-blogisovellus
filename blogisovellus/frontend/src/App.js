@@ -72,7 +72,6 @@ class App extends React.Component {
             date: new Date(),
             likes: 0
         }
-        console.log(blogObject)
         blogService
             .create(blogObject)
             .then(newSubject => {
@@ -85,17 +84,12 @@ class App extends React.Component {
         this.notify(`Uusi blogi "${this.state.newSubject}" lisätty`)
     }
 
-    updateBlog = (event, id) => {
-        event.preventDefault()
+    updateBlog = (id) => {
         const blog = this.state.blogs.find(blog => blog.id === id)
-        console.log(blog)
         const changedBlog = { ...blog, 
-            subject: this.state.newSubject,
             content: this.state.newContent,
-            date: new Date(),
             likes: 0
         }
-        console.log(changedBlog)
 
         blogService
             .update(id, changedBlog)
@@ -168,7 +162,6 @@ class App extends React.Component {
     likeBlog = (id) => () => {
         const blog = this.state.blogs.find(blog => blog.id === id)
         const changedBlog = { ...blog, likes: blog.likes + 1 }
-        console.log(changedBlog)
 
         if (this.state.user.username !== blog.user.username) {
             const ok = window.confirm(`Annetaanko tykkäys blogille "${blog.subject}"?`)
@@ -261,11 +254,13 @@ class App extends React.Component {
                     />
                     <Route exact path="/updateblog/:id" render={({ match }) =>
                         <UpdateBlogForm onSubmit={this.updateBlog}
+                            updateBlog={this.updateBlog}
                             handleSubjectChange={this.handleSubjectChange}
                             handleContentChange={this.handleContentChange}
                             subjectValue={this.state.newSubject}
                             contentValue={this.state.newContent}
-                            blog={blogById(match.params.id)} />}
+                            blog={blogById(match.params.id)}
+                            match={match} />}
                     />
                     <Footer />
                 </div>
