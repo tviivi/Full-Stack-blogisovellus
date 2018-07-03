@@ -8,18 +8,32 @@ import BlogForm from './components/BlogForm'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import LogoutForm from './components/LogoutForm'
 import User from './components/User'
-import { Table, Navbar, NavItem, Nav, Badge } from 'react-bootstrap'
+import { Table, Navbar, NavItem, Nav, Badge, Alert } from 'react-bootstrap'
 import UpdateBlogForm from './components/UpdateBlogForm'
 
 const Home = ({ blogs }) => (
     <div>
         <h1>Tervetuloa BLOGIZIin</h1>
+        <Alert bsStyle="info">
+        BLOGIZI on blogikirjoitusten lukemiseen ja kirjoittamiseen tarkoitettu sivusto.
+        </Alert>
+        <Alert bsStyle="info">
+        Hauskoja lukuhetkiä ja antoisaa kirjoitusflowta!
+        </Alert>
+    </div>
+)
+
+const Blogs = ({ blogs, onChange, value }) => (
+    <div>
+        <Alert bsStyle="info">Etsi blogeja:
+            <input onChange={onChange} value={value} />
+        </Alert>
         <Table striped>
             <tbody>
                 {blogs.map(blog =>
                     <tr key={blog.id}>
                         <td>
-                            <Link to={`/blogs/${blog.id}`}>{blog.subject}</Link>
+                            <Link to={`/blogs/${blog.id}`}>{blog.subject} <em>({blog.user.name})</em></Link>
                         </td>
                         <td>
                             <Badge>{blog.likes}</Badge> tykkäystä
@@ -211,7 +225,7 @@ class App extends React.Component {
             }
             return blog.subject.toLowerCase().includes(this.state.search.toLowerCase()) || blog.content.toLowerCase().includes(this.state.search.toLowerCase())
         }
-        const blogsToShow = this.state.blogs.filter(bySearchTerm)
+        const blogsToShow = this.state.blogs.filter(bySearchTerm).sort((a, b) => b.likes - a.likes)
 
         return (
             <Router>
@@ -227,6 +241,9 @@ class App extends React.Component {
                                 <Nav>
                                     <NavItem componentClass="span">
                                         <Link to="/">Etusivu</Link>
+                                    </NavItem>
+                                    <NavItem componentClass="span">
+                                        <Link to="/blogs">Suosituimmat blogit</Link>
                                     </NavItem>
                                     <NavItem componentClass="span">
                                         {this.state.user
@@ -248,13 +265,12 @@ class App extends React.Component {
                     </div>
                     <div>
                         <Notification message={this.state.notification} />
-                        Etsi blogeja:
-                        <input
-                            onChange={this.handleSearchChange}
-                            value={this.state.search}
-                        />
+
                     </div>
-                    <Route exact path="/" render={() => <Home blogs={blogsToShow} />} />
+                    <Route exact path="/" render={() => <Home />} />
+                    <Route exact path="/blogs" render={() => <Blogs blogs={blogsToShow}
+                        onChange={this.handleSearchChange}
+                        value={this.state.search} />} />
                     <Route exact path="/blogs/:id" render={({ match }) =>
                         <Blog blog={blogById(match.params.id)}
                             removeBlog={this.removeBlog}
