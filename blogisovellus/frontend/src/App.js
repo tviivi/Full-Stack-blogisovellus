@@ -13,12 +13,24 @@ import UpdateBlogForm from './components/UpdateBlogForm'
 
 const Home = ({ blogs }) => (
     <div>
-        <h1>Tervetuloa BLOGIZIin</h1>
+        <div className="media-left">
+            <img className="media-object" width={411} height={231} src="http://interpersonalwellness.com/wp-content/uploads/2016/02/life.jpeg"
+                alt="Responsive"></img>
+        </div>
+        <div className="media-left">
+            <img className="media-object" width={411} height={231} src="https://www.one-mind-one-energy.com/images/what-is-life.jpg"
+                alt="Responsive"></img>
+        </div>
+        <div className="media-left">
+            <img className="media-object" width={411} height={231} src="http://www.knowledgeformen.com/wp-content/uploads/2016/12/GGNALE5D2J.jpg"
+                alt="Responsive"></img>
+        </div>
+        <h1>Tervetuloa BLOGIZIin!</h1>
         <Alert bsStyle="info">
-        BLOGIZI on blogikirjoitusten lukemiseen ja kirjoittamiseen tarkoitettu sivusto.
+            BLOGIZI on blogikirjoitusten lukemiseen ja kirjoittamiseen tarkoitettu sivusto.
         </Alert>
         <Alert bsStyle="info">
-        Hauskoja lukuhetkiä ja antoisaa kirjoitusflowta!
+            Hauskoja lukuhetkiä ja antoisaa kirjoitusflowta!
         </Alert>
     </div>
 )
@@ -46,9 +58,11 @@ const Blogs = ({ blogs, onChange, value }) => (
 )
 
 const Footer = () => (
-    <em>
-        Tämä teksti näkyy kaikilla sivuilla.
+    <div>
+        <em>
+            Tämä teksti näkyy kaikilla sivuilla.
     </em>
+    </div>
 )
 
 class App extends React.Component {
