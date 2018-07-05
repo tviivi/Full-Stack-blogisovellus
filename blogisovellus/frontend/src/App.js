@@ -13,25 +13,21 @@ import UpdateBlogForm from './components/UpdateBlogForm'
 
 const Home = ({ blogs }) => (
     <div>
-        <div className="media-left">
-            <img className="media-object" width={411} height={231} src="http://interpersonalwellness.com/wp-content/uploads/2016/02/life.jpeg"
-                alt="Responsive"></img>
-        </div>
-        <div className="media-left">
-            <img className="media-object" width={411} height={231} src="https://www.one-mind-one-energy.com/images/what-is-life.jpg"
-                alt="Responsive"></img>
-        </div>
-        <div className="media-left">
-            <img className="media-object" width={411} height={231} src="http://www.knowledgeformen.com/wp-content/uploads/2016/12/GGNALE5D2J.jpg"
-                alt="Responsive"></img>
-        </div>
         <h1>Tervetuloa BLOGIZIin!</h1>
-        <Alert bsStyle="info">
-            BLOGIZI on blogikirjoitusten lukemiseen ja kirjoittamiseen tarkoitettu sivusto.
-        </Alert>
-        <Alert bsStyle="info">
-            Hauskoja lukuhetkiä ja antoisaa kirjoitusflowta!
-        </Alert>
+        <div className="media-left">
+            <img className="media-object" width={373} height={200} src="http://interpersonalwellness.com/wp-content/uploads/2016/02/life.jpeg"
+                alt="Responsive"></img>
+        </div>
+        <div className="media-left">
+            <img className="media-object" width={373} height={200} src="https://www.one-mind-one-energy.com/images/what-is-life.jpg"
+                alt="Responsive"></img>
+        </div>
+        <div className="media-left">
+            <img className="media-object" width={373} height={200} src="http://www.knowledgeformen.com/wp-content/uploads/2016/12/GGNALE5D2J.jpg"
+                alt="Responsive"></img>
+        </div>
+        <h3>jeeejeejejejejejejj ajps lskfäOSJÄODF'MKsjpmhiä WEA LKSFÖJAJSK Öklknskdjfjka dpäioöfgj aäpoöljkslä>DÖ-nllfjhpäsoöjga dkjkfö-jlsöhdgkaösldkfndjfkilscömfjlsmkchlrooösrkjfzjxmdfjl
+        </h3>
     </div>
 )
 
