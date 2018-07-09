@@ -16,7 +16,7 @@ import UpdateBlogForm from './components/UpdateBlogForm'
 
 const Home = ({ blogs }) => (
     <div>
-        <h1>Tervetuloa BLOGIZIin!</h1>
+        <h1><center>Tervetuloa BLOGIZIin!</center></h1>
         <div className="media-left">
             <img className="media-object" width={373} height={200} src="http://interpersonalwellness.com/wp-content/uploads/2016/02/life.jpeg"
                 alt="Responsive"></img>
@@ -29,16 +29,15 @@ const Home = ({ blogs }) => (
             <img className="media-object" width={373} height={200} src="http://www.knowledgeformen.com/wp-content/uploads/2016/12/GGNALE5D2J.jpg"
                 alt="Responsive"></img>
         </div>
-        <h3>jeeejeejejejejejejj ajps lskfäOSJÄODF'MKsjpmhiä WEA LKSFÖJAJSK Öklknskdjfjka dpäioöfgj aäpoöljkslä>DÖ-nllfjhpäsoöjga dkjkfö-jlsöhdgkaösldkfndjfkilscömfjlsmkchlrooösrkjfzjxmdfjl
-        </h3>
+        <h4><center>BLOGIZI on paikka, jossa pääset lukemaan muiden blogeja sekä kirjoittamaan omia kirjoituksia.</center></h4>
     </div>
 )
 
 const Blogs = ({ users, blogs, onChange, value }) => (
     <div>
-        <Alert bsStyle="info">Etsi blogeja:
+        <center><Alert bsStyle="info">Etsi blogeja:
             <input onChange={onChange} value={value} />
-        </Alert>
+        </Alert></center>
         <div className="media-left">
             <img className="media-object" width={565} height={300} src="https://cdn-images-1.medium.com/max/2000/1*m1WYR2mEAwkXOL6XeizUfA.jpeg"
                 alt="Responsive"></img>
@@ -59,11 +58,6 @@ const Blogs = ({ users, blogs, onChange, value }) => (
                         </td>
                     </tr>
                 )}
-                {users.map(user =>
-                    <tr key={user.id}>
-                        <td><Link to={`/users/${user.id}`}>{user.name}{user.password}</Link></td>
-                    </tr>
-                )}
             </tbody>
         </Table>
     </div>
@@ -72,7 +66,7 @@ const Blogs = ({ users, blogs, onChange, value }) => (
 const Footer = () => (
     <div>
         <em>
-            Tämä teksti näkyy kaikilla sivuilla.
+            <center>© Viivi Tiihonen, 2018, Full-Stack -harjoitustyö</center>
     </em>
     </div>
 )

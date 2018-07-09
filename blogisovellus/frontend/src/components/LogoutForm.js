@@ -4,10 +4,10 @@ import { FormGroup, Button } from 'react-bootstrap'
 const LogoutForm = ({ handleSubmit }) => {
     return (
         <div>
-            <h3>Haluatko varmasti kirjautua ulos sovelluksesta?</h3>
+            <center><h3>Haluatko varmasti kirjautua ulos sovelluksesta?</h3></center>
             <form onSubmit={handleSubmit}>
                 <FormGroup>
-                    <Button bsStyle="info" type="submit">Kirjaudu ulos</Button>
+                    <center><Button bsStyle="info" type="submit">Kirjaudu ulos</Button></center>
                 </FormGroup>
             </form>
             <div className="media-left">

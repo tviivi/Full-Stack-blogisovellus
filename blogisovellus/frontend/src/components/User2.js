@@ -1,5 +1,6 @@
 import React from 'react'
 import { Panel } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const User2 = ({ user }) => {
     return (
@@ -11,7 +12,11 @@ const User2 = ({ user }) => {
                 <Panel.Body>
                     <div>Käyttäjätunnus: {user.username}</div>
                     <div>ID: {user.id}</div>
-                    <div>Salasana: {user.password}</div>
+                    Blogit: {user.blogs.map(blog =>
+                        <li key={blog._id}>
+                            <Link to={`/blogs/${blog._id}`}>{blog.subject}</Link>
+                        </li>
+                    )}
                 </Panel.Body>
             </Panel>
         </div>

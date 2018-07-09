@@ -22,7 +22,7 @@ const RegisterForm = ({ onSubmit, handleNameChange, handleUsernameChange, handle
                     </div>
                     <div>
                         <ControlLabel>Salasana:</ControlLabel>
-                        <FormControl type="text" placeholder="Salasana"
+                        <FormControl type="password" placeholder="Salasana"
                             value={passwordValue}
                             onChange={handlePasswordChange} />
                     </div>

@@ -50,5 +50,6 @@
 | 5.7. | 2 | kuvien testailua, carouselin kokeilua, sivutuksen yritystä jne. tuloksetta |
 | 9.7. | 1 | lisää kuvia sivuille, blogin kirjoittaja -polun rakentamista |
 | 9.7. | 1 | rekisteröinti toimii |
+| 9.7. | 1 | blogin kirjoittaja -polku ja kirjoittajan kaikkien blogien listaus toimii, muotoilua |
 
-## = 43h
+## = 44h
