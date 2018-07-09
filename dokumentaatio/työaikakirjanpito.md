@@ -48,5 +48,6 @@
 | 2.7. | 1 | muokkaus onnistuu vain käyttäjän omille blogeille, alkeellinen filtteröinti |
 | 3.7. | 1 | uusi etusivu ja sivu blogilistalle, siistimistä, yksittäisen käyttäjän sivun testailua |
 | 5.7. | 2 | kuvien testailua, carouselin kokeilua, sivutuksen yritystä jne. tuloksetta |
+| 9.7. | 1 | lisää kuvia sivuille, blogin kirjoittaja -polun rakentamista |
 
-## = 41h
+## = 42h

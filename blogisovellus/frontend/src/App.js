@@ -8,6 +8,7 @@ import BlogForm from './components/BlogForm'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import LogoutForm from './components/LogoutForm'
 import User from './components/User'
+import User2 from './components/User2'
 import { Table, Navbar, NavItem, Nav, Badge, Alert } from 'react-bootstrap'
 import UpdateBlogForm from './components/UpdateBlogForm'
 
@@ -31,11 +32,19 @@ const Home = ({ blogs }) => (
     </div>
 )
 
-const Blogs = ({ blogs, onChange, value }) => (
+const Blogs = ({ users, blogs, onChange, value }) => (
     <div>
         <Alert bsStyle="info">Etsi blogeja:
             <input onChange={onChange} value={value} />
         </Alert>
+        <div className="media-left">
+            <img className="media-object" width={565} height={300} src="https://cdn-images-1.medium.com/max/2000/1*m1WYR2mEAwkXOL6XeizUfA.jpeg"
+                alt="Responsive"></img>
+        </div>
+        <div className="media-left">
+            <img className="media-object" width={565} height={300} src="http://majasdiary.com/wp-content/uploads/2017/01/life-spirit-feature-img.jpg"
+                alt="Responsive"></img>
+        </div>
         <Table striped>
             <tbody>
                 {blogs.map(blog =>
@@ -46,6 +55,11 @@ const Blogs = ({ blogs, onChange, value }) => (
                         <td>
                             <Badge>{blog.likes}</Badge> tykkäystä
                         </td>
+                    </tr>
+                )}
+                {users.map(user =>
+                    <tr key={user.id}>
+                        <td><Link to={`/users/${user.id}`}>{user.name}</Link></td>
                     </tr>
                 )}
             </tbody>
@@ -71,7 +85,24 @@ class App extends React.Component {
             username: '',
             password: '',
             user: null,
-            search: ''
+            search: '',
+            users: [
+                {
+                    id: "5b1fa4a76ba5c85ef42a1868",
+                    username: "tviivi",
+                    name: "Viivi"
+                },
+                {
+                    id: "5b20da79cf3f573ea04eb051",
+                    username: "Viivi",
+                    name: "Viivi"
+                },
+                {
+                    id: "5b337b81d6f1242760adf24b",
+                    username: "testi",
+                    name: "testi"
+                }
+            ]
         }
     }
 
@@ -229,6 +260,9 @@ class App extends React.Component {
         const blogById = (id) =>
             this.state.blogs.find(blog => blog.id === id)
 
+        const userById = (id) =>
+            this.state.users.find(user => user.id === id)
+
         const bySearchTerm = (blog) => {
             if (this.state.search.length === 0) {
                 return true
@@ -278,7 +312,7 @@ class App extends React.Component {
 
                     </div>
                     <Route exact path="/" render={() => <Home />} />
-                    <Route exact path="/blogs" render={() => <Blogs blogs={blogsToShow}
+                    <Route exact path="/blogs" render={() => <Blogs blogs={blogsToShow} users={this.state.users}
                         onChange={this.handleSearchChange}
                         value={this.state.search} />} />
                     <Route exact path="/blogs/:id" render={({ match }) =>
@@ -303,6 +337,9 @@ class App extends React.Component {
                     />
                     <Route exact path="/user" render={() =>
                         <User user={this.state.user} />}
+                    />
+                    <Route exact path="/users/:id" render={({ match }) =>
+                        <User2 user={userById(match.params.id)} />}
                     />
                     <Route exact path="/updateblog/:id" render={({ match }) =>
                         <UpdateBlogForm onSubmit={this.updateBlog}
