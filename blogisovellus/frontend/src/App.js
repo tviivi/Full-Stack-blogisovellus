@@ -2,11 +2,13 @@ import React from 'react'
 import Blog from './components/Blog'
 import blogService from './services/blogs'
 import loginService from './services/login'
+import userService from './services/users'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginForm'
 import BlogForm from './components/BlogForm'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import LogoutForm from './components/LogoutForm'
+import RegisterForm from './components/RegisterForm'
 import User from './components/User'
 import User2 from './components/User2'
 import { Table, Navbar, NavItem, Nav, Badge, Alert } from 'react-bootstrap'
@@ -59,7 +61,7 @@ const Blogs = ({ users, blogs, onChange, value }) => (
                 )}
                 {users.map(user =>
                     <tr key={user.id}>
-                        <td><Link to={`/users/${user.id}`}>{user.name}</Link></td>
+                        <td><Link to={`/users/${user.id}`}>{user.name}{user.password}</Link></td>
                     </tr>
                 )}
             </tbody>
@@ -86,23 +88,10 @@ class App extends React.Component {
             password: '',
             user: null,
             search: '',
-            users: [
-                {
-                    id: "5b1fa4a76ba5c85ef42a1868",
-                    username: "tviivi",
-                    name: "Viivi"
-                },
-                {
-                    id: "5b20da79cf3f573ea04eb051",
-                    username: "Viivi",
-                    name: "Viivi"
-                },
-                {
-                    id: "5b337b81d6f1242760adf24b",
-                    username: "testi",
-                    name: "testi"
-                }
-            ]
+            users: [],
+            newName: '',
+            newPassword: '',
+            newUsername: '',
         }
     }
 
@@ -118,6 +107,11 @@ class App extends React.Component {
             this.setState({ user })
             blogService.setToken(user.token)
         }
+        userService
+            .getAll()
+            .then(users => {
+                this.setState({ users })
+            })
     }
 
     addBlog = (event) => {
@@ -138,6 +132,25 @@ class App extends React.Component {
                 })
             })
         this.notify(`Uusi blogi "${this.state.newSubject}" lisätty`)
+    }
+
+    addUser = (event) => {
+        event.preventDefault()
+        const userObject = {
+            name: this.state.newName,
+            username: this.state.newUsername,
+            password: this.state.newPassword
+        }
+        userService
+            .create(userObject)
+            .then(newName => {
+                this.setState({
+                    users: this.state.users.concat(newName),
+                    newUsername: '',
+                    newPassword: ''
+                })
+            })
+        this.notify(`Rekisteröityminen onnistui! "${this.state.newPassword}"`)
     }
 
     updateBlog = (id) => {
@@ -195,6 +208,18 @@ class App extends React.Component {
 
     handleContentChange = (event) => {
         this.setState({ newContent: event.target.value })
+    }
+
+    handleNameChange = (event) => {
+        this.setState({ newName: event.target.value })
+    }
+
+    handleUsernameChange = (event) => {
+        this.setState({ newUsername: event.target.value })
+    }
+
+    handlePasswordChange = (event) => {
+        this.setState({ newPassword: event.target.value })
     }
 
     handleLoginFieldChange = (event) => {
@@ -303,6 +328,10 @@ class App extends React.Component {
                                         {this.state.user
                                             ? <Link to="/logout">Kirjaudu ulos</Link> : null}
                                     </NavItem>
+                                    <NavItem componentClass="span">
+                                        {this.state.user
+                                            ? null : <Link to="/register">Rekisteröidy</Link>}
+                                    </NavItem>
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
@@ -334,6 +363,14 @@ class App extends React.Component {
                             handleContentChange={this.handleContentChange}
                             subjectValue={this.state.newSubject}
                             contentValue={this.state.newContent} /> : <Redirect to="/" />}
+                    />
+                    <Route exact path="/register" render={() => <RegisterForm onSubmit={this.addUser}
+                        handleNameChange={this.handleNameChange}
+                        handleUsernameChange={this.handleUsernameChange}
+                        handlePasswordChange={this.handlePasswordChange}
+                        nameValue={this.state.newName}
+                        usernameValue={this.state.newUsername}
+                        passwordValue={this.state.newPassword} />}
                     />
                     <Route exact path="/user" render={() =>
                         <User user={this.state.user} />}
