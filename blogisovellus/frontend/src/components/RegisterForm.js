@@ -7,22 +7,22 @@ const RegisterForm = ({ onSubmit, handleNameChange, handleUsernameChange, handle
             <h2>Rekisteröidy BLOGIZIin</h2>
 
             <form onSubmit={onSubmit}>
-                <FormGroup controlId="formControlsTextarea">
+                <FormGroup controlId="formControlsTextarea2">
                     <div>
                         <ControlLabel>Nimi:</ControlLabel>
-                        <FormControl type="text" placeholder="Nimi"
+                        <FormControl type="text"
                             value={nameValue}
                             onChange={handleNameChange} />
                     </div>
                     <div>
                         <ControlLabel>Käyttäjänimi:</ControlLabel>
-                        <FormControl type="text" placeholder="Käyttäjänimi"
+                        <FormControl type="text"
                             value={usernameValue}
                             onChange={handleUsernameChange} />
                     </div>
                     <div>
                         <ControlLabel>Salasana:</ControlLabel>
-                        <FormControl type="password" placeholder="Salasana"
+                        <FormControl type="password"
                             value={passwordValue}
                             onChange={handlePasswordChange} />
                     </div>

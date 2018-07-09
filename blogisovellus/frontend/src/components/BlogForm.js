@@ -3,7 +3,7 @@ import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
 
 const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectValue, contentValue }) => {
     return (
-        <div>
+        <div className="bg-img">
             <h2>Lisää uusi blogi</h2>
 
             <form onSubmit={onSubmit}>
@@ -16,7 +16,7 @@ const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectV
                     </div>
                     <div>
                         <ControlLabel>Blogin sisältö:</ControlLabel>
-                        <FormControl style={{ height: '400px' }} componentClass="textarea" placeholder="Blogin sisältö"
+                        <FormControl style={{ height: '150px' }} componentClass="textarea" placeholder="Blogin sisältö"
                             value={contentValue}
                             onChange={handleContentChange} />
                     </div>

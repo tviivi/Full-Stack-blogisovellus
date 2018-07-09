@@ -51,5 +51,6 @@
 | 9.7. | 1 | lisää kuvia sivuille, blogin kirjoittaja -polun rakentamista |
 | 9.7. | 1 | rekisteröinti toimii |
 | 9.7. | 1 | blogin kirjoittaja -polku ja kirjoittajan kaikkien blogien listaus toimii, muotoilua |
+| 9.7. | 1 | lisää kuvia ja muuta muotoilua |
 
-## = 44h
+## = 45h
