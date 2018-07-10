@@ -27,7 +27,7 @@ const RegisterForm = ({ onSubmit, handleNameChange, handleUsernameChange, handle
                             value={passwordValue}
                             onChange={handlePasswordChange} />
                     </div>
-                    <Button bsStyle="info" type="submit"><Glyphicon glyph="plus sign" /> Rekisteröidy</Button>
+                    <Button bsStyle="info" type="submit" ><Glyphicon glyph="plus sign" /> Rekisteröidy</Button>
                 </FormGroup>
             </form>
             <h4>Oletko jo käyttäjä? Kirjaudu sisään <Link to="/login">tästä!</Link></h4>

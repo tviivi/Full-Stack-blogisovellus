@@ -14,7 +14,7 @@ import User2 from './components/User2'
 import { Table, Navbar, NavItem, Nav, Badge, Alert, Carousel, Glyphicon } from 'react-bootstrap'
 import UpdateBlogForm from './components/UpdateBlogForm'
 
-const Home = ({ blogs }) => (
+const Home = ({ blogs, user }) => (
     <div>
         <h1><center>Tervetuloa BLOGIZIin!</center></h1>
 
@@ -96,7 +96,7 @@ class App extends React.Component {
             users: [],
             newName: '',
             newPassword: '',
-            newUsername: '',
+            newUsername: ''
         }
     }
 
@@ -343,7 +343,7 @@ class App extends React.Component {
                         <Notification message={this.state.notification} />
 
                     </div>
-                    <Route exact path="/" render={() => <Home />} />
+                    <Route exact path="/" render={() => <Home user={this.state.user} />} />
                     <Route exact path="/blogs" render={() => <Blogs blogs={blogsToShow} users={this.state.users}
                         onChange={this.handleSearchChange}
                         value={this.state.search} />} />
@@ -365,7 +365,8 @@ class App extends React.Component {
                             handleSubjectChange={this.handleSubjectChange}
                             handleContentChange={this.handleContentChange}
                             subjectValue={this.state.newSubject}
-                            contentValue={this.state.newContent} /> : <Redirect to="/" />}
+                            contentValue={this.state.newContent}
+                             /> : <Redirect to="/" />}
                     />
                     <Route exact path="/register" render={() => <RegisterForm onSubmit={this.addUser}
                         handleNameChange={this.handleNameChange}

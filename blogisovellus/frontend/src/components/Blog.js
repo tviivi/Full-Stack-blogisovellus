@@ -14,7 +14,7 @@ const Blog = ({ blog, removeBlog, likeBlog, user }) => {
                 <Panel.Body><div>{blog.content}</div>
                     <div style={hide}>
                         <Button bsStyle="info" onClick={likeBlog(blog.id)}><Glyphicon glyph="thumbs-up" /> Tykkää blogista</Button>
-                        <Link to="/"><Button bsStyle="primary" onClick={removeBlog(blog.id)}><Glyphicon glyph="trash" /> Poista blogi</Button></Link>
+                        <Link to="/blogs"><Button bsStyle="primary" onClick={removeBlog(blog.id)}><Glyphicon glyph="trash" /> Poista blogi</Button></Link>
                         <Link to={`/updateblog/${blog.id}`}><Button bsStyle="info"><Glyphicon glyph="edit" /> Muokkaa blogia</Button></Link>
                     </div>
                 </Panel.Body>

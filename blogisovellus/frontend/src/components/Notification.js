@@ -6,7 +6,7 @@ const Notification = ({ message }) => {
         return null
     }
     return (
-        <Alert bsStyle="info">
+        <Alert bsStyle="warning">
             {message}
         </Alert>
     )

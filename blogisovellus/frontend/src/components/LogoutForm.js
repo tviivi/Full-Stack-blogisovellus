@@ -7,7 +7,7 @@ const LogoutForm = ({ handleSubmit }) => {
             <center><h3>Haluatko varmasti kirjautua ulos sovelluksesta?</h3></center>
             <form onSubmit={handleSubmit}>
                 <FormGroup>
-                    <center><Button bsStyle="secondary" type="submit"><Glyphicon glyph="pause" /> Kirjaudu ulos</Button></center>
+                    <center><Button bsStyle="primary" type="submit"><Glyphicon glyph="pause" /> Kirjaudu ulos</Button></center>
                 </FormGroup>
             </form>
             <div className="media-left">

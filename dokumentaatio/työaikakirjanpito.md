@@ -54,5 +54,6 @@
 | 9.7. | 1 | lisää kuvia ja muuta muotoilua |
 | 10.7. | 1 | ulkoasupyörittelyä, navbarin linkkien värinvaihdon etsiskelyä tuloksetta |
 | 10.7. | 1 | etusivulle Carousel, Glyphiconeja |
+| 10.7. | 0,5 | formin jälkeisen redirectin kokeilua turhaan, koodin siistimistä |
 
-## = 47h
+## = 47,5h
