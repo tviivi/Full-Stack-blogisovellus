@@ -137,6 +137,7 @@ class App extends React.Component {
                 })
             })
         this.notify(`Uusi blogi "${this.state.newSubject}" lisätty`)
+        return <Redirect to='/' />
     }
 
     addUser = (event) => {
@@ -343,38 +344,46 @@ class App extends React.Component {
                         <Notification message={this.state.notification} />
 
                     </div>
-                    <Route exact path="/" render={() => <Home user={this.state.user} />} />
-                    <Route exact path="/blogs" render={() => <Blogs blogs={blogsToShow} users={this.state.users}
-                        onChange={this.handleSearchChange}
-                        value={this.state.search} />} />
+                    <Route exact path="/" render={() =>
+                        <Home user={this.state.user} />}
+                    />
+                    <Route exact path="/blogs" render={() =>
+                        <Blogs blogs={blogsToShow} users={this.state.users}
+                            onChange={this.handleSearchChange}
+                            value={this.state.search} />}
+                    />
                     <Route exact path="/blogs/:id" render={({ match }) =>
                         <Blog blog={blogById(match.params.id)}
                             removeBlog={this.removeBlog}
                             likeBlog={this.likeBlog}
                             user={this.state.user} />}
                     />
-                    <Route exact path="/login" render={() => this.state.user ? <Redirect to="/" /> : <LoginForm visible={this.state.visible}
-                        username={this.state.username}
-                        password={this.state.password}
-                        handleChange={this.handleLoginFieldChange}
-                        handleSubmit={this.login}
-                    />} />
-                    <Route exact path="/logout" render={() => this.state.user ? <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/" />} />
+                    <Route exact path="/login" render={() => this.state.user ?
+                        <Redirect to="/" /> : <LoginForm visible={this.state.visible}
+                            username={this.state.username}
+                            password={this.state.password}
+                            handleChange={this.handleLoginFieldChange}
+                            handleSubmit={this.login} />}
+                    />
+                    <Route exact path="/logout" render={() => this.state.user ?
+                        <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/" />}
+                    />
                     <Route exact path="/newblog" render={() => this.state.user ?
                         <BlogForm onSubmit={this.addBlog}
                             handleSubjectChange={this.handleSubjectChange}
                             handleContentChange={this.handleContentChange}
                             subjectValue={this.state.newSubject}
                             contentValue={this.state.newContent}
-                             /> : <Redirect to="/" />}
+                        /> : <Redirect to="/" />}
                     />
-                    <Route exact path="/register" render={() => <RegisterForm onSubmit={this.addUser}
-                        handleNameChange={this.handleNameChange}
-                        handleUsernameChange={this.handleUsernameChange}
-                        handlePasswordChange={this.handlePasswordChange}
-                        nameValue={this.state.newName}
-                        usernameValue={this.state.newUsername}
-                        passwordValue={this.state.newPassword} />}
+                    <Route exact path="/register" render={() =>
+                        <RegisterForm onSubmit={this.addUser}
+                            handleNameChange={this.handleNameChange}
+                            handleUsernameChange={this.handleUsernameChange}
+                            handlePasswordChange={this.handlePasswordChange}
+                            nameValue={this.state.newName}
+                            usernameValue={this.state.newUsername}
+                            passwordValue={this.state.newPassword} />}
                     />
                     <Route exact path="/user" render={() =>
                         <User user={this.state.user} />}
