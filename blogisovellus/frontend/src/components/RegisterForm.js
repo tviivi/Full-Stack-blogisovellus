@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const RegisterForm = ({ onSubmit, handleNameChange, handleUsernameChange, handlePasswordChange, nameValue, usernameValue, passwordValue }) => {
     return (
@@ -29,6 +30,7 @@ const RegisterForm = ({ onSubmit, handleNameChange, handleUsernameChange, handle
                     <Button bsStyle="info" type="submit">Rekisteröidy</Button>
                 </FormGroup>
             </form>
+            <h4>Oletko jo käyttäjä? Kirjaudu sisään <Link to="/login">tästä!</Link></h4>
         </div>
     )
 }

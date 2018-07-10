@@ -14,9 +14,8 @@ const User2 = ({ user }) => {
                     <Panel.Title><h2>Käyttäjän "{user.name}" tiedot</h2></Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>
-                    <div>Käyttäjätunnus: {user.username}</div>
-                    <div>ID: {user.id}</div>
-                    Blogit: {user.blogs.map(blog =>
+                    <div>Käyttäjätunnus: <b>{user.username}</b></div>
+                    Käyttäjän kirjoittamat blogit: {user.blogs.map(blog =>
                         <li key={blog._id}>
                             <Link to={`/blogs/${blog._id}`}>{blog.subject}</Link>
                         </li>

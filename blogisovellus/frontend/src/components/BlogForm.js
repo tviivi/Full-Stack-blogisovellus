@@ -20,7 +20,7 @@ const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectV
                             value={contentValue}
                             onChange={handleContentChange} />
                     </div>
-                    <Button bsStyle="info" type="submit">Lisää uusi</Button>
+                    <Button bsStyle="secondary" type="submit">Lisää uusi</Button>
                 </FormGroup>
             </form>
         </div>

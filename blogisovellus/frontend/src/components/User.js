@@ -4,7 +4,7 @@ import { Panel } from 'react-bootstrap'
 const User = ({ user }) => {
     return (
         <div className="userstyle">
-            <Panel bsStyle="info">
+            <Panel bsStyle="warning">
                 <Panel.Heading>
                     <Panel.Title><h2>Käyttäjän "{user.name}" tiedot</h2></Panel.Title>
                 </Panel.Heading>

@@ -35,7 +35,7 @@ const Home = ({ blogs }) => (
 
 const Blogs = ({ users, blogs, onChange, value }) => (
     <div>
-        <center><Alert bsStyle="info">Etsi blogeja:
+        <center><Alert bsStyle="warning">Etsi blogeja:
             <input onChange={onChange} value={value} />
         </Alert></center>
         <div className="media-left">
@@ -294,13 +294,12 @@ class App extends React.Component {
             <Router>
                 <div className="container">
                     <div>
-                        <Navbar inverse collapseOnSelect>
+                        <Navbar inverse>
                             <Navbar.Header>
                                 <Navbar.Brand>
                                     BLOGIZI
                                 </Navbar.Brand>
                             </Navbar.Header>
-                            <Navbar.Collapse>
                                 <Nav>
                                     <NavItem componentClass="span">
                                         <Link to="/">Etusivu</Link>
@@ -327,8 +326,7 @@ class App extends React.Component {
                                             ? null : <Link to="/register">Rekisteröidy</Link>}
                                     </NavItem>
                                 </Nav>
-                            </Navbar.Collapse>
-                        </Navbar>
+                        </Navbar>;
                     </div>
                     <div>
                         <Notification message={this.state.notification} />
