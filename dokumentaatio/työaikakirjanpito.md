@@ -53,5 +53,6 @@
 | 9.7. | 1 | blogin kirjoittaja -polku ja kirjoittajan kaikkien blogien listaus toimii, muotoilua |
 | 9.7. | 1 | lisää kuvia ja muuta muotoilua |
 | 10.7. | 1 | ulkoasupyörittelyä, navbarin linkkien värinvaihdon etsiskelyä tuloksetta |
+| 10.7. | 1 | etusivulle Carousel, Glyphiconeja |
 
-## = 46h
+## = 47h

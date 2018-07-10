@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel, Button, Glyphicon } from 'react-bootstrap'
 
 const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectValue, contentValue }) => {
     return (
@@ -20,7 +20,7 @@ const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectV
                             value={contentValue}
                             onChange={handleContentChange} />
                     </div>
-                    <Button bsStyle="secondary" type="submit">Lisää uusi</Button>
+                    <Button bsStyle="secondary" type="submit"><Glyphicon glyph="pencil" /> Lisää uusi</Button>
                 </FormGroup>
             </form>
         </div>

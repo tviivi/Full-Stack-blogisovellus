@@ -11,31 +11,42 @@ import LogoutForm from './components/LogoutForm'
 import RegisterForm from './components/RegisterForm'
 import User from './components/User'
 import User2 from './components/User2'
-import { Table, Navbar, NavItem, Nav, Badge, Alert } from 'react-bootstrap'
+import { Table, Navbar, NavItem, Nav, Badge, Alert, Carousel, Glyphicon } from 'react-bootstrap'
 import UpdateBlogForm from './components/UpdateBlogForm'
 
 const Home = ({ blogs }) => (
     <div>
         <h1><center>Tervetuloa BLOGIZIin!</center></h1>
-        <div className="media-left">
-            <img className="media-object" width={373} height={200} src="http://interpersonalwellness.com/wp-content/uploads/2016/02/life.jpeg"
-                alt="Responsive"></img>
-        </div>
-        <div className="media-left">
-            <img className="media-object" width={373} height={200} src="https://www.one-mind-one-energy.com/images/what-is-life.jpg"
-                alt="Responsive"></img>
-        </div>
-        <div className="media-left">
-            <img className="media-object" width={373} height={200} src="http://www.knowledgeformen.com/wp-content/uploads/2016/12/GGNALE5D2J.jpg"
-                alt="Responsive"></img>
-        </div>
-        <h4><center>BLOGIZI on paikka, jossa pääset lukemaan muiden blogeja sekä kirjoittamaan omia kirjoituksia.</center></h4>
+
+        <Carousel>
+            <Carousel.Item>
+                <img width={1140} height={500} alt="900x500" src="http://interpersonalwellness.com/wp-content/uploads/2016/02/life.jpeg" />
+                <Carousel.Caption>
+                    <h3>Kirjoita omia blogeja</h3>
+                    <p>Voit raapustaa mistä aiheesta tahansa, vain taivas on rajana!</p>
+                </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+                <img width={1140} height={500} alt="900x500" src="https://www.one-mind-one-energy.com/images/what-is-life.jpg" />
+                <Carousel.Caption>
+                    <h3>Lue muiden kirjoittamia blogeja</h3>
+                    <p>Inspiroidu, karta viisautta, verkostoidu!</p>
+                </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+                <img width={1140} height={500} alt="900x500" src="https://timedotcom.files.wordpress.com/2014/03/improving-life-health-hiking-nature.jpg" />
+                <Carousel.Caption>
+                    <h3>Mikset kokeilisi samantien?</h3>
+                    <p>Rekisteröidy ja kirjaudu päästäksesi BLOGIZIn avaraan maailmaan!</p>
+                </Carousel.Caption>
+            </Carousel.Item>
+        </Carousel>
     </div>
 )
 
 const Blogs = ({ users, blogs, onChange, value }) => (
     <div>
-        <center><Alert bsStyle="warning">Etsi blogeja:
+        <center><Alert bsStyle="warning"><Glyphicon glyph="search" /> Etsi blogeja:
             <input onChange={onChange} value={value} />
         </Alert></center>
         <div className="media-left">
@@ -54,7 +65,7 @@ const Blogs = ({ users, blogs, onChange, value }) => (
                             <Link to={`/blogs/${blog.id}`}>{blog.subject} <em>({blog.user.name})</em></Link>
                         </td>
                         <td>
-                            <Badge>{blog.likes}</Badge> tykkäystä
+                            <Badge>{blog.likes}</Badge> <Glyphicon glyph="thumbs-up" />
                         </td>
                     </tr>
                 )}
@@ -67,7 +78,7 @@ const Footer = () => (
     <div>
         <em>
             <center>© Viivi Tiihonen, 2018, Full-Stack -harjoitustyö</center>
-    </em>
+        </em>
     </div>
 )
 
@@ -300,33 +311,33 @@ class App extends React.Component {
                                     BLOGIZI
                                 </Navbar.Brand>
                             </Navbar.Header>
-                                <Nav>
-                                    <NavItem componentClass="span">
-                                        <Link to="/">Etusivu</Link>
-                                    </NavItem>
-                                    <NavItem componentClass="span">
-                                        <Link to="/blogs">Suosituimmat blogit</Link>
-                                    </NavItem>
-                                    <NavItem componentClass="span">
-                                        {this.state.user
-                                            ? <Link to="/newblog">Uusi blogi</Link> : null}
-                                    </NavItem>
-                                    <NavItem componentClass="span">
-                                        {this.state.user
-                                            ? <Link to="/user">Omat tiedot ({this.state.user.username})</Link>
-                                            : <Link to="/login">Kirjaudu sisään</Link>
-                                        }
-                                    </NavItem>
-                                    <NavItem componentClass="span">
-                                        {this.state.user
-                                            ? <Link to="/logout">Kirjaudu ulos</Link> : null}
-                                    </NavItem>
-                                    <NavItem componentClass="span">
-                                        {this.state.user
-                                            ? null : <Link to="/register">Rekisteröidy</Link>}
-                                    </NavItem>
-                                </Nav>
-                        </Navbar>;
+                            <Nav>
+                                <NavItem componentClass="span">
+                                    <Link to="/"><Glyphicon glyph="bookmark" /> Etusivu</Link>
+                                </NavItem>
+                                <NavItem componentClass="span">
+                                    <Link to="/blogs"><Glyphicon glyph="star" /> Suosituimmat blogit</Link>
+                                </NavItem>
+                                <NavItem componentClass="span">
+                                    {this.state.user
+                                        ? <Link to="/newblog"><Glyphicon glyph="pencil" /> Uusi blogi</Link> : null}
+                                </NavItem>
+                                <NavItem componentClass="span">
+                                    {this.state.user
+                                        ? <Link to="/user"><Glyphicon glyph="user" /> Omat tiedot ({this.state.user.username})</Link>
+                                        : <Link to="/login"><Glyphicon glyph="play" /> Kirjaudu sisään</Link>
+                                    }
+                                </NavItem>
+                                <NavItem componentClass="span">
+                                    {this.state.user
+                                        ? <Link to="/logout"><Glyphicon glyph="pause" /> Kirjaudu ulos</Link> : null}
+                                </NavItem>
+                                <NavItem componentClass="span">
+                                    {this.state.user
+                                        ? null : <Link to="/register"><Glyphicon glyph="plus-sign" /> Rekisteröidy</Link>}
+                                </NavItem>
+                            </Nav>
+                        </Navbar>
                     </div>
                     <div>
                         <Notification message={this.state.notification} />

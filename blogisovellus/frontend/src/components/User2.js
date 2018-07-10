@@ -1,5 +1,5 @@
 import React from 'react'
-import { Panel } from 'react-bootstrap'
+import { Panel, Glyphicon } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const User2 = ({ user }) => {
@@ -11,7 +11,7 @@ const User2 = ({ user }) => {
             </div>
             <Panel bsStyle="info">
                 <Panel.Heading>
-                    <Panel.Title><h2>Käyttäjän "{user.name}" tiedot</h2></Panel.Title>
+                    <Panel.Title><h2><Glyphicon glyph="user" /> Käyttäjän "{user.name}" tiedot</h2></Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>
                     <div>Käyttäjätunnus: <b>{user.username}</b></div>

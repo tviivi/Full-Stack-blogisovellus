@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Panel, Badge } from 'react-bootstrap'
+import { Button, Panel, Badge, Glyphicon } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const Blog = ({ blog, removeBlog, likeBlog, user }) => {
@@ -13,9 +13,9 @@ const Blog = ({ blog, removeBlog, likeBlog, user }) => {
                 </Panel.Heading>
                 <Panel.Body><div>{blog.content}</div>
                     <div style={hide}>
-                        <Button bsStyle="info" onClick={likeBlog(blog.id)}>Tykkää blogista</Button>
-                        <Link to="/"><Button bsStyle="primary" onClick={removeBlog(blog.id)}>Poista blogi</Button></Link>
-                        <Link to={`/updateblog/${blog.id}`}><Button bsStyle="info">Muokkaa blogia</Button></Link>
+                        <Button bsStyle="info" onClick={likeBlog(blog.id)}><Glyphicon glyph="thumbs-up" /> Tykkää blogista</Button>
+                        <Link to="/"><Button bsStyle="primary" onClick={removeBlog(blog.id)}><Glyphicon glyph="trash" /> Poista blogi</Button></Link>
+                        <Link to={`/updateblog/${blog.id}`}><Button bsStyle="info"><Glyphicon glyph="edit" /> Muokkaa blogia</Button></Link>
                     </div>
                 </Panel.Body>
             </Panel>

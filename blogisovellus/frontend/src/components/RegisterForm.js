@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel, Button, Glyphicon } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const RegisterForm = ({ onSubmit, handleNameChange, handleUsernameChange, handlePasswordChange, nameValue, usernameValue, passwordValue }) => {
@@ -27,7 +27,7 @@ const RegisterForm = ({ onSubmit, handleNameChange, handleUsernameChange, handle
                             value={passwordValue}
                             onChange={handlePasswordChange} />
                     </div>
-                    <Button bsStyle="info" type="submit">Rekisteröidy</Button>
+                    <Button bsStyle="info" type="submit"><Glyphicon glyph="plus sign" /> Rekisteröidy</Button>
                 </FormGroup>
             </form>
             <h4>Oletko jo käyttäjä? Kirjaudu sisään <Link to="/login">tästä!</Link></h4>
