@@ -56,5 +56,5 @@
 | 10.7. | 1 | etusivulle Carousel, Glyphiconeja |
 | 10.7. | 0,5 | formin jälkeisen redirectin kokeilua turhaan, koodin siistimistä |
 | 10.7. | 0,5 | edelleen ratkaisun etsimistä redirect-ongelmaan |
-
-## = 48h
+| 11.7. | 1 | navbarin linkkien värin muuttaminen |
+## = 49h

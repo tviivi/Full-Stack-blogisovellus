@@ -16,7 +16,7 @@ import UpdateBlogForm from './components/UpdateBlogForm'
 
 const Home = ({ blogs, user }) => (
     <div>
-        <h1><center>Tervetuloa BLOGIZIin!</center></h1>
+        <div className="header"><h1><center>Tervetuloa BLOGIZIin!</center></h1></div>
 
         <Carousel>
             <Carousel.Item>
@@ -312,30 +312,30 @@ class App extends React.Component {
                                     BLOGIZI
                                 </Navbar.Brand>
                             </Navbar.Header>
-                            <Nav>
+                            <Nav className="color-me">
                                 <NavItem componentClass="span">
-                                    <Link to="/"><Glyphicon glyph="bookmark" /> Etusivu</Link>
+                                    <Link className="link" to="/"><Glyphicon glyph="bookmark" /> Etusivu</Link>
                                 </NavItem>
                                 <NavItem componentClass="span">
-                                    <Link to="/blogs"><Glyphicon glyph="star" /> Suosituimmat blogit</Link>
-                                </NavItem>
-                                <NavItem componentClass="span">
-                                    {this.state.user
-                                        ? <Link to="/newblog"><Glyphicon glyph="pencil" /> Uusi blogi</Link> : null}
+                                    <Link className="link" to="/blogs"><Glyphicon glyph="star" /> Suosituimmat blogit</Link>
                                 </NavItem>
                                 <NavItem componentClass="span">
                                     {this.state.user
-                                        ? <Link to="/user"><Glyphicon glyph="user" /> Omat tiedot ({this.state.user.username})</Link>
-                                        : <Link to="/login"><Glyphicon glyph="play" /> Kirjaudu sisään</Link>
+                                        ? <Link className="link" to="/newblog"><Glyphicon glyph="pencil" /> Uusi blogi</Link> : null}
+                                </NavItem>
+                                <NavItem componentClass="span">
+                                    {this.state.user
+                                        ? <Link className="link" to="/user"><Glyphicon glyph="user" /> Omat tiedot ({this.state.user.username})</Link>
+                                        : <Link className="link" to="/login"><Glyphicon glyph="play" /> Kirjaudu sisään</Link>
                                     }
                                 </NavItem>
                                 <NavItem componentClass="span">
                                     {this.state.user
-                                        ? <Link to="/logout"><Glyphicon glyph="pause" /> Kirjaudu ulos</Link> : null}
+                                        ? <Link className="link" to="/logout"><Glyphicon glyph="pause" /> Kirjaudu ulos</Link> : null}
                                 </NavItem>
                                 <NavItem componentClass="span">
                                     {this.state.user
-                                        ? null : <Link to="/register"><Glyphicon glyph="plus-sign" /> Rekisteröidy</Link>}
+                                        ? null : <Link className="link" to="/register"><Glyphicon glyph="plus-sign" /> Rekisteröidy</Link>}
                                 </NavItem>
                             </Nav>
                         </Navbar>

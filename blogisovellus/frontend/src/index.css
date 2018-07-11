@@ -4,9 +4,13 @@ body {
   font-family: sans-serif;
 }
 
-h1, h3 {
+h3 {
   color: gray;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.header {
+  color:gray;
 }
 
 .wrapper {
@@ -20,6 +24,26 @@ h1, h3 {
   display: inline-block;
   line-height: 20px;
 }
+
+.navbar-nav span {
+  color:white;
+}
+
+.link {
+  color: white;
+}
+
+.link:hover {
+  color: grey;
+}
+
+.link:active {
+  color: white;
+}
+
+/* .link:visited{
+  color: white;
+} */
 
 .bg-img {
   /* The image used */
