@@ -96,7 +96,8 @@ class App extends React.Component {
             users: [],
             newName: '',
             newPassword: '',
-            newUsername: ''
+            newUsername: '',
+            redirect: false
         }
     }
 
@@ -119,6 +120,13 @@ class App extends React.Component {
             })
     }
 
+    redirect() {
+        if (this.state.redirect === true) {
+            console.log("moi")
+            return <Redirect to='/' />
+        }
+    }
+
     addBlog = (event) => {
         event.preventDefault()
         const blogObject = {
@@ -137,7 +145,10 @@ class App extends React.Component {
                 })
             })
         this.notify(`Uusi blogi "${this.state.newSubject}" lisätty`)
-        return <Redirect to='/' />
+        this.setState(() => ({
+            redirect: true
+        })
+        )
     }
 
     addUser = (event) => {
@@ -335,7 +346,7 @@ class App extends React.Component {
                                 </NavItem>
                                 <NavItem componentClass="span">
                                     {this.state.user
-                                        ? null : <Link className="link" to="/register"><Glyphicon glyph="plus-sign" /> Rekisteröidy</Link>}
+                                        ? null : <Link to="/register"><Glyphicon glyph="plus-sign" /> Rekisteröidy</Link>}
                                 </NavItem>
                             </Nav>
                         </Navbar>
@@ -374,6 +385,7 @@ class App extends React.Component {
                             handleContentChange={this.handleContentChange}
                             subjectValue={this.state.newSubject}
                             contentValue={this.state.newContent}
+                            redirect={this.redirect}
                         /> : <Redirect to="/" />}
                     />
                     <Route exact path="/register" render={() =>

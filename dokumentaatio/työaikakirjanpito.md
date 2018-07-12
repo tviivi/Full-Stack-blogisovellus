@@ -58,4 +58,5 @@
 | 10.7. | 0,5 | edelleen ratkaisun etsimistä redirect-ongelmaan |
 | 11.7. | 1 | navbarin linkkien värin muuttaminen |
 | 12.7. | 0,5 | (tämä unohtui ekasta pushista) kommentointitoiminnallisuuden pläänäilyä |
-## = 49,5h
+| 12.7. | 0,5 | ratkaisun etsintää redirect-ongelmaan |
+## = 50h

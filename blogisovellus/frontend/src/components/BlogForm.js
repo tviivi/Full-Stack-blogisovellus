@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormGroup, FormControl, ControlLabel, Button, Glyphicon } from 'react-bootstrap'
+import { Redirect } from 'react-router-dom'
 
 const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectValue, contentValue, redirect }) => {
     return (
@@ -20,7 +21,7 @@ const BlogForm = ({ onSubmit, handleSubjectChange, handleContentChange, subjectV
                             value={contentValue}
                             onChange={handleContentChange} />
                     </div>
-                    <Button bsStyle="primary" type="submit"><Glyphicon glyph="pencil" /> Lisää uusi</Button>
+                    <Button bsStyle="primary" type="submit" onClick={redirect}><Glyphicon glyph="pencil" /> Lisää uusi</Button>
                 </FormGroup>
             </form>
         </div>
