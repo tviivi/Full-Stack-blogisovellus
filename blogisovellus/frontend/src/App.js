@@ -49,7 +49,7 @@ const Blogs = ({ users, blogs, onChange, value }) => (
         <center><Link to="/mostpopular"><Button bsStyle="danger"><Glyphicon glyph="thumbs-up" /> Suosituimmat</Button></Link>
         <Link to="/newest"><Button bsStyle="danger"><Glyphicon glyph="time" /> Uusimmat</Button></Link>
         <Link to="/alphabet"><Button bsStyle="danger"><Glyphicon glyph="sort-by-alphabet" /> Aakkoset</Button></Link></center>
-        <center><Alert bsStyle="warning"><Glyphicon glyph="search" /> Etsi blogeja:
+        <center><Alert bsStyle="warning"><Glyphicon glyph="search" /> Etsi blogeja hakusanalla:
             <input onChange={onChange} value={value} />
         </Alert></center>
         <div className="media-left">
