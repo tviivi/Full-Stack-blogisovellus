@@ -59,4 +59,6 @@
 | 11.7. | 1 | navbarin linkkien v‰rin muuttaminen |
 | 12.7. | 0,5 | (t‰m‰ unohtui ekasta pushista) kommentointitoiminnallisuuden pl‰‰n‰ily‰ |
 | 12.7. | 0,5 | ratkaisun etsint‰‰ redirect-ongelmaan |
-## = 50h
+| 16.7. | 1 | redirectit toimii historylla |
+
+## = 51h

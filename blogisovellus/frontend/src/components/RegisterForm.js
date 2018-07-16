@@ -2,7 +2,12 @@ import React from 'react'
 import { FormGroup, FormControl, ControlLabel, Button, Glyphicon } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const RegisterForm = ({ onSubmit, handleNameChange, handleUsernameChange, handlePasswordChange, nameValue, usernameValue, passwordValue }) => {
+const RegisterForm = ({ history, addUser, handleNameChange, handleUsernameChange, handlePasswordChange, nameValue, usernameValue, passwordValue }) => {
+    const onSubmit = (event) => {
+        event.preventDefault()
+        addUser(event)
+        history.push('/login')
+    }
     return (
         <div>
             <h2>Rekisteröidy BLOGIZIin</h2>

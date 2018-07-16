@@ -120,13 +120,6 @@ class App extends React.Component {
             })
     }
 
-    redirect() {
-        if (this.state.redirect === true) {
-            console.log("moi")
-            return <Redirect to='/' />
-        }
-    }
-
     addBlog = (event) => {
         event.preventDefault()
         const blogObject = {
@@ -145,10 +138,6 @@ class App extends React.Component {
                 })
             })
         this.notify(`Uusi blogi "${this.state.newSubject}" lisätty`)
-        this.setState(() => ({
-            redirect: true
-        })
-        )
     }
 
     addUser = (event) => {
@@ -379,23 +368,26 @@ class App extends React.Component {
                     <Route exact path="/logout" render={() => this.state.user ?
                         <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/" />}
                     />
-                    <Route exact path="/newblog" render={() => this.state.user ?
+                    <Route exact path="/newblog" render={({ history }) => this.state.user ?
                         <BlogForm onSubmit={this.addBlog}
                             handleSubjectChange={this.handleSubjectChange}
                             handleContentChange={this.handleContentChange}
                             subjectValue={this.state.newSubject}
                             contentValue={this.state.newContent}
-                            redirect={this.redirect}
+                            history={history}
+                            addBlog={this.addBlog}
                         /> : <Redirect to="/" />}
                     />
-                    <Route exact path="/register" render={() =>
+                    <Route exact path="/register" render={({ history }) =>
                         <RegisterForm onSubmit={this.addUser}
                             handleNameChange={this.handleNameChange}
                             handleUsernameChange={this.handleUsernameChange}
                             handlePasswordChange={this.handlePasswordChange}
                             nameValue={this.state.newName}
                             usernameValue={this.state.newUsername}
-                            passwordValue={this.state.newPassword} />}
+                            passwordValue={this.state.newPassword}
+                            history={history}
+                            addUser={this.addUser} />}
                     />
                     <Route exact path="/user" render={() =>
                         <User user={this.state.user} />}
