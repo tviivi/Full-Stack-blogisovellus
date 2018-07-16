@@ -60,5 +60,6 @@
 | 12.7. | 0,5 | (t‰m‰ unohtui ekasta pushista) kommentointitoiminnallisuuden pl‰‰n‰ily‰ |
 | 12.7. | 0,5 | ratkaisun etsint‰‰ redirect-ongelmaan |
 | 16.7. | 1 | redirectit toimii historylla |
+| 16.7. | 0,5 | uusia sorttauksia blogeille |
 
-## = 51h
+## = 51,5h

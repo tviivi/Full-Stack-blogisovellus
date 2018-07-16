@@ -11,7 +11,7 @@ import LogoutForm from './components/LogoutForm'
 import RegisterForm from './components/RegisterForm'
 import User from './components/User'
 import User2 from './components/User2'
-import { Table, Navbar, NavItem, Nav, Badge, Alert, Carousel, Glyphicon } from 'react-bootstrap'
+import { Table, Navbar, NavItem, Nav, Badge, Alert, Carousel, Glyphicon, Button } from 'react-bootstrap'
 import UpdateBlogForm from './components/UpdateBlogForm'
 
 const Home = ({ blogs, user }) => (
@@ -46,6 +46,9 @@ const Home = ({ blogs, user }) => (
 
 const Blogs = ({ users, blogs, onChange, value }) => (
     <div>
+        <center><Link to="/mostpopular"><Button bsStyle="danger"><Glyphicon glyph="thumbs-up" /> Suosituimmat</Button></Link>
+        <Link to="/newest"><Button bsStyle="danger"><Glyphicon glyph="time" /> Uusimmat</Button></Link>
+        <Link to="/alphabet"><Button bsStyle="danger"><Glyphicon glyph="sort-by-alphabet" /> Aakkoset</Button></Link></center>
         <center><Alert bsStyle="warning"><Glyphicon glyph="search" /> Etsi blogeja:
             <input onChange={onChange} value={value} />
         </Alert></center>
@@ -300,7 +303,10 @@ class App extends React.Component {
             }
             return blog.subject.toLowerCase().includes(this.state.search.toLowerCase()) || blog.content.toLowerCase().includes(this.state.search.toLowerCase())
         }
-        const blogsToShow = this.state.blogs.filter(bySearchTerm).sort((a, b) => b.likes - a.likes)
+
+        const blogsToShowMostPopular = this.state.blogs.filter(bySearchTerm).sort((a, b) => b.likes - a.likes)
+        const blogsToShowAlphabet = this.state.blogs.filter(bySearchTerm).sort((a, b) => a.subject.localeCompare(b.subject))
+        const blogsToShowNewest = this.state.blogs.filter(bySearchTerm).sort((a, b) => b.date.localeCompare(a.date))
 
         return (
             <Router>
@@ -317,7 +323,7 @@ class App extends React.Component {
                                     <Link className="link" to="/"><Glyphicon glyph="bookmark" /> Etusivu</Link>
                                 </NavItem>
                                 <NavItem componentClass="span">
-                                    <Link className="link" to="/blogs"><Glyphicon glyph="star" /> Suosituimmat blogit</Link>
+                                    <Link className="link" to="/blogs"><Glyphicon glyph="star" /> Blogit</Link>
                                 </NavItem>
                                 <NavItem componentClass="span">
                                     {this.state.user
@@ -347,8 +353,23 @@ class App extends React.Component {
                     <Route exact path="/" render={() =>
                         <Home user={this.state.user} />}
                     />
+                    <Route exact path="/mostpopular" render={() =>
+                        <Blogs blogs={blogsToShowMostPopular}
+                            onChange={this.handleSearchChange}
+                            value={this.state.search} />}
+                    />
+                    <Route exact path="/alphabet" render={() =>
+                        <Blogs blogs={blogsToShowAlphabet}
+                            onChange={this.handleSearchChange}
+                            value={this.state.search} />}
+                    />
+                    <Route exact path="/newest" render={() =>
+                        <Blogs blogs={blogsToShowNewest}
+                            onChange={this.handleSearchChange}
+                            value={this.state.search} />}
+                    />
                     <Route exact path="/blogs" render={() =>
-                        <Blogs blogs={blogsToShow} users={this.state.users}
+                        <Blogs blogs={this.state.blogs}
                             onChange={this.handleSearchChange}
                             value={this.state.search} />}
                     />
