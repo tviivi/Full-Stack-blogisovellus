@@ -8,6 +8,7 @@ commentsRouter.get('/', async (request, response) => {
     const comments = await Comment
         .find({})
         .populate('blog', { subject: 1, content: 1, date: 1 })
+        .populate('user', { username: 1, name: 1 })
     response.json(comments.map(Comment.format))
 })
 

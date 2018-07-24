@@ -19,7 +19,25 @@ const Blog = ({ blog, removeBlog, likeBlog, user }) => {
                     </div>
                 </Panel.Body>
             </Panel>
-        </div>
+            <Panel bsStyle="info">
+                <Panel.Heading>
+                    <Panel.Title>Kommentit</Panel.Title>
+                </Panel.Heading>
+                <Panel.Body>
+                    <div>
+                        {blog.comments.map(comment =>
+                            <div key={comment._id}>
+                                <Panel bsStyle="info">
+                                    {comment.user.name}
+                                    {comment.content}
+                                    {comment.date}
+                                </Panel>
+                            </div>
+                        )}
+                    </div>
+                </Panel.Body>
+            </Panel>
+        </div >
     )
 }
 

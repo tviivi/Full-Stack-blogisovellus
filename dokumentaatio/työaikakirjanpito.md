@@ -64,5 +64,6 @@
 | 16.7. | 0,5 | tiedon etsint‰‰ image-tyyppisist‰ muuttujista |
 | 24.7. | 1 | kommentointi-toiminnallisuuden aloittelua |
 | 24.7. | 1 | kommentointi valmis backendin osalta |
+| 24.7. | 1 | kommentointikokeilua fronttiin |
 
-## = 54h
+## = 55h
