@@ -63,7 +63,6 @@
 | 16.7. | 0,5 | uusia sorttauksia blogeille |
 | 16.7. | 0,5 | tiedon etsint‰‰ image-tyyppisist‰ muuttujista |
 | 24.7. | 1 | kommentointi-toiminnallisuuden aloittelua |
-| 24.7. | 1 | user ja comment yhdistetty - toimii |
-| 24.7. | 1 | blog ja comment yhdistetty - toimii |
+| 24.7. | 1 | kommentointi valmis backendin osalta |
 
-## = 55h
+## = 54h
