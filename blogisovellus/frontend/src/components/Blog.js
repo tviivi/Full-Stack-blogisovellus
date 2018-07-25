@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, Panel, Badge, Glyphicon } from 'react-bootstrap'
+import { Button, Panel, Badge, Glyphicon, FormControl, FormGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const Blog = ({ blog, removeBlog, likeBlog, user }) => {
+const Blog = ({ blog, removeBlog, likeBlog, user, onSubmit, contentValue, handleContentChange }) => {
     const hide = { display: user ? '' : 'none' }
     return (
         <div>
@@ -28,12 +28,23 @@ const Blog = ({ blog, removeBlog, likeBlog, user }) => {
                         {blog.comments.map(comment =>
                             <div key={comment._id}>
                                 <Panel bsStyle="info">
-                                    {comment.user.name}
-                                    {comment.content}
-                                    {comment.date}
+                                    <b>{comment.date}</b>
+                                    <div className="comment">{comment.user}: <em>{comment.content}</em></div>
                                 </Panel>
                             </div>
                         )}
+                        <Panel bsStyle="info">
+                            <form onSubmit={onSubmit}>
+                                <FormGroup controlId="formControlsTextarea">
+                                    <div>
+                                        <FormControl style={{ height: '100px' }} componentClass="textarea" placeholder="Kirjoita oma kommenttisi"
+                                            value={contentValue}
+                                            onChange={handleContentChange} />
+                                    </div>
+                                    <Button bsStyle="info" type="submit"><Glyphicon glyph="pencil" /> Kommentoi</Button>
+                                </FormGroup>
+                            </form>
+                        </Panel>
                     </div>
                 </Panel.Body>
             </Panel>

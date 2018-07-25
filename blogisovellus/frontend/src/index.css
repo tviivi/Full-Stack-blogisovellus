@@ -41,6 +41,10 @@ h3 {
   color: white;
 }
 
+.comment{
+  text-indent: 50px;
+}
+
 /* .link:visited{
   color: white;
 } */

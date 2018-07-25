@@ -65,5 +65,6 @@
 | 24.7. | 1 | kommentointi-toiminnallisuuden aloittelua |
 | 24.7. | 1 | kommentointi valmis backendin osalta |
 | 24.7. | 1 | kommentointikokeilua fronttiin |
+| 24.7. | 1 | kommentin lisäyksen aloittelua - ei toimi |
 
-## = 55h
+## = 56h

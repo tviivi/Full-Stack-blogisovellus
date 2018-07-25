@@ -3,6 +3,7 @@ import Blog from './components/Blog'
 import blogService from './services/blogs'
 import loginService from './services/login'
 import userService from './services/users'
+import commentService from './services/comments'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginForm'
 import BlogForm from './components/BlogForm'
@@ -90,6 +91,7 @@ class App extends React.Component {
         super(props)
         this.state = {
             blogs: [],
+            comments: [],
             newSubject: '',
             newContent: '',
             username: '',
@@ -100,7 +102,8 @@ class App extends React.Component {
             newName: '',
             newPassword: '',
             newUsername: '',
-            redirect: false
+            redirect: false,
+            newComment: ''
         }
     }
 
@@ -120,6 +123,11 @@ class App extends React.Component {
             .getAll()
             .then(users => {
                 this.setState({ users })
+            })
+        commentService
+            .getAll()
+            .then(comments => {
+                this.setState({ comments })
             })
     }
 
@@ -141,6 +149,26 @@ class App extends React.Component {
                 })
             })
         this.notify(`Uusi blogi "${this.state.newSubject}" lisätty`)
+    }
+
+    addComment = (event) => {
+        event.preventDefault()
+        const commentObject = {
+            content: this.state.newComment,
+            date: new Date()
+        }
+        console.log(commentObject)
+        commentService
+        .create(commentObject)
+        .then(newComment => {
+            this.setState({
+                comments: this.state.comments.concat(newComment),
+                newComment: ''
+            })
+            console.log("then")
+        })
+        console.log(this.state.comments)
+        this.notify(`Uusi kommentti "${this.state.newComment}" lisätty`)
     }
 
     addUser = (event) => {
@@ -209,6 +237,10 @@ class App extends React.Component {
     logout = async (event) => {
         window.localStorage.removeItem('loggedBlogappUser')
         this.notify(`Kirjauduit ulos`)
+    }
+
+    handleCommentChange = (event) => {
+        this.setState({ newComment: event.target.value })
     }
 
     handleSubjectChange = (event) => {
@@ -377,7 +409,10 @@ class App extends React.Component {
                         <Blog blog={blogById(match.params.id)}
                             removeBlog={this.removeBlog}
                             likeBlog={this.likeBlog}
-                            user={this.state.user} />}
+                            user={this.state.user}
+                            onSubmit={this.addComment}
+                            contentValue={this.state.newComment}
+                            handleContentChange={this.handleCommentChange} />}
                     />
                     <Route exact path="/login" render={() => this.state.user ?
                         <Redirect to="/" /> : <LoginForm visible={this.state.visible}
