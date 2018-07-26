@@ -161,7 +161,7 @@ class App extends React.Component {
         const commentObject = {
             content: this.state.newComment,
             date: new Date(),
-            blog: "5b43699521d2e803a4eddaba"
+            blog: blog
         }
         console.log(commentObject)
         commentService
@@ -171,7 +171,6 @@ class App extends React.Component {
                     comments: this.state.comments.concat(newComment),
                     newComment: ''
                 })
-                console.log("then")
             })
         console.log(this.state.comments)
         this.notify(`Uusi kommentti "${this.state.newComment}" lisätty`)

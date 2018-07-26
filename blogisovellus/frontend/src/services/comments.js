@@ -13,6 +13,7 @@ const setToken = (newToken) => {
 }
 
 const create = async (newObject) => {
+    console.log("newObject", newObject)
     const config = {
         headers: { 'Authorization': token }
     }

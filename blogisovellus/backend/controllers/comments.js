@@ -41,8 +41,10 @@ commentsRouter.post('/', async (request, response) => {
             content: body.content,
             date: new Date(),
             user: user._id,
-            blog: blog._id
+            blog: blog.id
         })
+
+        console.log(comment)
 
         const savedComment = await comment.save()
 
