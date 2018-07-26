@@ -33,21 +33,23 @@ const Blog = ({ blog, removeBlog, likeBlog, user, onSubmit, contentValue, handle
                                 </Panel>
                             </div>
                         )}
-                        <Panel bsStyle="info">
-                            <form onSubmit={(event) => {
-                                event.preventDefault();
-                                addComment(match.params.id);
-                            }}>
-                                <FormGroup controlId="formControlsTextarea">
-                                    <div>
-                                        <FormControl style={{ height: '100px' }} componentClass="textarea" placeholder="Kirjoita oma kommenttisi"
-                                            value={contentValue}
-                                            onChange={handleContentChange} />
-                                    </div>
-                                    <Button bsStyle="info" type="submit"><Glyphicon glyph="pencil" /> Kommentoi</Button>
-                                </FormGroup>
-                            </form>
-                        </Panel>
+                        <div style={hide}>
+                            <Panel bsStyle="info">
+                                <form onSubmit={(event) => {
+                                    event.preventDefault();
+                                    addComment(match.params.id);
+                                }}>
+                                    <FormGroup controlId="formControlsTextarea">
+                                        <div>
+                                            <FormControl style={{ height: '100px' }} componentClass="textarea" placeholder="Kirjoita oma kommenttisi"
+                                                value={contentValue}
+                                                onChange={handleContentChange} />
+                                        </div>
+                                        <Button bsStyle="info" type="submit"><Glyphicon glyph="pencil" /> Kommentoi</Button>
+                                    </FormGroup>
+                                </form>
+                            </Panel>
+                        </div>
                     </div>
                 </Panel.Body>
             </Panel>

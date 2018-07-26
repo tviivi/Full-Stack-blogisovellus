@@ -44,6 +44,9 @@ commentsRouter.post('/', async (request, response) => {
             blog: blog._id
         })
 
+        console.log(comment.user)
+        console.log(comment.blog)
+
         const savedComment = await comment.save()
 
         user.comments = user.comments.concat(savedComment._id)

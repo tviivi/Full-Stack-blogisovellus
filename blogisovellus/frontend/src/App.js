@@ -161,9 +161,9 @@ class App extends React.Component {
         const commentObject = {
             content: this.state.newComment,
             date: new Date(),
-            blog: blog
+            blog: blog,
+            user: this.state.user
         }
-        console.log(blog.comments)
         commentService
             .create(commentObject)
             .then(newComment => {
