@@ -163,7 +163,7 @@ class App extends React.Component {
             date: new Date(),
             blog: blog
         }
-        console.log(commentObject)
+        console.log(blog.comments)
         commentService
             .create(commentObject)
             .then(newComment => {

@@ -68,5 +68,6 @@
 | 25.7. | 1 | kommentin lisäyksen aloittelua - ei toimi |
 | 26.7. | 1 | kommentointitoiminnallisuuden rakentelua fronttiin |
 | 26.7. | 1 | edelleenkin kommentointitoiminnallisuuden yrittämistä |
+| 26.7. | 0,5 | kommentointi toimii ainakin osittain frontin kautta |
 
-## = 58h
+## = 58,5h

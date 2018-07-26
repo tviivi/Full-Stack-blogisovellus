@@ -34,17 +34,15 @@ commentsRouter.post('/', async (request, response) => {
             return response.status(400).json({ error: 'content missing' })
         }
 
-        const blog = await Blog.findById(body.blogId)
+        const blog = await Blog.findById(body.blog.id)
         const user = await User.findById(decodedToken.id)
 
         const comment = new Comment({
             content: body.content,
             date: new Date(),
             user: user._id,
-            blog: blog.id
+            blog: blog._id
         })
-
-        console.log(comment)
 
         const savedComment = await comment.save()
 
