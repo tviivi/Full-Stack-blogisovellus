@@ -48,8 +48,8 @@ const Home = ({ blogs, user }) => (
 const Blogs = ({ users, blogs, onChange, value }) => (
     <div>
         <center><Link to="/mostpopular"><Button bsStyle="danger"><Glyphicon glyph="thumbs-up" /> Suosituimmat</Button></Link>
-        <Link to="/newest"><Button bsStyle="danger"><Glyphicon glyph="time" /> Uusimmat</Button></Link>
-        <Link to="/alphabet"><Button bsStyle="danger"><Glyphicon glyph="sort-by-alphabet" /> Aakkoset</Button></Link></center>
+            <Link to="/newest"><Button bsStyle="danger"><Glyphicon glyph="time" /> Uusimmat</Button></Link>
+            <Link to="/alphabet"><Button bsStyle="danger"><Glyphicon glyph="sort-by-alphabet" /> Aakkoset</Button></Link></center>
         <center><Alert bsStyle="warning"><Glyphicon glyph="search" /> Etsi blogeja hakusanalla:
             <input onChange={onChange} value={value} />
         </Alert></center>
@@ -129,6 +129,11 @@ class App extends React.Component {
             .then(comments => {
                 this.setState({ comments })
             })
+        if (loggedUserJSON) {
+            const user = JSON.parse(loggedUserJSON)
+            this.setState({ user })
+            commentService.setToken(user.token)
+        }
     }
 
     addBlog = (event) => {
@@ -151,22 +156,23 @@ class App extends React.Component {
         this.notify(`Uusi blogi "${this.state.newSubject}" lisätty`)
     }
 
-    addComment = (event) => {
-        event.preventDefault()
+    addComment = (id) => {
+        const blog = this.state.blogs.find(blog => blog.id === id)
         const commentObject = {
             content: this.state.newComment,
-            date: new Date()
+            date: new Date(),
+            blog: "5b43699521d2e803a4eddaba"
         }
         console.log(commentObject)
         commentService
-        .create(commentObject)
-        .then(newComment => {
-            this.setState({
-                comments: this.state.comments.concat(newComment),
-                newComment: ''
+            .create(commentObject)
+            .then(newComment => {
+                this.setState({
+                    comments: this.state.comments.concat(newComment),
+                    newComment: ''
+                })
+                console.log("then")
             })
-            console.log("then")
-        })
         console.log(this.state.comments)
         this.notify(`Uusi kommentti "${this.state.newComment}" lisätty`)
     }
@@ -410,9 +416,10 @@ class App extends React.Component {
                             removeBlog={this.removeBlog}
                             likeBlog={this.likeBlog}
                             user={this.state.user}
-                            onSubmit={this.addComment}
+                            addComment={this.addComment}
                             contentValue={this.state.newComment}
-                            handleContentChange={this.handleCommentChange} />}
+                            handleContentChange={this.handleCommentChange}
+                            match={match} />}
                     />
                     <Route exact path="/login" render={() => this.state.user ?
                         <Redirect to="/" /> : <LoginForm visible={this.state.visible}

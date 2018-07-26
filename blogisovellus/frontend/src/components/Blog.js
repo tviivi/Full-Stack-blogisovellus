@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Panel, Badge, Glyphicon, FormControl, FormGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const Blog = ({ blog, removeBlog, likeBlog, user, onSubmit, contentValue, handleContentChange }) => {
+const Blog = ({ blog, removeBlog, likeBlog, user, onSubmit, contentValue, handleContentChange, addComment, match }) => {
     const hide = { display: user ? '' : 'none' }
     return (
         <div>
@@ -34,7 +34,10 @@ const Blog = ({ blog, removeBlog, likeBlog, user, onSubmit, contentValue, handle
                             </div>
                         )}
                         <Panel bsStyle="info">
-                            <form onSubmit={onSubmit}>
+                            <form onSubmit={(event) => {
+                                event.preventDefault();
+                                addComment(match.params.id);
+                            }}>
                                 <FormGroup controlId="formControlsTextarea">
                                     <div>
                                         <FormControl style={{ height: '100px' }} componentClass="textarea" placeholder="Kirjoita oma kommenttisi"
