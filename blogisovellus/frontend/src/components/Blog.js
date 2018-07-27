@@ -2,8 +2,20 @@ import React from 'react'
 import { Button, Panel, Badge, Glyphicon, FormControl, FormGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const Blog = ({ blog, removeBlog, likeBlog, user, onSubmit, contentValue, handleContentChange, addComment, match }) => {
-    const hide = { display: user ? '' : 'none' }
+const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentChange, addComment, match }) => {
+    const hide = { display: user.username !== blog.user.username ? '' : 'none' }
+
+    const hide2 = { display: user.username === blog.user.username ? '' : 'none' }
+
+    const onSubmit = (event) => {
+        event.preventDefault()
+        if (contentValue === "") {
+            window.confirm(`Unohdit syöttää kommentille sisällön!`)
+            return
+        }
+        addComment(match.params.id)
+    }
+
     return (
         <div>
             <Panel bsStyle="info">
@@ -11,14 +23,17 @@ const Blog = ({ blog, removeBlog, likeBlog, user, onSubmit, contentValue, handle
                     <Panel.Title><h2>{blog.subject}</h2>{blog.date}
                         <div><em>Tykkäykset: <Badge>{blog.likes}</Badge> | Kirjoittaja: <Link to={`/users/${blog.user._id}`}>{blog.user.name}</Link></em></div></Panel.Title>
                 </Panel.Heading>
-                <Panel.Body><div>{blog.content}</div>
+                <Panel.Body>
                     <div style={hide}>
                         <Button bsStyle="info" onClick={likeBlog(blog.id)}><Glyphicon glyph="thumbs-up" /> Tykkää blogista</Button>
+                    </div>
+                    <div style={hide2}>
                         <Link to="/blogs"><Button bsStyle="primary" onClick={removeBlog(blog.id)}><Glyphicon glyph="trash" /> Poista blogi</Button></Link>
                         <Link to={`/updateblog/${blog.id}`}><Button bsStyle="info"><Glyphicon glyph="edit" /> Muokkaa blogia</Button></Link>
                     </div>
+                    <div>{blog.content}</div>
                 </Panel.Body>
-            </Panel>
+            </Panel >
             <Panel bsStyle="info">
                 <Panel.Heading>
                     <Panel.Title>Kommentit</Panel.Title>
@@ -35,10 +50,7 @@ const Blog = ({ blog, removeBlog, likeBlog, user, onSubmit, contentValue, handle
                         )}
                         <div style={hide}>
                             <Panel bsStyle="info">
-                                <form onSubmit={(event) => {
-                                    event.preventDefault();
-                                    addComment(match.params.id);
-                                }}>
+                                <form onSubmit={onSubmit}>
                                     <FormGroup controlId="formControlsTextarea">
                                         <div>
                                             <FormControl style={{ height: '100px' }} componentClass="textarea" placeholder="Kirjoita oma kommenttisi"

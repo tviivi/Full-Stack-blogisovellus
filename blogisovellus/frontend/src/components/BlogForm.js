@@ -1,9 +1,13 @@
 import React from 'react'
 import { FormGroup, FormControl, ControlLabel, Button, Glyphicon } from 'react-bootstrap'
 
-const BlogForm = ({ handleSubjectChange, handleContentChange, subjectValue, contentValue, history, addBlog }) => {
+const BlogForm = ({ handleSubjectChange, handleContentChange, subjectValue, contentValue, history, addBlog, notify }) => {
     const onSubmit = (event) => {
         event.preventDefault()
+        if (subjectValue === "" || contentValue === "") {
+            notify(`Syötä blogille otsikko ja sisältö`)
+            return
+        }
         addBlog(event)
         history.push('/blogs')
     }

@@ -2,9 +2,13 @@ import React from 'react'
 import { FormGroup, FormControl, ControlLabel, Button, Glyphicon } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const RegisterForm = ({ history, addUser, handleNameChange, handleUsernameChange, handlePasswordChange, nameValue, usernameValue, passwordValue }) => {
+const RegisterForm = ({ notify, history, addUser, handleNameChange, handleUsernameChange, handlePasswordChange, nameValue, usernameValue, passwordValue }) => {
     const onSubmit = (event) => {
         event.preventDefault()
+        if (nameValue === "" || usernameValue === "" || passwordValue === "") {
+            notify(`Syötä kaikki pyydetyt käyttäjätiedot`)
+            return
+        }
         addUser(event)
         history.push('/login')
     }

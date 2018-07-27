@@ -70,5 +70,6 @@
 | 26.7. | 1 | edelleenkin kommentointitoiminnallisuuden yrittämistä |
 | 26.7. | 0,5 | kommentointi toimii ainakin osittain frontin kautta |
 | 26.7. | 0,5 | kommentoinnin tutkintaa, kirjautumaton ei näe kommenttiformia |
+| 27.7. | 1 | syötteiden validointia, refaktorointia, nappuloiden näkyvyyden säätöä jne. |
 
-## = 59h
+## = 60h

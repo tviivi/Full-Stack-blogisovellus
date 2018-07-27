@@ -144,6 +144,10 @@ class App extends React.Component {
             date: new Date(),
             likes: 0
         }
+        if (blogObject.subject === '') {
+            this.notify(`Syötä blogille otsikko ja sisältö`)
+            return
+        }
         blogService
             .create(blogObject)
             .then(newSubject => {
@@ -192,7 +196,7 @@ class App extends React.Component {
                     newPassword: ''
                 })
             })
-        this.notify(`Rekisteröityminen onnistui! "${this.state.newPassword}"`)
+        this.notify(`Rekisteröityminen onnistui!`)
     }
 
     updateBlog = (id) => {
@@ -215,8 +219,6 @@ class App extends React.Component {
                     })
                     this.notify(`Blogia "${blog.subject}" muokattu onnistuneesti`)
                 })
-        } else {
-            this.notify(`Et voi muokata muiden kirjoittamia blogeja`)
         }
     }
 
@@ -293,8 +295,6 @@ class App extends React.Component {
                     })
                     this.notify(`Blogi "${blog.subject}" poistettu`)
                 })
-        } else {
-            this.notify(`Et voi poistaa muiden käyttäjien kirjoittamia blogeja`)
         }
     }
 
@@ -315,8 +315,6 @@ class App extends React.Component {
                     })
                     this.notify(`Tykkäsit blogista "${blog.subject}"`)
                 })
-        } else {
-            this.notify(`Voit tykätä vain muiden kirjoittamista blogeista`)
         }
     }
 
@@ -410,7 +408,7 @@ class App extends React.Component {
                             onChange={this.handleSearchChange}
                             value={this.state.search} />}
                     />
-                    <Route exact path="/blogs/:id" render={({ match }) =>
+                    <Route exact path="/blogs/:id" render={({ match, history }) =>
                         <Blog blog={blogById(match.params.id)}
                             removeBlog={this.removeBlog}
                             likeBlog={this.likeBlog}
@@ -438,6 +436,7 @@ class App extends React.Component {
                             contentValue={this.state.newContent}
                             history={history}
                             addBlog={this.addBlog}
+                            notify={this.notify}
                         /> : <Redirect to="/" />}
                     />
                     <Route exact path="/register" render={({ history }) =>
@@ -449,7 +448,8 @@ class App extends React.Component {
                             usernameValue={this.state.newUsername}
                             passwordValue={this.state.newPassword}
                             history={history}
-                            addUser={this.addUser} />}
+                            addUser={this.addUser}
+                            notify={this.notify} />}
                     />
                     <Route exact path="/user" render={() =>
                         <User user={this.state.user} />}
