@@ -332,6 +332,9 @@ class App extends React.Component {
         const userById = (id) =>
             this.state.users.find(user => user.id === id)
 
+        const userByName = (username) =>
+            this.state.users.find(user => user.username === username)
+
         const bySearchTerm = (blog) => {
             if (this.state.search.length === 0) {
                 return true
@@ -416,7 +419,8 @@ class App extends React.Component {
                             addComment={this.addComment}
                             contentValue={this.state.newComment}
                             handleContentChange={this.handleCommentChange}
-                            match={match} />}
+                            match={match}
+                            users={this.state.users} />}
                     />
                     <Route exact path="/login" render={() => this.state.user ?
                         <Redirect to="/" /> : <LoginForm visible={this.state.visible}
@@ -452,7 +456,7 @@ class App extends React.Component {
                             notify={this.notify} />}
                     />
                     <Route exact path="/user" render={() =>
-                        <User user={this.state.user} />}
+                        <User user={userByName(this.state.user.username)} />}
                     />
                     <Route exact path="/users/:id" render={({ match }) =>
                         <User2 user={userById(match.params.id)} />}

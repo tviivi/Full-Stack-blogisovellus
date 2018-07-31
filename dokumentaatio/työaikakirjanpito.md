@@ -72,5 +72,7 @@
 | 26.7. | 0,5 | kommentoinnin tutkintaa, kirjautumaton ei näe kommenttiformia |
 | 27.7. | 1 | syötteiden validointia, refaktorointia, nappuloiden näkyvyyden säätöä jne. |
 | 31.7. | 1 | blogin nappuloiden säätely loppuun (kirjautunut vs kirjautumaton, kirjoittaja vs. lukija |
+| 31.7. | 0,5 | kommentoineen käyttäjän nimi näkyy ja toimii linkkinä |
+| 31.7. | 0,5 | kirjautuneen käyttäjän omat tiedot -sivu kuntoon (omat blogit jne) |
 
-## = 61h
+## = 62h

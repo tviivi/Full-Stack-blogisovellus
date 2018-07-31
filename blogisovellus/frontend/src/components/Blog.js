@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Panel, Badge, Glyphicon, FormControl, FormGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentChange, addComment, match }) => {
+const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentChange, addComment, match, users }) => {
 
     const hide = user ? { display: user.username !== blog.user.username ? '' : 'none' } : { display: user ? '' : 'none' }
     const hide2 = user ? { display: user.username === blog.user.username ? '' : 'none' } : { display: user ? '' : 'none' }
@@ -15,6 +15,9 @@ const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentCha
         }
         addComment(match.params.id)
     }
+
+    const userById = (id) =>
+        users.find(user => user.id === id)
 
     return (
         <div>
@@ -31,40 +34,40 @@ const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentCha
                         <Link to="/blogs"><Button bsStyle="primary" onClick={removeBlog(blog.id)}><Glyphicon glyph="trash" /> Poista blogi</Button></Link>
                         <Link to={`/updateblog/${blog.id}`}><Button bsStyle="info"><Glyphicon glyph="edit" /> Muokkaa blogia</Button></Link>
                     </div>
-                <div>{blog.content}</div>
+                    <div>{blog.content}</div>
                 </Panel.Body>
             </Panel >
-        <Panel bsStyle="info">
-            <Panel.Heading>
-                <Panel.Title>Kommentit</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>
-                <div>
-                    {blog.comments.map(comment =>
-                        <div key={comment._id}>
+            <Panel bsStyle="info">
+                <Panel.Heading>
+                    <Panel.Title>Kommentit</Panel.Title>
+                </Panel.Heading>
+                <Panel.Body>
+                    <div>
+                        {blog.comments.map(comment =>
+                            <div key={comment._id}>
+                                <Panel bsStyle="info">
+                                    <b>{comment.date}</b>
+                                    <div className="comment"><Link to={`/users/${comment.user}`}>{userById(comment.user).name}</Link>: <em>{comment.content}</em></div>
+                                </Panel>
+                            </div>
+                        )}
+                        <div style={hide}>
                             <Panel bsStyle="info">
-                                <b>{comment.date}</b>
-                                <div className="comment">{comment.user}: <em>{comment.content}</em></div>
+                                <form onSubmit={onSubmit}>
+                                    <FormGroup controlId="formControlsTextarea">
+                                        <div>
+                                            <FormControl style={{ height: '100px' }} componentClass="textarea" placeholder="Kirjoita oma kommenttisi"
+                                                value={contentValue}
+                                                onChange={handleContentChange} />
+                                        </div>
+                                        <Button bsStyle="info" type="submit"><Glyphicon glyph="pencil" /> Kommentoi</Button>
+                                    </FormGroup>
+                                </form>
                             </Panel>
                         </div>
-                    )}
-                    <div style={hide}>
-                        <Panel bsStyle="info">
-                            <form onSubmit={onSubmit}>
-                                <FormGroup controlId="formControlsTextarea">
-                                    <div>
-                                        <FormControl style={{ height: '100px' }} componentClass="textarea" placeholder="Kirjoita oma kommenttisi"
-                                            value={contentValue}
-                                            onChange={handleContentChange} />
-                                    </div>
-                                    <Button bsStyle="info" type="submit"><Glyphicon glyph="pencil" /> Kommentoi</Button>
-                                </FormGroup>
-                            </form>
-                        </Panel>
                     </div>
-                </div>
-            </Panel.Body>
-        </Panel>
+                </Panel.Body>
+            </Panel>
         </div >
     )
 }

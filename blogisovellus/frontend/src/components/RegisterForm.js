@@ -12,6 +12,7 @@ const RegisterForm = ({ notify, history, addUser, handleNameChange, handleUserna
         addUser(event)
         history.push('/login')
     }
+    
     return (
         <div>
             <h2>Rekisteröidy BLOGIZIin</h2>
