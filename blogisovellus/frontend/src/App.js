@@ -461,7 +461,7 @@ class App extends React.Component {
                     <Route exact path="/users/:id" render={({ match }) =>
                         <User2 user={userById(match.params.id)} />}
                     />
-                    <Route exact path="/updateblog/:id" render={({ match }) =>
+                    <Route exact path="/updateblog/:id" render={({ match, history }) =>
                         <UpdateBlogForm onSubmit={this.updateBlog}
                             updateBlog={this.updateBlog}
                             handleSubjectChange={this.handleSubjectChange}
@@ -469,7 +469,8 @@ class App extends React.Component {
                             subjectValue={this.state.newSubject}
                             contentValue={this.state.newContent}
                             blog={blogById(match.params.id)}
-                            match={match} />}
+                            match={match}
+                            history={history} />}
                     />
                     <Footer />
                 </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormGroup, FormControl, ControlLabel, Button, Alert } from 'react-bootstrap'
 
-const UpdateBlogForm = ({ match, onSubmit, handleContentChange, contentValue, updateBlog, blog }) => {
+const UpdateBlogForm = ({ match, onSubmit, handleContentChange, contentValue, updateBlog, blog, history }) => {
     return (
         <div>
             <h2>Muokkaa blogia "{blog.subject}"</h2>
@@ -12,7 +12,8 @@ const UpdateBlogForm = ({ match, onSubmit, handleContentChange, contentValue, up
             <form onSubmit={(event) => {
                 event.preventDefault();
                 updateBlog(match.params.id);
-            }}>
+                history.push('/blogs')
+            }}> 
                 <FormGroup controlId="formControlsTextarea">
                     <div>
                         <ControlLabel>Blogin uusi sisältö:</ControlLabel>

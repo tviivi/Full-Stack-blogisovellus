@@ -74,5 +74,6 @@
 | 31.7. | 1 | blogin nappuloiden s‰‰tely loppuun (kirjautunut vs kirjautumaton, kirjoittaja vs. lukija |
 | 31.7. | 0,5 | kommentoineen k‰ytt‰j‰n nimi n‰kyy ja toimii linkkin‰ |
 | 31.7. | 0,5 | kirjautuneen k‰ytt‰j‰n omat tiedot -sivu kuntoon (omat blogit jne) |
+| 31.7. | 0,5 | updateBlogForm-redirect, tiedon etsint‰‰ formin rivinvaihdoista - ei toimi |
 
-## = 62h
+## = 62,5h

@@ -16,21 +16,21 @@ const BlogForm = ({ handleSubjectChange, handleContentChange, subjectValue, cont
             <h2>Lisää uusi blogi</h2>
 
             <form onSubmit={onSubmit}>
-                <FormGroup controlId="formControlsTextarea">
-                    <div>
-                        <ControlLabel>Blogin aihe:</ControlLabel>
-                        <FormControl type="text" placeholder="Blogin aihe"
-                            value={subjectValue}
-                            onChange={handleSubjectChange} />
-                    </div>
-                    <div>
-                        <ControlLabel>Blogin sisältö:</ControlLabel>
-                        <FormControl style={{ height: '150px' }} componentClass="textarea" placeholder="Blogin sisältö"
-                            value={contentValue}
-                            onChange={handleContentChange} />
-                    </div>
-                    <Button bsStyle="primary" type="submit"><Glyphicon glyph="pencil" /> Lisää uusi</Button>
-                </FormGroup>
+                    <FormGroup controlId="formControlsTextarea">
+                        <div>
+                            <ControlLabel>Blogin aihe:</ControlLabel>
+                            <FormControl type="text" placeholder="Blogin aihe"
+                                value={subjectValue}
+                                onChange={handleSubjectChange} />
+                        </div>
+                        <div>
+                            <ControlLabel>Blogin sisältö:</ControlLabel>
+                            <FormControl style={{ height: '150px' }} componentClass="textarea" placeholder="Blogin sisältö"
+                                value={contentValue}
+                                onChange={handleContentChange} />
+                        </div>
+                        <Button bsStyle="primary" type="submit"><Glyphicon glyph="pencil" /> Lisää uusi</Button>
+                    </FormGroup>
             </form>
         </div>
     )
