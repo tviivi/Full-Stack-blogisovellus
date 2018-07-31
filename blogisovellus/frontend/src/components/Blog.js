@@ -34,7 +34,9 @@ const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentCha
                         <Link to="/blogs"><Button bsStyle="primary" onClick={removeBlog(blog.id)}><Glyphicon glyph="trash" /> Poista blogi</Button></Link>
                         <Link to={`/updateblog/${blog.id}`}><Button bsStyle="info"><Glyphicon glyph="edit" /> Muokkaa blogia</Button></Link>
                     </div>
-                    <div>{blog.content}</div>
+                    <div>{blog.content.split('\n').map((item, key) => {
+                        return <span key={key}>{item}<br /></span>
+                    })}</div>
                 </Panel.Body>
             </Panel >
             <Panel bsStyle="info">

@@ -75,5 +75,6 @@
 | 31.7. | 0,5 | kommentoineen k‰ytt‰j‰n nimi n‰kyy ja toimii linkkin‰ |
 | 31.7. | 0,5 | kirjautuneen k‰ytt‰j‰n omat tiedot -sivu kuntoon (omat blogit jne) |
 | 31.7. | 0,5 | updateBlogForm-redirect, tiedon etsint‰‰ formin rivinvaihdoista - ei toimi |
+| 31.7. | 0,5 | line breakit toimii |
 
-## = 62,5h
+## = 63h

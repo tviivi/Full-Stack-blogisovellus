@@ -11,6 +11,7 @@ const BlogForm = ({ handleSubjectChange, handleContentChange, subjectValue, cont
         addBlog(event)
         history.push('/blogs')
     }
+    
     return (
         <div className="bg-img">
             <h2>Lisää uusi blogi</h2>
