@@ -78,5 +78,6 @@
 | 31.7. | 0,5 | line breakit toimii |
 | 1.8. | 0,5 | kirjainfiltteröinti toimii taas, omat tiedot -ulkoasua |
 | 1.8. | 0,5 | kommentille tykkäys-toimintoa |
+| 1.8. | 0,5 | kommentista tykkääminen toimii, README.md-päivitys |
 
-## = 64h
+## = 64,5h

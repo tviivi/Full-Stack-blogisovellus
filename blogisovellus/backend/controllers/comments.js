@@ -63,4 +63,23 @@ commentsRouter.post('/', async (request, response) => {
     }
 })
 
+commentsRouter.put('/:id', (request, response) => {
+    const body = request.body
+
+    const comment = {
+        content: body.content,
+        likes: body.likes
+    }
+
+    Comment
+        .findByIdAndUpdate(request.params.id, comment, { new: true })
+        .then(updatedComment => {
+            response.json(Comment.format(updatedComment))
+        })
+        .catch(error => {
+            console.log(error)
+            response.status(400).send({ error: 'malformatted id' })
+        })
+})
+
 module.exports = commentsRouter

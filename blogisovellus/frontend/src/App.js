@@ -319,6 +319,26 @@ class App extends React.Component {
         }
     }
 
+    likeComment = (id) => () => {
+        const comment = this.state.comments.find(comment => comment.id === id)
+        const changedComment = { ...comment, likes: comment.likes + 1 }
+
+        if (this.state.user.username !== comment.user.username) {
+            const ok = window.confirm(`Tykätäänkö kommentista "${comment.content}"?`)
+            if (!ok) {
+                return
+            }
+            commentService
+                .update(id, changedComment)
+                .then(response => {
+                    this.setState({
+                        comments: this.state.comments.map(comment => comment.id !== id ? comment : changedComment)
+                    })
+                    this.notify(`Tykkäsit kommentista "${comment.content}"`)
+                })
+        }
+    }
+
     notify = (notification) => {
         this.setState({ notification })
         setTimeout(() => {
@@ -422,7 +442,8 @@ class App extends React.Component {
                             contentValue={this.state.newComment}
                             handleContentChange={this.handleCommentChange}
                             match={match}
-                            users={this.state.users} />}
+                            users={this.state.users}
+                            likeComment={this.likeComment} />}
                     />
                     <Route exact path="/login" render={() => this.state.user ?
                         <Redirect to="/" /> : <LoginForm visible={this.state.visible}

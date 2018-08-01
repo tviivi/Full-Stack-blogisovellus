@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Panel, Badge, Glyphicon, FormControl, FormGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentChange, addComment, match, users }) => {
+const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentChange, addComment, match, users, likeComment }) => {
 
     const hide = user ? { display: user.username !== blog.user.username ? '' : 'none' } : { display: user ? '' : 'none' }
     const hide2 = user ? { display: user.username === blog.user.username ? '' : 'none' } : { display: user ? '' : 'none' }
@@ -50,7 +50,7 @@ const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentCha
                                 <Panel bsStyle="info">
                                     <b>{comment.date}</b>
                                     <div className="comment"><Link to={`/users/${comment.user}`}>{userById(comment.user).name}</Link>: <em>{comment.content}</em></div>
-                                    <div className="comment"><Button bsStyle="primary"><Glyphicon glyph="thumbs-up" /> Tykkää kommentista</Button> {comment.likes}</div>
+                                    <div className="comment"><Button bsStyle="primary" onClick={likeComment(comment._id)}><Glyphicon glyph="thumbs-up" /> Tykkää kommentista</Button> {comment.likes} tykkäystä</div>
                                 </Panel>
                             </div>
                         )}
