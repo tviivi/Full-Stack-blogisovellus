@@ -45,7 +45,7 @@ const Home = ({ blogs, user }) => (
     </div>
 )
 
-const Blogs = ({ users, blogs, onChange, value }) => (
+const Blogs = ({ blogs, onChange, value }) => (
     <div>
         <center><Link to="/mostpopular"><Button bsStyle="danger"><Glyphicon glyph="thumbs-up" /> Suosituimmat</Button></Link>
             <Link to="/newest"><Button bsStyle="danger"><Glyphicon glyph="time" /> Uusimmat</Button></Link>
@@ -342,6 +342,7 @@ class App extends React.Component {
             return blog.subject.toLowerCase().includes(this.state.search.toLowerCase()) || blog.content.toLowerCase().includes(this.state.search.toLowerCase())
         }
 
+        const blogsToShow = this.state.blogs.filter(bySearchTerm)
         const blogsToShowMostPopular = this.state.blogs.filter(bySearchTerm).sort((a, b) => b.likes - a.likes)
         const blogsToShowAlphabet = this.state.blogs.filter(bySearchTerm).sort((a, b) => a.subject.localeCompare(b.subject))
         const blogsToShowNewest = this.state.blogs.filter(bySearchTerm).sort((a, b) => b.date.localeCompare(a.date))
@@ -358,7 +359,7 @@ class App extends React.Component {
                             </Navbar.Header>
                             <Nav className="color-me">
                                 <NavItem componentClass="span">
-                                    <Link className="link" to="/"><Glyphicon glyph="bookmark" /> Etusivu</Link>
+                                    <Link className="link" to="/"><Glyphicon glyph="home" /> Etusivu</Link>
                                 </NavItem>
                                 <NavItem componentClass="span">
                                     <Link className="link" to="/blogs"><Glyphicon glyph="star" /> Blogit</Link>
@@ -407,7 +408,7 @@ class App extends React.Component {
                             value={this.state.search} />}
                     />
                     <Route exact path="/blogs" render={() =>
-                        <Blogs blogs={this.state.blogs}
+                        <Blogs blogs={blogsToShow}
                             onChange={this.handleSearchChange}
                             value={this.state.search} />}
                     />
