@@ -5,6 +5,7 @@ const Notification = ({ message }) => {
     if (!message) {
         return null
     }
+    
     return (
         <Alert bsStyle="warning">
             {message}

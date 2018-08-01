@@ -79,5 +79,6 @@
 | 1.8. | 0,5 | kirjainfiltteröinti toimii taas, omat tiedot -ulkoasua |
 | 1.8. | 0,5 | kommentille tykkäys-toimintoa |
 | 1.8. | 0,5 | kommentista tykkääminen toimii, README.md-päivitys |
+| 1.8. | 0,5 | kokonaisuuden siistimistä |
 
-## = 64,5h
+## = 65h

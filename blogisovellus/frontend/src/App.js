@@ -7,13 +7,13 @@ import commentService from './services/comments'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginForm'
 import BlogForm from './components/BlogForm'
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import LogoutForm from './components/LogoutForm'
 import RegisterForm from './components/RegisterForm'
+import UpdateBlogForm from './components/UpdateBlogForm'
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import User from './components/User'
 import User2 from './components/User2'
 import { Table, Navbar, NavItem, Nav, Badge, Alert, Carousel, Glyphicon, Button } from 'react-bootstrap'
-import UpdateBlogForm from './components/UpdateBlogForm'
 
 const Home = ({ blogs, user }) => (
     <div>

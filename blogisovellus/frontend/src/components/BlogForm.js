@@ -2,6 +2,7 @@ import React from 'react'
 import { FormGroup, FormControl, ControlLabel, Button, Glyphicon } from 'react-bootstrap'
 
 const BlogForm = ({ handleSubjectChange, handleContentChange, subjectValue, contentValue, history, addBlog, notify }) => {
+    
     const onSubmit = (event) => {
         event.preventDefault()
         if (subjectValue === "" || contentValue === "") {

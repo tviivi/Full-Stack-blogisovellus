@@ -3,7 +3,6 @@ import { Button, Panel, Badge, Glyphicon, FormControl, FormGroup } from 'react-b
 import { Link } from 'react-router-dom'
 
 const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentChange, addComment, match, users, likeComment }) => {
-
     const hide = user ? { display: user.username !== blog.user.username ? '' : 'none' } : { display: user ? '' : 'none' }
     const hide2 = user ? { display: user.username === blog.user.username ? '' : 'none' } : { display: user ? '' : 'none' }
 
