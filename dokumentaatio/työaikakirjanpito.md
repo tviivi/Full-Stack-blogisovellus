@@ -77,5 +77,6 @@
 | 31.7. | 0,5 | updateBlogForm-redirect, tiedon etsintää formin rivinvaihdoista - ei toimi |
 | 31.7. | 0,5 | line breakit toimii |
 | 1.8. | 0,5 | kirjainfiltteröinti toimii taas, omat tiedot -ulkoasua |
+| 1.8. | 0,5 | kommentille tykkäys-toimintoa |
 
-## = 63,5h
+## = 64h

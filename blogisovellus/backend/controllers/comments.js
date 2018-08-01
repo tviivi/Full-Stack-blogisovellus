@@ -41,6 +41,7 @@ commentsRouter.post('/', async (request, response) => {
             content: body.content,
             date: new Date(),
             user: user._id,
+            likes: 0,
             blog: blog._id
         })
 

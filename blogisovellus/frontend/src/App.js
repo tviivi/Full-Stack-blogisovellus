@@ -166,6 +166,7 @@ class App extends React.Component {
             content: this.state.newComment,
             date: new Date(),
             blog: blog,
+            likes: 0,
             user: this.state.user
         }
         commentService
