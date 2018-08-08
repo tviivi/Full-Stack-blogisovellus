@@ -81,5 +81,6 @@
 | 1.8. | 0,5 | kommentista tykkääminen toimii, README.md-päivitys |
 | 1.8. | 0,5 | kokonaisuuden siistimistä |
 | 8.8. | 1 | ratkaisun etsintää redirect-ongelmiin, kommentti-näkyvyyden säätöä |
+| 8.8. | 0,5 | tiedon etsintää Image-tyyppisestä muuttujasta |
 
-## = 66h
+## = 66,5h
