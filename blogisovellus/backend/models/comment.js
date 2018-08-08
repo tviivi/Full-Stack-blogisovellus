@@ -5,7 +5,8 @@ const commentSchema = new mongoose.Schema({
     date: Date,
     likes: Number,
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    blog: { type: mongoose.Schema.Types.ObjectId, ref: 'Blog' }
+    blog: { type: mongoose.Schema.Types.ObjectId, ref: 'Blog' },
+    users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 })
 
 commentSchema.statics.format = (comment) => {
@@ -15,7 +16,8 @@ commentSchema.statics.format = (comment) => {
         date: comment.date,
         user: comment.user,
         likes: comment.likes,
-        blog: comment.blog
+        blog: comment.blog,
+        users: comment.users
     }
 }
 

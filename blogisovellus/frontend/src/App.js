@@ -324,22 +324,26 @@ class App extends React.Component {
 
     likeComment = (id) => () => {
         const comment = this.state.comments.find(comment => comment.id === id)
-        const changedComment = { ...comment, likes: comment.likes + 1 }
-
-        if (this.state.user.username !== comment.user.username) {
-            const ok = window.confirm(`Tykätäänkö kommentista "${comment.content}"?`)
-            if (!ok) {
-                return
-            }
-            commentService
-                .update(id, changedComment)
-                .then(response => {
-                    this.setState({
-                        comments: this.state.comments.map(comment => comment.id !== id ? comment : changedComment)
+        console.log(comment)
+        if (comment.users.find(user => user.username === this.state.user.username)) {
+            this.notify(`Olet jo tykännyt tästä kommentista!`)
+        } else {
+            const changedComment = { ...comment, likes: comment.likes + 1, users: comment.users.concat(this.state.user) }
+            if (this.state.user.username !== comment.user.username) {
+                const ok = window.confirm(`Tykätäänkö kommentista "${comment.content}"?`)
+                if (!ok) {
+                    return
+                }
+                commentService
+                    .update(id, changedComment)
+                    .then(response => {
+                        this.setState({
+                            comments: this.state.comments.map(comment => comment.id !== id ? comment : changedComment)
+                        })
+                        console.log(changedComment)
+                        this.notify(`Tykkäsit kommentista "${comment.content}"`)
                     })
-                    console.log(changedComment)
-                    this.notify(`Tykkäsit kommentista "${comment.content}"`)
-                })
+            }
         }
     }
 

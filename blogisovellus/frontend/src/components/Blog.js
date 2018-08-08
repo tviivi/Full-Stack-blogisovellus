@@ -23,7 +23,7 @@ const Blog = ({ blog, history, removeBlog, likeBlog, user, contentValue, handleC
         <div>
             <Panel bsStyle="info">
                 <Panel.Heading>
-    <Panel.Title><h2 className="subject">{blog.subject} </h2>{blog.date}
+                    <Panel.Title><h2 className="subject">{blog.subject} </h2>{blog.date}
                         <div><em>Tykkäykset: <Badge>{blog.likes}</Badge> | Kirjoittaja: <Link to={`/users/${blog.user._id}`}>{blog.user.name}</Link></em></div></Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>
