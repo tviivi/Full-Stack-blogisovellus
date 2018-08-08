@@ -84,5 +84,6 @@
 | 8.8. | 0,5 | tiedon etsintää Image-tyyppisestä muuttujasta |
 | 8.8. | 0,5 | backendin testausta, vanhat testit kuntoon |
 | 8.8. | 0,5 | materiaalin opiskelua, token-testauksen googletusta |
+| 8.8. | 0,5 | frontin testien kokeilua, töppäsi heti ensimmäiseen |
 
-## = 67,5h
+## = 68h
