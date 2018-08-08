@@ -334,6 +334,7 @@ class App extends React.Component {
                     this.setState({
                         comments: this.state.comments.map(comment => comment.id !== id ? comment : changedComment)
                     })
+                    console.log(changedComment)
                     this.notify(`Tykkäsit kommentista "${comment.content}"`)
                 })
         }
@@ -443,7 +444,8 @@ class App extends React.Component {
                             handleContentChange={this.handleCommentChange}
                             match={match}
                             users={this.state.users}
-                            likeComment={this.likeComment} />}
+                            likeComment={this.likeComment}
+                            history={history} />}
                     />
                     <Route exact path="/login" render={() => this.state.user ?
                         <Redirect to="/" /> : <LoginForm visible={this.state.visible}

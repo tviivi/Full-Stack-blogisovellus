@@ -1,10 +1,11 @@
 import React from 'react'
 import { Button, Panel, Badge, Glyphicon, FormControl, FormGroup } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
-const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentChange, addComment, match, users, likeComment }) => {
+const Blog = ({ blog, history, removeBlog, likeBlog, user, contentValue, handleContentChange, addComment, match, users, likeComment }) => {
     const hide = user ? { display: user.username !== blog.user.username ? '' : 'none' } : { display: user ? '' : 'none' }
     const hide2 = user ? { display: user.username === blog.user.username ? '' : 'none' } : { display: user ? '' : 'none' }
+    const hide3 = { display: user ? '' : 'none' }
 
     const onSubmit = (event) => {
         event.preventDefault()
@@ -53,7 +54,7 @@ const Blog = ({ blog, removeBlog, likeBlog, user, contentValue, handleContentCha
                                 </Panel>
                             </div>
                         )}
-                        <div style={hide}>
+                        <div style={hide3}>
                             <Panel bsStyle="info">
                                 <form onSubmit={onSubmit}>
                                     <FormGroup controlId="formControlsTextarea">

@@ -80,5 +80,6 @@
 | 1.8. | 0,5 | kommentille tykk‰ys-toimintoa |
 | 1.8. | 0,5 | kommentista tykk‰‰minen toimii, README.md-p‰ivitys |
 | 1.8. | 0,5 | kokonaisuuden siistimist‰ |
+| 8.8. | 1 | ratkaisun etsint‰‰ redirect-ongelmiin, kommentti-n‰kyvyyden s‰‰tˆ‰ |
 
-## = 65h
+## = 66h
