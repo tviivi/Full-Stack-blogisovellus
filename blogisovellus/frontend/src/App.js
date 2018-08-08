@@ -301,21 +301,24 @@ class App extends React.Component {
 
     likeBlog = (id) => () => {
         const blog = this.state.blogs.find(blog => blog.id === id)
-        const changedBlog = { ...blog, likes: blog.likes + 1 }
-
-        if (this.state.user.username !== blog.user.username) {
-            const ok = window.confirm(`Annetaanko tykkäys blogille "${blog.subject}"?`)
-            if (!ok) {
-                return
-            }
-            blogService
-                .update(id, changedBlog)
-                .then(response => {
-                    this.setState({
-                        blogs: this.state.blogs.map(blog => blog.id !== id ? blog : changedBlog)
+        if (blog.users.find(user => user.username === this.state.user.username)) {
+            this.notify(`Olet jo tykännyt tästä blogista!`)
+        } else {
+            const changedBlog = { ...blog, likes: blog.likes + 1, users: blog.users.concat(this.state.user) }
+            if (this.state.user.username !== blog.user.username) {
+                const ok = window.confirm(`Annetaanko tykkäys blogille "${blog.subject}"?`)
+                if (!ok) {
+                    return
+                }
+                blogService
+                    .update(id, changedBlog)
+                    .then(response => {
+                        this.setState({
+                            blogs: this.state.blogs.map(blog => blog.id !== id ? blog : changedBlog)
+                        })
+                        this.notify(`Tykkäsit blogista "${blog.subject}"`)
                     })
-                    this.notify(`Tykkäsit blogista "${blog.subject}"`)
-                })
+            }
         }
     }
 
