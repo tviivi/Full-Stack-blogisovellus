@@ -82,5 +82,6 @@
 | 1.8. | 0,5 | kokonaisuuden siistimistä |
 | 8.8. | 1 | ratkaisun etsintää redirect-ongelmiin, kommentti-näkyvyyden säätöä |
 | 8.8. | 0,5 | tiedon etsintää Image-tyyppisestä muuttujasta |
+| 8.8. | 0,5 | backendin testausta, vanhat testit kuntoon |
 
-## = 66,5h
+## = 67h
