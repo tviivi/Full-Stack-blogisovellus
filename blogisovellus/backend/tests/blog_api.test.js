@@ -82,6 +82,26 @@ describe('addition of a new blog', async () => {
     //     expect(contents).toContain('async/await yksinkertaistaa asynkronisten funktioiden kutsua')
     // })
 
+    // test('POST /api/blogs fails without content', async () => {
+    //     const newBlog = {
+    //         subject: 'hei me testataan',
+    //         likes: 0
+    //     }
+
+    //     const blogsAtStart = await blogsInDb()
+
+    //     await api
+    //         .post('/api/blogs')
+    //         .send(newBlog)
+    //         .expect(400)
+
+    //     const blogsAfterOperation = await blogsInDb()
+
+    //     const contents = blogsAfterOperation.map(r => r.content)
+
+    //     expect(blogsAfterOperation.length).toBe(blogsAtStart.length)
+    // })
+
     test('POST /api/blogs fails if user is not logged in', async () => {
         const newBlog = {
             subject: 'hei me testataan',
