@@ -91,5 +91,6 @@
 | 20.8. | 1 | vain-yksi-tykk‰ys-per-blogi -asian korjailua, menee backin l‰pi undefined-listana |
 | 20.8. | 0,5 | tykk‰ystoiminto toimii blogeilla ja kommenteilla |
 | 20.8. | 0,5 | sovelluksen toiminnallisuuden testailua, bugien etsint‰‰ | 
+| 20.8. | 0,5 | favicon.ico -opettelua |
 
-## = 73h
+## = 73,5h
