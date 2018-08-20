@@ -68,7 +68,8 @@ commentsRouter.put('/:id', (request, response) => {
 
     const comment = {
         content: body.content,
-        likes: body.likes
+        likes: body.likes,
+        users: body.users
     }
 
     Comment

@@ -303,13 +303,11 @@ class App extends React.Component {
         const blog = this.state.blogs.find(blog => blog.id === id)
         const userByName = (username) =>
             this.state.users.find(user => user.username === username)
-            console.log(blog.users)
 
-        if (blog.users.find(user => user.username === this.state.user.username)) {
+        if (blog.users.find(user => user === userByName(this.state.user.username).id)) {
             this.notify(`Olet jo tykännyt tästä blogista!`)
         } else {
-            const changedBlog = { ...blog, likes: blog.likes + 1, users: blog.users.concat(userByName(this.state.user)) }
-            console.log(changedBlog)
+            const changedBlog = { ...blog, likes: blog.likes + 1, users: blog.users.concat(userByName(this.state.user.username).id) }
             if (this.state.user.username !== blog.user.username) {
                 const ok = window.confirm(`Annetaanko tykkäys blogille "${blog.subject}"?`)
                 if (!ok) {
@@ -329,10 +327,13 @@ class App extends React.Component {
 
     likeComment = (id) => () => {
         const comment = this.state.comments.find(comment => comment.id === id)
-        if (comment.users.find(user => user.username === this.state.user.username)) {
+        const userByName = (username) =>
+            this.state.users.find(user => user.username === username)
+
+        if (comment.users.find(user => user === userByName(this.state.user.username).id)) {
             this.notify(`Olet jo tykännyt tästä kommentista!`)
         } else {
-            const changedComment = { ...comment, likes: comment.likes + 1, users: comment.users.concat(this.state.user) }
+            const changedComment = { ...comment, likes: comment.likes + 1, users: comment.users.concat(userByName(this.state.user.username).id) }
             if (this.state.user.username === comment.user.username) {
                 const ok = window.confirm(`Et voi tykätä omasta kommentistasi`)
             }

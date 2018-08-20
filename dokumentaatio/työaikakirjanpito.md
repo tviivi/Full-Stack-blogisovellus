@@ -89,5 +89,6 @@
 | 8.8. | 0,5 | tykkäys-status ei tallennu backendiin, kommentille sama toiminto |
 | 20.8. | 1,5 | koodiin tutustumista pitkän ajan jälkeen, todo-listan kasaaminen projektin loppuajalle, kommenttitykkäys-nappulan ja vain-yksi-tykkäys-per-kommentti -asian ihmettelyä |
 | 20.8. | 1 | vain-yksi-tykkäys-per-blogi -asian korjailua, menee backin läpi undefined-listana |
+| 20.8. | 0,5 | tykkäystoiminto toimii blogeilla ja kommenteilla |
 
-## = 72h
+## = 72,5h
