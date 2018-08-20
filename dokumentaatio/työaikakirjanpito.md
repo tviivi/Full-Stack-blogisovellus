@@ -87,5 +87,6 @@
 | 8.8. | 0,5 | frontin testien kokeilua, töppäsi heti ensimmäiseen |
 | 8.8. | 1 | vain yksi tykkäys per käyttäjä -toiminnallisuus toimii |
 | 8.8. | 0,5 | tykkäys-status ei tallennu backendiin, kommentille sama toiminto |
+| 20.8. | 1,5 | koodiin tutustumista pitkän ajan jälkeen, todo-listan kasaaminen projektin loppuajalle, kommenttitykkäys-nappulan ja vain-yksi-tykkäys-per-kommentti -asian ihmettelyä |
 
-## = 69,5h
+## = 71h
