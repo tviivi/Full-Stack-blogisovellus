@@ -96,7 +96,8 @@ blogsRouter.put('/:id', (request, response) => {
     const blog = {
         subject: body.subject,
         content: body.content,
-        likes: body.likes
+        likes: body.likes,
+        users: body.users
     }
 
     Blog
@@ -105,7 +106,7 @@ blogsRouter.put('/:id', (request, response) => {
             response.json(Blog.format(updatedBlog))
         })
         .catch(error => {
-            console.log(error)
+            console.log("plö", error)
             response.status(400).send({ error: 'malformatted id' })
         })
 })
