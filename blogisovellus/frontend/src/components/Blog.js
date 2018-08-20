@@ -50,7 +50,7 @@ const Blog = ({ blog, history, removeBlog, likeBlog, user, contentValue, handleC
                                 <Panel bsStyle="info">
                                     <b>{comment.date}</b>
                                     <div className="comment"><Link to={`/users/${comment.user}`}>{userById(comment.user).name}</Link>: <em>{comment.content}</em></div>
-                                    <div className="comment"><Button bsStyle="primary" onClick={likeComment(comment._id)}><Glyphicon glyph="thumbs-up" /> Tykkää kommentista</Button> {comment.likes} tykkäystä</div>
+                                    <div className="comment"> <Button bsStyle="primary" onClick={likeComment(comment._id)}> <Glyphicon glyph="thumbs-up" /> Tykkää kommentista</Button> {comment.likes} tykkäystä</div>
                                 </Panel>
                             </div>
                         )}

@@ -90,5 +90,6 @@
 | 20.8. | 1,5 | koodiin tutustumista pitk‰n ajan j‰lkeen, todo-listan kasaaminen projektin loppuajalle, kommenttitykk‰ys-nappulan ja vain-yksi-tykk‰ys-per-kommentti -asian ihmettely‰ |
 | 20.8. | 1 | vain-yksi-tykk‰ys-per-blogi -asian korjailua, menee backin l‰pi undefined-listana |
 | 20.8. | 0,5 | tykk‰ystoiminto toimii blogeilla ja kommenteilla |
+| 20.8. | 0,5 | sovelluksen toiminnallisuuden testailua, bugien etsint‰‰ | 
 
-## = 72,5h
+## = 73h
