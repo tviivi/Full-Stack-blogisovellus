@@ -2,7 +2,7 @@ POST http://localhost:3001/api/categories
 Content-Type: application/json
 
 {
-    "content": "kategoria",
+    "content": "toinenkategoria",
     "blog": {
   "id": "5bcdeada96f4ea29fc036ddd",
   "subject": "yhyy",

@@ -31,6 +31,8 @@ const BlogForm = ({ handleSubjectChange, handleContentChange, subjectValue, cont
                                 value={contentValue}
                                 onChange={handleContentChange} />
                         </div>
+                        <div><ControlLabel>Blogin kategoriat:</ControlLabel></div>
+                        <div><em>Tähän tulee kategorialistausnappula</em></div>
                         <Button bsStyle="primary" type="submit"><Glyphicon glyph="pencil" /> Lisää uusi</Button>
                     </FormGroup>
             </form>

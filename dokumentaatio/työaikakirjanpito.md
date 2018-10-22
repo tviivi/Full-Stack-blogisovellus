@@ -94,5 +94,6 @@
 | 20.8. | 0,5 | favicon.ico -opettelua |
 | 22.10. | 1 | tietokannan tyhjennys ja hieman uutta dataa, sovelluslogiikan mieleenpalauttelua, tavoitteiden pohdintaa |
 | 22.10. | 1 | kategoria-toiminnallisuuden aloittelua, lisäys toimii id:n tasolla backin kautta |
+| 22.10. | 1 | kategoria-toiminnallisuutta, täysin hajalla |
 
-## = 75,5h
+## = 76,5h

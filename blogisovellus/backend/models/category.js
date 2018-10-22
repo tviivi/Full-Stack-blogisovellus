@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const categorySchema = new mongoose.Schema({
-    category: String,
+    content: String,
     blogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Blog' }]
 })
 
@@ -9,7 +9,7 @@ categorySchema.statics.format = (category) => {
     return {
         id: category.id,
         content: category.content,
-        blogs: category.blog
+        blogs: category.blogs
     }
 }
 
