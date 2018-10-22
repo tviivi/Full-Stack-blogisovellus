@@ -92,5 +92,6 @@
 | 20.8. | 0,5 | tykk‰ystoiminto toimii blogeilla ja kommenteilla |
 | 20.8. | 0,5 | sovelluksen toiminnallisuuden testailua, bugien etsint‰‰ | 
 | 20.8. | 0,5 | favicon.ico -opettelua |
+| 22.10. | 1 | tietokannan tyhjennys ja hieman uutta dataa, sovelluslogiikan mieleenpalauttelua, tavoitteiden pohdintaa |
 
-## = 73,5h
+## = 74,5h

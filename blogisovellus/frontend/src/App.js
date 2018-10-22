@@ -102,7 +102,6 @@ class App extends React.Component {
             newName: '',
             newPassword: '',
             newUsername: '',
-            redirect: false,
             newComment: ''
         }
     }
@@ -319,6 +318,7 @@ class App extends React.Component {
                         this.setState({
                             blogs: this.state.blogs.map(blog => blog.id !== id ? blog : changedBlog)
                         })
+                        console.log(changedBlog)
                         this.notify(`Tykkäsit blogista "${blog.subject}"`)
                     })
             }
