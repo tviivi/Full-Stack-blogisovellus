@@ -1,0 +1,17 @@
+POST http://localhost:3001/api/categories
+Content-Type: application/json
+
+{
+    "content": "kategoria",
+    "blog": {
+  "id": "5bcdeada96f4ea29fc036ddd",
+  "subject": "yhyy",
+  "content": "jje.",
+  "date": "2018-10-22T15:20:58.205Z",
+  "likes": 0,
+  "user": "5bcdd4c7de24e74478e8e472",
+  "comments": [],
+  "users": [],
+  "categories": []
+}
+}

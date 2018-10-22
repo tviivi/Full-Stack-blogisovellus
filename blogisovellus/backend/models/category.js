@@ -5,11 +5,11 @@ const categorySchema = new mongoose.Schema({
     blogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Blog' }]
 })
 
-categoryommentSchema.statics.format = (category) => {
+categorySchema.statics.format = (category) => {
     return {
-        id: comment.id,
-        ccategory: comment.content,
-        blogs: comment.blog
+        id: category.id,
+        content: category.content,
+        blogs: category.blog
     }
 }
 

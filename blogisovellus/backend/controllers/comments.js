@@ -44,7 +44,7 @@ commentsRouter.post('/', async (request, response) => {
             likes: 0,
             blog: blog._id
         })
-
+ 
         console.log(comment.user)
         console.log(comment.blog)
 

@@ -8,6 +8,7 @@ blogsRouter.get('/', async (req, res) => {
         .find({})
         .populate('user', { username: 1, name: 1 })
         .populate('comments', { content: 1, date: 1, user: 1, likes: 1 })
+        .populate('categories', {content: 1})
     res.json(blogs.map(Blog.format))
 })
 

@@ -93,5 +93,6 @@
 | 20.8. | 0,5 | sovelluksen toiminnallisuuden testailua, bugien etsint‰‰ | 
 | 20.8. | 0,5 | favicon.ico -opettelua |
 | 22.10. | 1 | tietokannan tyhjennys ja hieman uutta dataa, sovelluslogiikan mieleenpalauttelua, tavoitteiden pohdintaa |
+| 22.10. | 1 | kategoria-toiminnallisuuden aloittelua, lis‰ys toimii id:n tasolla backin kautta |
 
-## = 74,5h
+## = 75,5h

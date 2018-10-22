@@ -102,7 +102,8 @@ class App extends React.Component {
             newName: '',
             newPassword: '',
             newUsername: '',
-            newComment: ''
+            newComment: '',
+            categories: []
         }
     }
 
@@ -141,7 +142,8 @@ class App extends React.Component {
             subject: this.state.newSubject,
             content: this.state.newContent,
             date: new Date(),
-            likes: 0
+            likes: 0,
+            categories: this.state.categories
         }
         if (blogObject.subject === '') {
             this.notify(`Syötä blogille otsikko ja sisältö`)

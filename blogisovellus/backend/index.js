@@ -10,6 +10,7 @@ const blogsRouter = require('./controllers/blogs')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const commentsRouter = require('./controllers/comments')
+const categoriesRouter = require('./controllers/categories')
 const config = require('./utils/config')
 
 mongoose
@@ -29,6 +30,7 @@ app.use('/api/blogs', blogsRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/comments', commentsRouter)
+app.use('/api/categories', categoriesRouter)
 app.use(middleware.error)
 
 const server = http.createServer(app)
