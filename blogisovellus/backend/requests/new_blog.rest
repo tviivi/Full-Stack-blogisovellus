@@ -6,5 +6,9 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZpa
     "subject": "testaaa",
     "content": "jje.",
     "userId": "5b1fa96966f10656409e116e",
-    "categories": []
+    "category": {
+  "id": "5bd1cf48ea190f46ec867fea",
+  "content": "toinenkategoria",
+  "blogs": []
+}
 }

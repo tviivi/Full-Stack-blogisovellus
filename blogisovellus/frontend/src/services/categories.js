@@ -2,6 +2,7 @@ import axios from 'axios'
 const baseUrl = '/api/categories'
 
 const getAll = () => {
+    console.log("menee")
     const request = axios.get(baseUrl)
     return request.then(response => response.data)
 }

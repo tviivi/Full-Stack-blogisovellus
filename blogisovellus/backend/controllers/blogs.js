@@ -9,7 +9,7 @@ blogsRouter.get('/', async (req, res) => {
         .find({})
         .populate('user', { username: 1, name: 1 })
         .populate('comments', { content: 1, date: 1, user: 1, likes: 1 })
-        .populate('categories', { content: 1 })
+        .populate('category', { content: 1 })
     res.json(blogs.map(Blog.format))
 })
 
@@ -56,6 +56,7 @@ blogsRouter.post('/', async (request, response) => {
         }
 
         const user = await User.findById(decodedToken.id)
+        const category = await Category.findById(body.category.id)
 
         const blog = new Blog({
             subject: body.subject,
@@ -63,7 +64,7 @@ blogsRouter.post('/', async (request, response) => {
             date: new Date(),
             likes: 0,
             user: user._id,
-            categories: body.categories
+            category: category._id
         })
 
         const savedBlog = await blog.save()

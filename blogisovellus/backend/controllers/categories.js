@@ -17,17 +17,11 @@ categoriesRouter.post('/', async (request, response) => {
             return response.status(400).json({ error: 'name missing' })
         }
 
-        const blog = await Blog.findById(body.blog.id)
-
         const category = new Category({
-            content: body.content,
-            blog: blog._id
+            content: body.content
         })
 
         const savedCategory = await category.save()
-
-        blog.categories = blog.categories.concat(savedCategory._id)
-        await blog.save()
 
         response.json(Category.format(savedCategory))
     } catch (exception) {

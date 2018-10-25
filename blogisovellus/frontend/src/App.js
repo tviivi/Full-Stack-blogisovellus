@@ -4,6 +4,7 @@ import blogService from './services/blogs'
 import loginService from './services/login'
 import userService from './services/users'
 import commentService from './services/comments'
+import categoriesService from './services/categories'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginForm'
 import BlogForm from './components/BlogForm'
@@ -134,6 +135,11 @@ class App extends React.Component {
             this.setState({ user })
             commentService.setToken(user.token)
         }
+        categoriesService
+            .getAll()
+            .then(categories =>
+                this.setState({ categories })
+            )
     }
 
     addBlog = (event) => {
@@ -143,7 +149,7 @@ class App extends React.Component {
             content: this.state.newContent,
             date: new Date(),
             likes: 0,
-            categories: this.state.categories
+            category: this.state.category
         }
         if (blogObject.subject === '') {
             this.notify(`Syötä blogille otsikko ja sisältö`)
@@ -483,6 +489,7 @@ class App extends React.Component {
                             history={history}
                             addBlog={this.addBlog}
                             notify={this.notify}
+                            categories={this.state.categories}
                         /> : <Redirect to="/" />}
                     />
                     <Route exact path="/register" render={({ history }) =>
