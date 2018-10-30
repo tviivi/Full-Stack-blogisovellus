@@ -95,5 +95,7 @@
 | 22.10. | 1 | tietokannan tyhjennys ja hieman uutta dataa, sovelluslogiikan mieleenpalauttelua, tavoitteiden pohdintaa |
 | 22.10. | 1 | kategoria-toiminnallisuuden aloittelua, lisäys toimii id:n tasolla backin kautta |
 | 22.10. | 1 | kategoria-toiminnallisuutta, täysin hajalla |
+| 25.10. | 1 | kategoriatoiminnallisuuden jatkoa, toimii backin kautta, alustavaa fronttia |
+| 30.10. | 1 | kategoriatoiminnallisuuden rakentamista |
 
-## = 76,5h
+## = 78,5h

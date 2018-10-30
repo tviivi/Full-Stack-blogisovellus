@@ -142,14 +142,14 @@ class App extends React.Component {
             )
     }
 
-    addBlog = (event) => {
-        event.preventDefault()
+    addBlog = (id) => {
+        const category = this.state.categories.find(category => category.id === id)
         const blogObject = {
             subject: this.state.newSubject,
             content: this.state.newContent,
             date: new Date(),
             likes: 0,
-            category: this.state.category
+            category: category
         }
         if (blogObject.subject === '') {
             this.notify(`Syötä blogille otsikko ja sisältö`)
@@ -380,6 +380,9 @@ class App extends React.Component {
         const userByName = (username) =>
             this.state.users.find(user => user.username === username)
 
+        const categoryById = (id) => 
+            this.state.categories.find(category => category.id === id)
+
         const bySearchTerm = (blog) => {
             if (this.state.search.length === 0) {
                 return true
@@ -480,13 +483,14 @@ class App extends React.Component {
                     <Route exact path="/logout" render={() => this.state.user ?
                         <LogoutForm handleSubmit={this.logout} /> : <Redirect to="/" />}
                     />
-                    <Route exact path="/newblog" render={({ history }) => this.state.user ?
-                        <BlogForm onSubmit={this.addBlog}
+                    <Route exact path="/newblog" render={({ match, history }) => this.state.user ?
+                        <BlogForm category={categoryById(match.params.id)}
                             handleSubjectChange={this.handleSubjectChange}
                             handleContentChange={this.handleContentChange}
                             subjectValue={this.state.newSubject}
                             contentValue={this.state.newContent}
                             history={history}
+                            match={match}
                             addBlog={this.addBlog}
                             notify={this.notify}
                             categories={this.state.categories}
