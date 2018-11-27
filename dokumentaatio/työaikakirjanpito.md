@@ -97,5 +97,6 @@
 | 22.10. | 1 | kategoria-toiminnallisuutta, täysin hajalla |
 | 25.10. | 1 | kategoriatoiminnallisuuden jatkoa, toimii backin kautta, alustavaa fronttia |
 | 30.10. | 1 | kategoriatoiminnallisuuden rakentamista |
+| 21.11. | 2 | kategoriatoiminnallisuus toimii, kommentointi toimii reaaliajassa |
 
-## = 78,5h
+## = 80,5h
