@@ -21,9 +21,6 @@ const UpdateBlogForm = ({
   return (
     <div>
       <h2>Muokkaa blogia "{blog.subject}"</h2>
-      <Alert bsStyle="info">
-        <em>{blog.content}</em>
-      </Alert>
 
       <form
         onSubmit={event => {

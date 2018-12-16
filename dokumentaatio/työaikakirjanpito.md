@@ -99,5 +99,6 @@
 | 30.10. | 1 | kategoriatoiminnallisuuden rakentamista |
 | 21.11. | 2 | kategoriatoiminnallisuus toimii, kommentointi toimii reaaliajassa |
 | 16.12. | 0,5 | muutamat bugit kuntoon |
+| 16.12. | 0,5 | käyttöohjeiden suunnittelua |
 
-## = 81h
+## = 81,5h
