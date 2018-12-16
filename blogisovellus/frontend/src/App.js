@@ -202,6 +202,7 @@ class App extends React.Component {
     const category = this.state.categories.find(
       category => category.id === this.state.newCategory
     )
+    console.log(category)
     const blogObject = {
       subject: this.state.newSubject,
       content: this.state.newContent,

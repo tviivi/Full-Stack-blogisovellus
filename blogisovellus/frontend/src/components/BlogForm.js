@@ -27,6 +27,8 @@ const BlogForm = ({
       notify(`Syötä blogille otsikko ja sisältö`)
       return
     }
+    console.log(subjectValue)
+    console.log(categoryValue)
     addBlog()
     history.push('/blogs')
   }
