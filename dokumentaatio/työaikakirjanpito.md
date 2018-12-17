@@ -101,5 +101,6 @@
 | 16.12. | 0,5 | muutamat bugit kuntoon |
 | 16.12. | 0,5 | käyttöohjeiden suunnittelua |
 | 17.12. | 0,5 | ensimmäinen versio käyttöohjeista |
+| 17.12. | 0,5 | käyttöohjeiden muokkailua |
 
-## = 82h
+## = 82,5h
