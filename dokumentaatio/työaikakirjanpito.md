@@ -100,5 +100,6 @@
 | 21.11. | 2 | kategoriatoiminnallisuus toimii, kommentointi toimii reaaliajassa |
 | 16.12. | 0,5 | muutamat bugit kuntoon |
 | 16.12. | 0,5 | käyttöohjeiden suunnittelua |
+| 17.12. | 0,5 | ensimmäinen versio käyttöohjeista |
 
-## = 81,5h
+## = 82h
