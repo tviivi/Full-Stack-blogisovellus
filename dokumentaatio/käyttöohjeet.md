@@ -3,41 +3,43 @@
 Sovellus löytyy osoitteesta https://blogizi.herokuapp.com
 
 ## Tervetuloa BLOGIZIin!
-Blogizi on sovellus, jossa rekisteröitymättömät käyttäjät voivat selailla muiden blogeja ja rekisteröityneet käyttäjät kirjoittaa blogeja, sekä tykkäillä ja kommentoida muiden käyttäjien kirjoittamia blogeja. </ br>
-![alt text](kuvat/etusivu.png "Description goes here") </ br>
+### Blogizi on sovellus, jossa rekisteröitymättömät käyttäjät voivat selailla muiden blogeja ja rekisteröityneet käyttäjät kirjoittaa blogeja, sekä tykkäillä ja kommentoida muiden käyttäjien kirjoittamia blogeja. 
+![alt text](kuvat/etusivu.png "Description goes here")
 
 ## Rekisteröityminen
-Sovellukseen voidaan rekisteröityä navigaatiopalkista löytyvän *Rekisteröidy* -napin kautta. Rekisteröitymiseen vaaditaan nimi, käyttäjänimi sekä salasana. </ br>
-![alt text](kuvat/rekisteroityminen.png "Description goes here") </ br>
+### Sovellukseen voidaan rekisteröityä navigaatiopalkista löytyvän *Rekisteröidy* -napin kautta. Rekisteröitymiseen vaaditaan nimi, käyttäjänimi sekä salasana.
+![alt text](kuvat/rekisteroityminen.png "Description goes here")
 
 ## Kirjautuminen
-Rekisteröitynyt käyttäjä pääsee kirjautumaan sovellukseen navigaatiopalkista löytyvät *Kirjaudu* -napin kautta. Kirjautumiseen syötetään käyttäjätunnus sekä siihen kohdistuva salasana. </ br>
+### Rekisteröitynyt käyttäjä pääsee kirjautumaan sovellukseen navigaatiopalkista löytyvät *Kirjaudu* -napin kautta. Kirjautumiseen syötetään käyttäjätunnus sekä siihen kohdistuva salasana.
 ![alt text](kuvat/kirjautuminen.png "Description goes here")
 
 ## Blogilistaus
-Kuten kirjautumatonkin käyttäjä, myös kirjautunut käyttäjä näkee navigaatiopalkista löytyvältä *Blogit* -välilehdeltä kirjoitetut blogit. Blogeja voidaan järjestää joko suosion, kirjoitusajankohdan tai alkukirjainten mukaan. Blogeja voidaan myös etsiä tarkalla sanahaulla, joka suodattaa blogilistaan näkyviksi ainoastaan sellaiset blogit, joista löytyy hakukenttään syötetty sana. </ br>
-![alt text](kuvat/blogilistaus.png "Description goes here") </ br>
+### Kuten kirjautumatonkin käyttäjä, myös kirjautunut käyttäjä näkee navigaatiopalkista löytyvältä *Blogit* -välilehdeltä kirjoitetut blogit. Blogeja voidaan järjestää joko suosion, kirjoitusajankohdan tai alkukirjainten mukaan. Blogeja voidaan myös etsiä tarkalla sanahaulla, joka suodattaa blogilistaan näkyviksi ainoastaan sellaiset blogit, joista löytyy hakukenttään syötetty sana. 
+![alt text](kuvat/blogilistaus.png "Description goes here")
 
 ## Blogien kirjoittaminen
-Kirjautunut käyttäjä näkee navigaatiopalkissa *Uusi blogi* -nappulan, joka johtaa bloginlisäyssivulle. Blogille täytyy kirjoittaa aihe, sekä sisältöä. Blogille tulee valita myös sille sopiva kategoria. </ br>
+### Kirjautunut käyttäjä näkee navigaatiopalkissa *Uusi blogi* -nappulan, joka johtaa bloginlisäyssivulle. Blogille täytyy kirjoittaa aihe, sekä sisältöä. Blogille tulee valita myös sille sopiva kategoria. 
 ![alt text](kuvat/bloginlisaaminen.png "Description goes here")
 
 ## Yksittäiset blogit
-Toisen käyttäjän kirjoittaman blogin näkymästä löytyy blogitekstin lisäksi tykkäysnappula sekä kommenttikenttä. </ br>
+### Toisen käyttäjän kirjoittaman blogin näkymästä löytyy blogitekstin lisäksi tykkäysnappula sekä kommenttikenttä.
 ![alt text](kuvat/toisenblogi.png "Description goes here")
-Itse kirjoitetun blogin näkymästä löytyy blogitekstin lisäksi napit blogin muokkaamiseen ja poistamiseen sekä kommenttikenttä. </ br>
+
+### Itse kirjoitetun blogin näkymästä löytyy blogitekstin lisäksi napit blogin muokkaamiseen ja poistamiseen sekä kommenttikenttä.
 ![alt text](kuvat/omablogi.png "Description goes here")
 
 ## Blogin muokkaaminen
-Käyttäjän omia blogeja voi muokata. Blogin otsikkoa ei voi muokata, mutta sen sisältöä saa muuttaa vapaasti. </br>
-![alt text](kuvat/bloginmuokkaaminen.png "Description goes here")
+### Käyttäjän omia blogeja voi muokata. Blogin otsikkoa ei voi muokata, mutta sen sisältöä saa muuttaa vapaasti. 
+![alt text](kuvat/bloginmuokkaus.png "Description goes here")
 
 ## Käyttäjätiedot
-Navigaatiopalkista löytyvän *Omat tiedot (käyttäjänimi)* -napin takaa löytyy kirjautuneen käyttäjän tiedot sekä kirjoittamat blogit. </ br>
-![alt text](kuvat/omattiedot.png "Description goes here") </ br>
-Toisen käyttäjän kirjoittamasta blogista pääsee kyseisen käyttäjän tietoihin klikkaamalla käyttäjänimi-linkkiä. </ br>
+### Navigaatiopalkista löytyvän *Omat tiedot (käyttäjänimi)* -napin takaa löytyy kirjautuneen käyttäjän tiedot sekä kirjoittamat blogit. 
+![alt text](kuvat/omattiedot.png "Description goes here") 
+
+### Toisen käyttäjän kirjoittamasta blogista pääsee kyseisen käyttäjän tietoihin klikkaamalla käyttäjänimi-linkkiä.
 ![alt text](kuvat/toisentiedot.png "Description goes here")
 
 ## Uloskirjautuminen
-Sovelluksesta pääsee kirjautumaan ulos jo tutuksi tulleen navigaatiopalkin kautta. *Kirjaudu ulos* -nappi tuo käyttäjän sivulle, jossa vielä varmistetaan uloskirjautuminen. </ br>
+### Sovelluksesta pääsee kirjautumaan ulos jo tutuksi tulleen navigaatiopalkin kautta. *Kirjaudu ulos* -nappi tuo käyttäjän sivulle, jossa vielä varmistetaan uloskirjautuminen.
 ![alt text](kuvat/uloskirjautuminen.png "Description goes here")
