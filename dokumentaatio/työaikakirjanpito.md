@@ -105,5 +105,6 @@
 | 24.12. | 0,5 | kommenttien tykkäys ei toimi, korjaamisen yrittämistä |
 | 24.12. | 0,5 | koodin siistintää, clogien poistoa jne |
 | 24.12. | 1 | kategorialistauksen toteuttaminen |
+| 24.12. | 0,5 | käyttöohjeiden päivitys |
 
-## = 84,5h
+## = 85h

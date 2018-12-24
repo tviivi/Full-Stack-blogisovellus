@@ -50,6 +50,11 @@ Toisen käyttäjän kirjoittamasta blogista pääsee kyseisen käyttäjän tietoihin kli
 
 ![alt text](kuvat/toisentiedot.png "Description goes here")
 
+## Kategoriat
+Navigaatiopalkista löytyvän *Kategoriat* -nappulan takaa löytyy olemassaolevien kategorioiden listaus.
+
+![alt text](kuvat/kategoriat.png "Description goes here") 
+
 ## Uloskirjautuminen
 Sovelluksesta pääsee kirjautumaan ulos jo tutuksi tulleen navigaatiopalkin kautta. *Kirjaudu ulos* -nappi tuo käyttäjän sivulle, jossa vielä varmistetaan uloskirjautuminen.
 
