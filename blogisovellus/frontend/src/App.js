@@ -1,5 +1,6 @@
 import React from 'react'
 import Blog from './components/Blog'
+import Categories from './components/Categories'
 import blogService from './services/blogs'
 import loginService from './services/login'
 import userService from './services/users'
@@ -517,6 +518,11 @@ class App extends React.Component {
                   ) : null}
                 </NavItem>
                 <NavItem componentClass="span">
+                  <Link className="link" to="/categories">
+                    <Glyphicon glyph="align-justify" /> Kategoriat
+                  </Link>
+                </NavItem>
+                <NavItem componentClass="span">
                   {this.state.user ? (
                     <Link className="link" to="/user">
                       <Glyphicon glyph="user" /> Omat tiedot (
@@ -690,6 +696,16 @@ class App extends React.Component {
             exact
             path="/user"
             render={() => <User user={userByName(this.state.user.username)} />}
+          />
+          <Route
+            exact
+            path="/categories"
+            render={() => (
+              <Categories
+                categories={this.state.categories}
+                blogs={this.state.blogs}
+              />
+            )}
           />
           <Route
             exact

@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  FormGroup,
-  FormControl,
-  ControlLabel,
-  Button,
-  Alert
-} from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
 
 const UpdateBlogForm = ({
   match,
