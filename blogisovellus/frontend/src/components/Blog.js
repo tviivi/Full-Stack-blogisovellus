@@ -107,7 +107,7 @@ const Blog = ({
                     {' '}
                     <Button
                       bsStyle="primary"
-                      onClick={likeComment(comment._id, blog.id)}
+                      onClick={likeComment(comment.id, blog.id)}
                     >
                       {' '}
                       <Glyphicon glyph="thumbs-up" /> Tykkää kommentista

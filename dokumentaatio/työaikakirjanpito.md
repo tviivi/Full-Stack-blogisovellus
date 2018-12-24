@@ -102,5 +102,6 @@
 | 16.12. | 0,5 | käyttöohjeiden suunnittelua |
 | 17.12. | 0,5 | ensimmäinen versio käyttöohjeista |
 | 17.12. | 0,5 | käyttöohjeiden muokkailua |
+| 24.12. | 0,5 | kommenttien tykkäys ei toimi, korjaamisen yrittämistä | 
 
-## = 82,5h
+## = 83h

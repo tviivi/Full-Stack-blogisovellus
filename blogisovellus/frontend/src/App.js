@@ -414,9 +414,8 @@ class App extends React.Component {
   }
 
   likeComment = (id, blogId) => () => {
-    const comment = this.state.blogs
-      .find(b => b.id === blogId)
-      .comments.find(comment => comment.id === id)
+    const blog = this.state.blogs.find(b => b.id === blogId)
+    const comment = blog.comments.find(comment => comment.id === id)
     console.log('comment', comment)
 
     const userByName = username =>
