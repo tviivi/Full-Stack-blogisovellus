@@ -106,5 +106,6 @@
 | 24.12. | 0,5 | koodin siistintää, clogien poistoa jne |
 | 24.12. | 1 | kategorialistauksen toteuttaminen |
 | 24.12. | 0,5 | käyttöohjeiden päivitys |
+| 24.12. | 0,5 | reflektion ensimmäinen versio |
 
-## = 85h
+## = 85,5h
