@@ -102,6 +102,7 @@
 | 16.12. | 0,5 | käyttöohjeiden suunnittelua |
 | 17.12. | 0,5 | ensimmäinen versio käyttöohjeista |
 | 17.12. | 0,5 | käyttöohjeiden muokkailua |
-| 24.12. | 0,5 | kommenttien tykkäys ei toimi, korjaamisen yrittämistä | 
+| 24.12. | 0,5 | kommenttien tykkäys ei toimi, korjaamisen yrittämistä |
+| 24.12. | 0,5 | koodin siistintää, clogien poistoa jne |
 
-## = 83h
+## = 83,5h

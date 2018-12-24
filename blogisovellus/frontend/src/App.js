@@ -74,7 +74,8 @@ const Home = ({ blogs, user }) => (
         <Carousel.Caption>
           <h3>Mikset kokeilisi samantien?</h3>
           <p>
-            Rekisteröidy ja kirjaudu päästäksesi BLOGIZIn avaraan maailmaan!
+            Rekisteröidy ja kirjaudu sisään päästäksesi BLOGIZIn avaraan
+            maailmaan!
           </p>
         </Carousel.Caption>
       </Carousel.Item>
@@ -202,7 +203,6 @@ class App extends React.Component {
     const category = this.state.categories.find(
       category => category.id === this.state.newCategory
     )
-    console.log(category)
     const blogObject = {
       subject: this.state.newSubject,
       content: this.state.newContent,
@@ -317,13 +317,6 @@ class App extends React.Component {
     this.notify(`Kirjauduit ulos`)
   }
 
-  // TÄLLEE VOI SÄÄSTYÄ KAUHEELTA TYÖMÄÄRÄLTÄ
-  handleChange = (key, value) => {
-    this.setState({
-      [key]: value
-    })
-  }
-
   handleCommentChange = event => {
     this.setState({ newComment: event.target.value })
   }
@@ -406,7 +399,6 @@ class App extends React.Component {
               blog.id !== id ? blog : changedBlog
             )
           })
-          console.log(changedBlog)
           this.notify(`Tykkäsit blogista "${blog.subject}"`)
         })
       }
@@ -416,7 +408,6 @@ class App extends React.Component {
   likeComment = (id, blogId) => () => {
     const blog = this.state.blogs.find(b => b.id === blogId)
     const comment = blog.comments.find(comment => comment.id === id)
-    console.log('comment', comment)
 
     const userByName = username =>
       this.state.users.find(user => user.username === username)
@@ -445,19 +436,15 @@ class App extends React.Component {
         }
         commentService.update(id, changedComment).then(response => {
           const blog = this.state.blogs.find(blog => blog.id === blogId)
-          console.log('blog', blog)
           const newComments = blog.comments
             .filter(comment => comment.id !== id)
             .concat(changedComment)
-          console.log('newComments', newComments)
           const newBlogs = this.state.blogs.map(b =>
             b.id !== blogId ? b : { ...blog, comments: newComments }
           )
-          console.log('newBlogs', newBlogs)
           this.setState({
             blogs: newBlogs
           })
-          console.log(changedComment)
           this.notify(`Tykkäsit kommentista "${comment.content}"`)
         })
       }
@@ -503,7 +490,6 @@ class App extends React.Component {
       .filter(bySearchTerm)
       .sort((a, b) => b.date.localeCompare(a.date))
 
-    console.log({ state: this.state })
     return (
       <Router>
         <div className="container">

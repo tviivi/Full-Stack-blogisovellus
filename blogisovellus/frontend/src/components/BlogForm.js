@@ -27,8 +27,6 @@ const BlogForm = ({
       notify(`Syötä blogille otsikko ja sisältö`)
       return
     }
-    console.log(subjectValue)
-    console.log(categoryValue)
     addBlog()
     history.push('/blogs')
   }
@@ -36,7 +34,6 @@ const BlogForm = ({
   return (
     <div className="bg-img">
       <h2>Lisää uusi blogi</h2>
-
       <form onSubmit={onSubmit}>
         <FormGroup controlId="formControlsTextarea">
           <div>

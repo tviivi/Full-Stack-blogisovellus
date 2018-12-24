@@ -55,7 +55,6 @@ blogsRouter.post('/', async (request, response) => {
 
     const user = await User.findById(decodedToken.id)
     const category = await Category.findById(body.category.id)
-    console.log('asd', category)
 
     const blog = new Blog({
       subject: body.subject,

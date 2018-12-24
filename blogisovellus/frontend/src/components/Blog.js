@@ -52,7 +52,7 @@ const Blog = ({
               <em>
                 Tykkäykset: <Badge>{blog.likes}</Badge> | Kirjoittaja:{' '}
                 <Link to={`/users/${blog.user._id}`}>{blog.user.name}</Link> |
-                Kategoriat: {blog.category.content}
+                Kategoriassa: {blog.category.content}
               </em>
             </div>
           </Panel.Title>
