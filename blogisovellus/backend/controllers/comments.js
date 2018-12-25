@@ -52,6 +52,9 @@ commentsRouter.post('/', async (request, response) => {
     blog.comments = blog.comments.concat(savedComment._id)
     await blog.save()
 
+    comment.users = comment.users.concat(user)
+    await comment.save()
+
     response.json(Comment.format(savedComment))
   } catch (exception) {
     console.log(exception)

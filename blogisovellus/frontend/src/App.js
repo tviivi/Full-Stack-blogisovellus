@@ -246,7 +246,6 @@ class App extends React.Component {
         newComment: ''
       })
     })
-
     this.notify(`Uusi kommentti "${this.state.newComment}" lisätty`)
   }
 
@@ -412,6 +411,8 @@ class App extends React.Component {
 
     const userByName = username =>
       this.state.users.find(user => user.username === username)
+
+    console.log(comment)
 
     if (
       comment.users.find(
