@@ -109,5 +109,6 @@
 | 24.12. | 0,5 | reflektion ensimmäinen versio |
 | 25.12. | 0,5 | heroku-push, sovelluksen kokeilua tuotannossa, testikäyttäjätunnus käyttöohjeisiin |
 | 25.12. | 0,5 | epätoivoista kommenttitykkäyksen bugin korjailua tuloksetta |
+| 25.12. | 1 | yksittäisen kategorian oma sivu, käyttöohjeiden loppusilaus, tunnit täynnä ja työ palautukseen |
 
-## = 86,5h
+## = 87,5h

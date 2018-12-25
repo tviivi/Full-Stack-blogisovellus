@@ -1,7 +1,9 @@
 import React from 'react'
 import { Glyphicon, Table } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-const Categories = ({ categories, blogs }) => {
+const Categories = ({ categories, blogs, category }) => {
+  console.log(categories)
   return (
     <div>
       <h2>Olemassaolevat kategoriat</h2>
@@ -10,7 +12,10 @@ const Categories = ({ categories, blogs }) => {
           {categories.map(category => (
             <tr key={category.id}>
               <td>
-                <Glyphicon glyph="align-justify" /> {category.content}
+                <Glyphicon glyph="align-justify" />
+                <Link to={`/categories/${category.id}`}>
+                  {category.content}
+                </Link>
               </td>
             </tr>
           ))}

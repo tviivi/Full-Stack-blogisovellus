@@ -9,7 +9,7 @@ Suuret kiitokset kurssin j‰rjest‰jille!
 ### Toteuttamatta j‰‰neet ideat / muut korjausehdotukset:
 - K‰ytt‰j‰kuvakkeet
 - Kuvien lis‰‰minen blogeihin
-- Kategorialistauksen linkit / kategoriaan kuuluvien blogien listaus
+- Ykstt‰iseen kategoriaan kuuluvien blogien listaus
 - Kommenttien tykk‰‰minen (hajosi tyˆn loppumetreill‰, enk‰ saanut korjattua)
 - Redirect-ongelmat (juuri lis‰tyn blogin tiedot eiv‰t n‰y ennen sivun p‰ivitt‰mist‰)
 - Koodin laatu melko purkkaa

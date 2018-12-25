@@ -1,6 +1,6 @@
 # Full-Stack-blogisovellus
 
-*Tämä työ on vuonna 2018 toteutettu Full Stack -harjoitustyö, jonka aiheena on blogisovellus. Sovellus on koodattu käyttämällä javascriptiä ja html:ää, ulkoasussa css:ää ja ulkoasukirjastona Bootstrapia. Työ on rakennettu käyttäen Reactia ja Nodea.js:ää - sekä frontend että backend on toteutettu itse.*<br />
+*Tämä työ on vuonna 2018 toteutettu Full Stack -websovelluskehityksen harjoitustyö, jonka aiheena on blogisovellus. Sovellus on koodattu käyttämällä javascriptiä ja html:ää, ulkoasussa css:ää ja ulkoasukirjastona Bootstrapia. Työ on rakennettu käyttäen Reactia ja Nodea.js:ää - sekä frontend että backend on toteutettu itse.*<br />
 
 Sovelluksessa rekisteröitynyt ja kirjautunut käyttäjä voi kirjoittaa omia blogeja, joihin voi liittää kategorian, sekä muokata ja poistaa niitä. Käyttäjä pääsee myös lukemaan muiden blogeja, sekä halunsa mukaan arvostelemaan niitä kommentoimalla tai vain tykkäämällä. Myös blogeihin suunnatuista kommenteista voi tykätä. Blogeja filtteröidään tykkäysten, julkaisuajankohdan, aakkosten sekä avoimen haun perusteella. Käyttäjä pääsee myös tutkimaan muiden käyttäjien tietoja, sekä listoja heidän kirjoittamistaan blogeista. Kirjautumaton käyttäjä voi lukea blogeja sekä tutkia muiden käyttäjien tietoja.<br />
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Blog from './components/Blog'
 import Categories from './components/Categories'
+import Category from './components/Category'
 import blogService from './services/blogs'
 import loginService from './services/login'
 import userService from './services/users'
@@ -706,6 +707,13 @@ class App extends React.Component {
                 categories={this.state.categories}
                 blogs={this.state.blogs}
               />
+            )}
+          />
+          <Route
+            exact
+            path="/categories/:id"
+            render={({ match }) => (
+              <Category category={categoryById(match.params.id)} />
             )}
           />
           <Route
