@@ -107,5 +107,6 @@
 | 24.12. | 1 | kategorialistauksen toteuttaminen |
 | 24.12. | 0,5 | käyttöohjeiden päivitys |
 | 24.12. | 0,5 | reflektion ensimmäinen versio |
+| 25.12. | 0,5 | heroku-push, sovelluksen kokeilua tuotannossa, testikäyttäjätunnus käyttöohjeisiin |
 
-## = 85,5h
+## = 86h

@@ -13,7 +13,7 @@ Sovellukseen voidaan rekisteröityä navigaatiopalkista löytyvän *Rekisteröidy* -n
 ![alt text](kuvat/rekisteroityminen.png "Description goes here")
 
 ## Kirjautuminen
-Rekisteröitynyt käyttäjä pääsee kirjautumaan sovellukseen navigaatiopalkista löytyvät *Kirjaudu* -napin kautta. Kirjautumiseen syötetään käyttäjätunnus sekä siihen kohdistuva salasana. Kirjautumisen onnistuessa ohjataan kirjautunyt käyttäjä sovelluksen etusivulle.
+Rekisteröitynyt käyttäjä pääsee kirjautumaan sovellukseen navigaatiopalkista löytyvät *Kirjaudu* -napin kautta. Kirjautumiseen syötetään käyttäjätunnus sekä siihen kohdistuva salasana. Kirjautumisen onnistuessa ohjataan kirjautunyt käyttäjä sovelluksen etusivulle. Kirjautumisessa voidaan käyttää seuraavia testikäyttäjätunnuksia: käyttäjätunnus: testi, salasana: testi
 
 ![alt text](kuvat/kirjautuminen.png "Description goes here")
 
